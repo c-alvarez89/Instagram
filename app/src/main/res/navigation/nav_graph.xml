@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/welcomeFragment">
+
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.meazza.instagram.ui.auth.WelcomeFragment"
+        android:label="fragment_welcome"
+        tools:layout="@layout/fragment_welcome" >
+        <action
+            android:id="@+id/goto_sign_in"
+            app:destination="@id/signInFragment" />
+        <action
+            android:id="@+id/goto_log_in"
+            app:destination="@id/logInFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.meazza.instagram.ui.auth.sign_up.SignUpFragment"
+        android:label="fragment_sign_in"
+        tools:layout="@layout/fragment_sign_up" >
+        <action
+            android:id="@+id/goto_log_in"
+            app:destination="@id/logInFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/logInFragment"
+        android:name="com.meazza.instagram.ui.auth.log_in.LogInFragment"
+        android:label="fragment_log_in"
+        tools:layout="@layout/fragment_log_in" >
+        <action
+            android:id="@+id/goto_sign_in"
+            app:destination="@id/signInFragment" />
+    </fragment>
+</navigation>

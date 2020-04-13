@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Instagram</string>
+    <string name="create_new_account">Create New Account</string>
+    <string name="log_in">Log In</string>
+    <string name="user">User</string>
+    <string name="full_name">Full name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="next">Continue</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="phone_email_or_username">Phone number, email or username</string>
+    <string name="or">OR</string>
+    <string name="get_help_signing_in">Get help signing in.</string>
+    <string name="forgot_your_login_details">Forgot your login details?</string>
+    <string name="dont_have_an_account">Don\'t have an account?</string>
+    <string name="sign_up">Sign up</string>
+</resources>
