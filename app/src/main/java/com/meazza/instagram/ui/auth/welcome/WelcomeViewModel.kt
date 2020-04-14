@@ -1,4 +1,4 @@
-package com.meazza.instagram.ui.auth
+package com.meazza.instagram.ui.auth.welcome
 
 import androidx.lifecycle.ViewModel
 

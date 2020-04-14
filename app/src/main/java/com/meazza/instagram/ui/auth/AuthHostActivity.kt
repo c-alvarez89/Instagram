@@ -1,12 +1,13 @@
-package com.meazza.instagram
+package com.meazza.instagram.ui.auth
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.meazza.instagram.R
 
-class HostActivity : AppCompatActivity() {
+class AuthHostActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_host)
+        setContentView(R.layout.activity_auth_host)
     }
 }

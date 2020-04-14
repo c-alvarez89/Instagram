@@ -1,4 +1,4 @@
-package com.meazza.instagram.ui.auth
+package com.meazza.instagram.ui.auth.welcome
 
 import android.os.Bundle
 import android.view.LayoutInflater

@@ -1,21 +1,16 @@
 package com.meazza.instagram.ui.auth.sign_up
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
+import androidx.fragment.app.Fragment
 import com.meazza.instagram.R
+import com.meazza.instagram.ui.MainHostActivity
+import kotlinx.android.synthetic.main.fragment_sign_up.*
+import org.jetbrains.anko.support.v4.startActivity
 
 class SignUpFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = SignUpFragment()
-    }
-
-    private lateinit var viewModel: SignUpViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,8 +21,9 @@ class SignUpFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(SignUpViewModel::class.java)
-        // TODO: Use the ViewModel
+        btn_sign_up.setOnClickListener {
+            startActivity<MainHostActivity>()
+        }
     }
 
 }

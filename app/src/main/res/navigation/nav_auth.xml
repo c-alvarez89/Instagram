@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/welcomeFragment"
-        android:name="com.meazza.instagram.ui.auth.WelcomeFragment"
+        android:name="com.meazza.instagram.ui.auth.welcome.WelcomeFragment"
         android:label="fragment_welcome"
         tools:layout="@layout/fragment_welcome" >
         <action
