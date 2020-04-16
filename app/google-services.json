@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "661697132872",
+    "firebase_url": "https://instagram-ed7ec.firebaseio.com",
+    "project_id": "instagram-ed7ec",
+    "storage_bucket": "instagram-ed7ec.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:661697132872:android:9008955ee7f6caf1239b7d",
+        "android_client_info": {
+          "package_name": "com.meazza.instagram"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "661697132872-gki6kvqgveubopba35olqf5h34abi4l4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBuQZQWPkXBnTp7Uv-V2iFI-YaJ71Ju5xQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "661697132872-gki6kvqgveubopba35olqf5h34abi4l4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

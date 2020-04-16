@@ -7,11 +7,11 @@
 
     <fragment
         android:id="@+id/welcomeFragment"
-        android:name="com.meazza.instagram.ui.auth.welcome.WelcomeFragment"
+        android:name="com.meazza.instagram.ui.auth.WelcomeFragment"
         android:label="fragment_welcome"
         tools:layout="@layout/fragment_welcome" >
         <action
-            android:id="@+id/goto_sign_in"
+            android:id="@+id/goto_sign_up"
             app:destination="@id/signInFragment" />
         <action
             android:id="@+id/goto_log_in"
@@ -32,7 +32,19 @@
         android:label="fragment_log_in"
         tools:layout="@layout/fragment_log_in" >
         <action
-            android:id="@+id/goto_sign_in"
+            android:id="@+id/goto_sign_up"
             app:destination="@id/signInFragment" />
+        <action
+            android:id="@+id/goto_reset_password"
+            app:destination="@id/resetPasswordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/resetPasswordFragment"
+        android:name="com.meazza.instagram.ui.auth.reset_password.ResetPasswordFragment"
+        android:label="fragment_reset_password"
+        tools:layout="@layout/fragment_reset_password" >
+        <action
+            android:id="@+id/goto_log_in"
+            app:destination="@id/logInFragment" />
     </fragment>
 </navigation>

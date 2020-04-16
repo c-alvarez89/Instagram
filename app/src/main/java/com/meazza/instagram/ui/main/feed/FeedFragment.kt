@@ -1,25 +1,20 @@
 package com.meazza.instagram.ui.main.feed
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.meazza.instagram.R
-import org.jetbrains.anko.support.v4.toast
+import kotlinx.android.synthetic.main.fragment_feed.*
 
-class FeedFragment : Fragment() {
+class FeedFragment : Fragment(R.layout.fragment_feed) {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_feed, container, false)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val mActivity = activity as AppCompatActivity
+        mActivity.apply {
+            setSupportActionBar(tb_feed)
+        }
     }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-       toast("")
-    }
-
 }

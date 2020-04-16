@@ -1,175 +1,187 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
-    android:backgroundTint="#FFFFFF"
-    tools:context=".ui.auth.log_in.LogInFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
-        android:id="@+id/iv_instagram"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:contentDescription="@string/app_name"
-        android:src="@drawable/ic_instagram_logo"
-        app:layout_constraintBottom_toTopOf="@+id/et_email_login"
-        app:layout_constraintEnd_toEndOf="@+id/et_email_login"
-        app:layout_constraintStart_toStartOf="@+id/et_email_login"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
+    <data>
 
-    <EditText
-        android:id="@+id/et_email_login"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="16dp"
-        android:autofillHints=""
-        android:background="@drawable/background_edit_text"
-        android:ems="10"
-        android:hint="@string/phone_email_or_username"
-        android:inputType="textEmailAddress"
-        android:theme="@style/EditTextStyle"
-        app:layout_constraintBottom_toTopOf="@+id/et_password_login"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_instagram" />
+        <variable
+            name="viewModel"
+            type="com.meazza.instagram.ui.auth.log_in.LogInViewModel" />
+    </data>
 
-    <EditText
-        android:id="@+id/et_password_login"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/background_edit_text"
-        android:ems="10"
-        android:hint="@string/password"
-        android:importantForAutofill="no"
-        android:inputType="textPassword"
-        android:theme="@style/EditTextStyle"
-        app:layout_constraintBottom_toTopOf="@+id/btn_login"
-        app:layout_constraintEnd_toEndOf="@+id/et_email_login"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/et_email_login"
-        app:layout_constraintTop_toBottomOf="@+id/et_email_login" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:backgroundTint="#FFFFFF"
+        tools:context=".ui.auth.log_in.LogInFragment">
 
-    <Button
-        android:id="@+id/btn_login"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/background_button_blue"
-        android:text="@string/log_in"
-        android:theme="@style/ButtonBlueStyle"
-        app:layout_constraintBottom_toTopOf="@+id/tv_1"
-        app:layout_constraintEnd_toEndOf="@+id/et_password_login"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/et_password_login"
-        app:layout_constraintTop_toBottomOf="@+id/et_password_login" />
+        <ImageView
+            android:id="@+id/iv_instagram"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_instagram_logo"
+            app:layout_constraintBottom_toTopOf="@+id/et_email_login"
+            app:layout_constraintEnd_toEndOf="@+id/et_email_login"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/et_email_login"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
 
-    <TextView
-        android:id="@+id/tv_get_help"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="3dp"
-        android:text="@string/get_help_signing_in"
-        android:theme="@style/BottomTextBlue"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/tv_1"
-        app:layout_constraintTop_toTopOf="@+id/tv_1" />
+        <EditText
+            android:id="@+id/et_email_login"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="16dp"
+            android:autofillHints=""
+            android:background="@drawable/background_edit_text"
+            android:ems="10"
+            android:hint="@string/phone_email_or_username"
+            android:inputType="textEmailAddress"
+            android:text="@={viewModel.email}"
+            android:theme="@style/EditTextStyle"
+            app:layout_constraintBottom_toTopOf="@+id/et_password_login"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_instagram" />
 
-    <TextView
-        android:id="@+id/tv_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:text="@string/forgot_your_login_details"
-        android:theme="@style/BottomTextGray"
-        app:layout_constraintBottom_toTopOf="@+id/tv_2"
-        app:layout_constraintEnd_toStartOf="@+id/tv_get_help"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_login" />
+        <EditText
+            android:id="@+id/et_password_login"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/background_edit_text"
+            android:ems="10"
+            android:hint="@string/password"
+            android:importantForAutofill="no"
+            android:inputType="textPassword"
+            android:text="@={viewModel.password}"
+            android:theme="@style/EditTextStyle"
+            app:layout_constraintBottom_toTopOf="@+id/btn_login"
+            app:layout_constraintEnd_toEndOf="@+id/et_email_login"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/et_email_login"
+            app:layout_constraintTop_toBottomOf="@+id/et_email_login" />
 
-    <TextView
-        android:id="@+id/tv_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto_medium"
-        android:text="@string/or"
-        android:textColor="@color/gray"
-        app:layout_constraintBottom_toTopOf="@+id/dv_3"
-        app:layout_constraintEnd_toEndOf="@+id/btn_login"
-        app:layout_constraintStart_toStartOf="@+id/btn_login"
-        app:layout_constraintTop_toBottomOf="@+id/tv_1" />
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/background_button_blue"
+            android:onClick="@{()->viewModel.logIn()}"
+            android:text="@string/log_in"
+            android:theme="@style/ButtonBlueStyle"
+            app:layout_constraintBottom_toTopOf="@+id/tv_1"
+            app:layout_constraintEnd_toEndOf="@+id/et_password_login"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/et_password_login"
+            app:layout_constraintTop_toBottomOf="@+id/et_password_login" />
 
-    <View
-        android:id="@+id/dv_1"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="24dp"
-        android:theme="@style/Divider"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tv_2"
-        app:layout_constraintTop_toTopOf="@+id/tv_2" />
+        <TextView
+            android:id="@+id/tv_reset_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:text="@string/get_help_signing_in"
+            android:theme="@style/BottomTextBlue"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tv_1"
+            app:layout_constraintTop_toTopOf="@+id/tv_1" />
 
-    <View
-        android:id="@+id/dv_2"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="8dp"
-        android:theme="@style/Divider"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_2"
-        app:layout_constraintEnd_toStartOf="@+id/tv_2"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_2" />
+        <TextView
+            android:id="@+id/tv_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="@string/forgot_your_login_details"
+            android:theme="@style/BottomTextGray"
+            app:layout_constraintBottom_toTopOf="@+id/tv_2"
+            app:layout_constraintEnd_toStartOf="@+id/tv_reset_password"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_login" />
 
-    <View
-        android:id="@+id/dv_3"
-        android:layout_width="wrap_content"
-        android:layout_height="1dp"
-        android:layout_marginBottom="48dp"
-        android:theme="@style/Divider"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <TextView
+            android:id="@+id/tv_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/or"
+            android:textColor="@color/gray"
+            app:layout_constraintBottom_toTopOf="@+id/dv_3"
+            app:layout_constraintEnd_toEndOf="@+id/btn_login"
+            app:layout_constraintStart_toStartOf="@+id/btn_login"
+            app:layout_constraintTop_toBottomOf="@+id/tv_1" />
 
-    <TextView
-        android:id="@+id/tv_3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/dont_have_an_account"
-        android:theme="@style/BottomTextGray"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/tv_goto_sign_up"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dv_3" />
+        <View
+            android:id="@+id/dv_1"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="24dp"
+            android:theme="@style/Divider"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_2"
+            app:layout_constraintTop_toTopOf="@+id/tv_2" />
 
-    <TextView
-        android:id="@+id/tv_goto_sign_up"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="3dp"
-        android:text="@string/sign_up"
-        android:theme="@style/BottomTextBlue"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/tv_3"
-        app:layout_constraintTop_toTopOf="@+id/tv_3" />
+        <View
+            android:id="@+id/dv_2"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="8dp"
+            android:theme="@style/Divider"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_2"
+            app:layout_constraintEnd_toStartOf="@+id/tv_2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_2" />
+
+        <View
+            android:id="@+id/dv_3"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_marginBottom="48dp"
+            android:theme="@style/Divider"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dont_have_an_account"
+            android:theme="@style/BottomTextGray"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tv_goto_sign_up"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dv_3" />
+
+        <TextView
+            android:id="@+id/tv_goto_sign_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:text="@string/sign_up"
+            android:theme="@style/BottomTextBlue"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tv_3"
+            app:layout_constraintTop_toTopOf="@+id/tv_3" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,29 +1,65 @@
 package com.meazza.instagram.ui.auth.sign_up
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.meazza.instagram.R
+import com.meazza.instagram.databinding.FragmentSignUpBinding
 import com.meazza.instagram.ui.MainHostActivity
+import com.meazza.instagram.ui.auth.AuthListener
+import com.meazza.instagram.util.EMPTY_FIELDS
+import com.meazza.instagram.util.INVALID_EMAIL
+import com.meazza.instagram.util.INVALID_PASSWORD
+import com.meazza.instagram.util.REGISTRATION_ERROR
 import kotlinx.android.synthetic.main.fragment_sign_up.*
-import org.jetbrains.anko.support.v4.startActivity
+import org.jetbrains.anko.clearTask
+import org.jetbrains.anko.newTask
+import org.jetbrains.anko.okButton
+import org.jetbrains.anko.support.v4.alert
+import org.jetbrains.anko.support.v4.intentFor
+import org.koin.android.ext.android.inject
 
-class SignUpFragment : Fragment() {
+class SignUpFragment : Fragment(R.layout.fragment_sign_up), AuthListener {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_sign_up, container, false)
+    private val signUpViewModel by inject<SignUpViewModel>()
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        DataBindingUtil.bind<FragmentSignUpBinding>(view)?.apply {
+            lifecycleOwner = this@SignUpFragment
+            viewModel = signUpViewModel
+        }
+
+        signUpViewModel.authListener = this
+        setUiAction()
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        btn_sign_up.setOnClickListener {
-            startActivity<MainHostActivity>()
+    private fun setUiAction() {
+        tv_goto_log_in.setOnClickListener {
+            findNavController().navigate(R.id.goto_log_in)
         }
     }
 
+    private fun showAlert(message: String) {
+        alert(message) {
+            okButton { it.dismiss() }
+        }.show()
+    }
+
+    override fun onSuccess() {
+        startActivity(intentFor<MainHostActivity>().newTask().clearTask())
+    }
+
+    override fun onFailure(messageCode: Int) {
+        when (messageCode) {
+            EMPTY_FIELDS -> showAlert(resources.getString(R.string.empty_fields))
+            INVALID_EMAIL -> showAlert(resources.getString(R.string.invalid_email))
+            INVALID_PASSWORD -> showAlert(resources.getString(R.string.invalid_password))
+            REGISTRATION_ERROR -> showAlert(resources.getString(R.string.registration_error))
+            else -> showAlert(resources.getString(R.string.error))
+        }
+    }
 }

@@ -6,7 +6,8 @@
     <string name="full_name">Full name</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
-    <string name="next">Continue</string>
+    <string name="continue_string">Continue</string>
+    <string name="next">Next</string>
     <string name="already_have_an_account">Already have an account?</string>
     <string name="phone_email_or_username">Phone number, email or username</string>
     <string name="or">OR</string>
@@ -19,4 +20,18 @@
     <string name="add">Add</string>
     <string name="notification">Notification</string>
     <string name="profile">Profile</string>
+    <string name="please_enter_a_valid_email">Please enter a valid email</string>
+    <string name="find_your_account">Find Your Account</string>
+    <string name="enter_your_instagram_info">Enter your Instagram username or the email or\nphone number linked to your account.</string>
+    <string name="need_more_help">Need more help?</string>
+    <string name="login_help">Login Help</string>
+    <string name="empty_fields">Empty Fields</string>
+    <string name="invalid_email">Invalid Email</string>
+    <string name="invalid_password">Invalid Password</string>
+    <string name="registration_error">Registration error, Please try again</string>
+    <string name="error">Error, please try again</string>
+    <string name="email_reset_password">"We have sent an email to reset your password"</string>
+    <string name="user_not_found">User not found</string>
+    <string name="wrong_password">Wrong Password</string>
+    <string name="login_error">Log in error, please try again</string>
 </resources>

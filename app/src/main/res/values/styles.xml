@@ -14,7 +14,7 @@
         <item name="fontFamily">@font/roboto_regular</item>
         <item name="android:textColor">@color/colorAccent</item>
         <item name="android:textSize">14sp</item>
-        <item name="android:padding">16dp</item>
+        <item name="android:padding">14dp</item>
         <item name="android:textColorHint">@color/gray</item>
     </style>
 
@@ -44,4 +44,12 @@
         <item name="android:textColor">@color/blue_dark</item>
     </style>
 
+    <style name="Theme.Transparent" parent="Theme.AppCompat">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
 </resources>
