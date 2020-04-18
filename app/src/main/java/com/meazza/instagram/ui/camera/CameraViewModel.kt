@@ -1,4 +1,4 @@
-package com.meazza.instagram.ui.main.camera
+package com.meazza.instagram.ui.camera
 
 import androidx.lifecycle.ViewModel
 

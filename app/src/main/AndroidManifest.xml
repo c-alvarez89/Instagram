@@ -19,7 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.MainHostActivity" />
+        <activity android:name=".ui.main.MainHostActivity" />
         <activity android:name=".ui.auth.AuthHostActivity" />
     </application>
 </manifest>

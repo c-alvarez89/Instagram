@@ -7,8 +7,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.meazza.instagram.R
 import com.meazza.instagram.databinding.FragmentSignUpBinding
-import com.meazza.instagram.ui.MainHostActivity
 import com.meazza.instagram.ui.auth.AuthListener
+import com.meazza.instagram.ui.main.MainHostActivity
 import com.meazza.instagram.util.EMPTY_FIELDS
 import com.meazza.instagram.util.INVALID_EMAIL
 import com.meazza.instagram.util.INVALID_PASSWORD

@@ -17,7 +17,7 @@
             app:destination="@id/destination_camera" />
         <action
             android:id="@+id/goto_messages"
-            app:destination="@id/destination_message" />
+            app:destination="@id/destination_direct" />
     </fragment>
     <fragment
         android:id="@+id/navigation_search"
@@ -45,21 +45,21 @@
     </fragment>
     <fragment
         android:id="@+id/destination_camera"
-        android:name="com.meazza.instagram.ui.main.camera.CameraFragment"
+        android:name="com.meazza.instagram.ui.camera.CameraFragment"
         android:label="fragment_camera"
         tools:layout="@layout/fragment_camera" />
     <fragment
-        android:id="@+id/destination_message"
-        android:name="com.meazza.instagram.ui.main.message.MessagesFragment"
+        android:id="@+id/destination_direct"
+        android:name="com.meazza.instagram.ui.direct.DirectFragment"
         android:label="fragment_messages"
-        tools:layout="@layout/fragment_messages">
+        tools:layout="@layout/fragment_direct">
         <action
             android:id="@+id/next_action"
             app:destination="@id/destination_chat" />
     </fragment>
     <fragment
         android:id="@+id/destination_chat"
-        android:name="com.meazza.instagram.ui.main.message.chat.ChatFragment"
+        android:name="com.meazza.instagram.ui.direct.chat.ChatFragment"
         android:label="fragment_chat"
         tools:layout="@layout/fragment_chat" />
     <fragment

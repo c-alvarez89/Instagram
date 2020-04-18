@@ -36,4 +36,9 @@
     <string name="login_error">Log in error, please try again</string>
     <string name="camera">Camera</string>
     <string name="messages">Messages</string>
+    <string name="user_photo">User photo</string>
+    <string name="hi">Hi</string>
+    <string name="send_image">Send image</string>
+    <string name="message">Message&#8230;</string>
+    <string name="send">Send</string>
 </resources>

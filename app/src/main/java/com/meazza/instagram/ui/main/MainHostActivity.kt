@@ -1,4 +1,4 @@
-package com.meazza.instagram.ui
+package com.meazza.instagram.ui.main
 
 import android.os.Bundle
 import android.view.View
@@ -24,11 +24,15 @@ class MainHostActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.destination_camera -> bottom_nav.visibility = View.GONE
-                R.id.destination_message -> bottom_nav.visibility = View.GONE
+                R.id.destination_direct -> bottom_nav.visibility = View.GONE
                 R.id.destination_chat -> bottom_nav.visibility = View.GONE
                 R.id.destination_edit_profile -> bottom_nav.visibility = View.GONE
                 else -> bottom_nav.visibility = View.VISIBLE
             }
         }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp()
     }
 }

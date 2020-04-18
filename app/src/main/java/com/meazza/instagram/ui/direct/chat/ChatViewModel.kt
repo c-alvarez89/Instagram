@@ -1,4 +1,4 @@
-package com.meazza.instagram.ui.main.message.chat
+package com.meazza.instagram.ui.direct.chat
 
 import androidx.lifecycle.ViewModel
 

@@ -1,8 +1,7 @@
 <resources>
 
-    <!-- Base application theme. -->
+    <!-- Base theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -15,7 +14,7 @@
         <item name="android:textColor">@color/colorAccent</item>
         <item name="android:textSize">14sp</item>
         <item name="android:padding">14dp</item>
-        <item name="android:textColorHint">@color/gray</item>
+        <item name="android:textColorHint">@color/gray_dark</item>
     </style>
 
     <style name="ButtonBlueStyle" parent="@style/Widget.AppCompat.Button.Borderless">
@@ -29,13 +28,13 @@
     <style name="Divider">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">1dp</item>
-        <item name="android:background">@color/gray_light</item>
+        <item name="android:background">@color/gray</item>
     </style>
 
     <style name="BottomTextGray" parent="AppTheme">
         <item name="fontFamily">@font/roboto_regular</item>
         <item name="android:textSize">12sp</item>
-        <item name="android:textColor">@color/gray</item>
+        <item name="android:textColor">@color/gray_dark</item>
     </style>
 
     <style name="BottomTextBlue" parent="AppTheme">
@@ -52,4 +51,11 @@
         <item name="android:windowIsFloating">true</item>
         <item name="android:backgroundDimEnabled">false</item>
     </style>
+
+    <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
+
 </resources>
