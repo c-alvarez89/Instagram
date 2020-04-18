@@ -34,4 +34,6 @@
     <string name="user_not_found">User not found</string>
     <string name="wrong_password">Wrong Password</string>
     <string name="login_error">Log in error, please try again</string>
+    <string name="camera">Camera</string>
+    <string name="messages">Messages</string>
 </resources>

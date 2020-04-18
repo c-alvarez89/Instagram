@@ -11,7 +11,14 @@
         android:id="@+id/navigation_feed"
         android:name="com.meazza.instagram.ui.main.feed.FeedFragment"
         android:label="fragment_feed"
-        tools:layout="@layout/fragment_feed" />
+        tools:layout="@layout/fragment_feed">
+        <action
+            android:id="@+id/goto_camera"
+            app:destination="@id/destination_camera" />
+        <action
+            android:id="@+id/goto_messages"
+            app:destination="@id/destination_message" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_search"
         android:name="com.meazza.instagram.ui.main.search.SearchFragment"
@@ -31,5 +38,33 @@
         android:id="@+id/navigation_profile"
         android:name="com.meazza.instagram.ui.main.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/next_action"
+            app:destination="@id/destination_edit_profile" />
+    </fragment>
+    <fragment
+        android:id="@+id/destination_camera"
+        android:name="com.meazza.instagram.ui.main.camera.CameraFragment"
+        android:label="fragment_camera"
+        tools:layout="@layout/fragment_camera" />
+    <fragment
+        android:id="@+id/destination_message"
+        android:name="com.meazza.instagram.ui.main.message.MessagesFragment"
+        android:label="fragment_messages"
+        tools:layout="@layout/fragment_messages">
+        <action
+            android:id="@+id/next_action"
+            app:destination="@id/destination_chat" />
+    </fragment>
+    <fragment
+        android:id="@+id/destination_chat"
+        android:name="com.meazza.instagram.ui.main.message.chat.ChatFragment"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat" />
+    <fragment
+        android:id="@+id/destination_edit_profile"
+        android:name="com.meazza.instagram.ui.main.profile.edit_profile.EditProfileFragment"
+        android:label="fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile" />
 </navigation>

@@ -7,15 +7,37 @@
     android:background="@color/white"
     tools:context=".ui.main.feed.FeedFragment">
 
-
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/tb_feed"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:background="?attr/colorPrimary"
+        android:elevation="2dp"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:menu="@menu/menu_feed">
+
+        <ImageView
+            android:id="@+id/iv_camera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/camera"
+            android:src="@drawable/ic_camera"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="12dp" />
+
+        <ImageView
+            android:id="@+id/iv_instagram"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="4dp"
+            android:contentDescription="@string/add"
+            android:src="@drawable/ic_instagram_logo" />
+    </androidx.appcompat.widget.Toolbar>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
