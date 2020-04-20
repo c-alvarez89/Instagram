@@ -6,11 +6,16 @@ import kotlinx.coroutines.tasks.await
 object AuthRepository {
 
     private val mAuth by lazy { FirebaseAuth.getInstance() }
+    val signOut by lazy { mAuth.signOut() }
 
-    val signOut = mAuth.signOut()
+    val currentUser = mAuth.currentUser
+
+    lateinit var userUid: String
 
     suspend fun signUpByEmail(email: String, password: String) {
-        mAuth.createUserWithEmailAndPassword(email, password).await()
+        mAuth.createUserWithEmailAndPassword(email, password).apply {
+            if (isSuccessful) userUid = result?.user!!.uid
+        }.await()
     }
 
     suspend fun loginByEmail(email: String, password: String) {

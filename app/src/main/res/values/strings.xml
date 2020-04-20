@@ -41,4 +41,15 @@
     <string name="send_image">Send image</string>
     <string name="message">Message&#8230;</string>
     <string name="send">Send</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="posts">Posts</string>
+    <string name="followers">Followers</string>
+    <string name="following">Following</string>
+    <string name="zero">0</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis p</string>
+    <string name="fake_webside">https://www.fakewebside.com/</string>
+    <string name="jonathan_doe">Jonathan Doe</string>
+    <string name="edit_profile">Edit Profile</string>
 </resources>

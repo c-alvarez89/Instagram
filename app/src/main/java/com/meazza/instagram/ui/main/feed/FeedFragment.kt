@@ -18,10 +18,7 @@ class FeedFragment : Fragment(R.layout.fragment_feed) {
 
         setHasOptionsMenu(true)
         setToolbar()
-
-        iv_camera.setOnClickListener {
-            findNavController().navigate(R.id.goto_camera)
-        }
+        setUiAction()
     }
 
     private fun setToolbar() {
@@ -29,6 +26,12 @@ class FeedFragment : Fragment(R.layout.fragment_feed) {
         mActivity.apply {
             setSupportActionBar(tb_feed)
             title = ""
+        }
+    }
+
+    private fun setUiAction() {
+        iv_camera.setOnClickListener {
+            findNavController().navigate(R.id.goto_camera)
         }
     }
 
