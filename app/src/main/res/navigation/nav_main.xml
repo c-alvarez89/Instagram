@@ -40,7 +40,7 @@
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile">
         <action
-            android:id="@+id/next_action"
+            android:id="@+id/goto_edit_profile"
             app:destination="@id/destination_edit_profile" />
     </fragment>
     <fragment
@@ -54,7 +54,7 @@
         android:label="fragment_messages"
         tools:layout="@layout/fragment_direct">
         <action
-            android:id="@+id/next_action"
+            android:id="@+id/goto_edit_profile"
             app:destination="@id/destination_chat" />
     </fragment>
     <fragment

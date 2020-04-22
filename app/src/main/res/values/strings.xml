@@ -52,4 +52,13 @@
     <string name="fake_webside">https://www.fakewebside.com/</string>
     <string name="jonathan_doe">Jonathan Doe</string>
     <string name="edit_profile">Edit Profile</string>
+    <string name="setting">Setting</string>
+    <string name="fake_nickname">johndoe</string>
+    <string name="cancel_edit_profile">Cancel edit profile</string>
+    <string name="save_changes">Save changes</string>
+    <string name="change_profile_photo">Change Profile Photo</string>
+    <string name="name">Name</string>
+    <string name="username">Username</string>
+    <string name="website">Website</string>
+    <string name="bio">Bio</string>
 </resources>

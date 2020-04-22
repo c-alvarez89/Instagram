@@ -13,7 +13,7 @@ class DirectFragment : Fragment(R.layout.fragment_direct) {
         super.onViewCreated(view, savedInstanceState)
 
         tv_message.setOnClickListener {
-            findNavController().navigate(R.id.next_action)
+            findNavController().navigate(R.id.goto_edit_profile)
         }
     }
 }

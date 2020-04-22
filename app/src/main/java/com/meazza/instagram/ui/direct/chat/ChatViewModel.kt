@@ -6,6 +6,9 @@ import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import com.meazza.instagram.repository.DatabaseRepository
 import com.meazza.instagram.vo.DirectMessage
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import java.util.*
 
@@ -19,27 +22,30 @@ class ChatViewModel(private val repository: DatabaseRepository) : ViewModel() {
 
     fun sendMessage() {
 
-        val messageText = message.toString()
+        val messageText = message.value
         val photoUrl = ""
         val date = Date()
 
         viewModelScope.launch {
-
-            if (messageText.isNotEmpty()) {
-                val directMessage = DirectMessage(userId, messageText, photoUrl, date)
-                repository.sendMessage(directMessage)
-                message.value = ""
+            messageText?.let {
+                if (it.isNotEmpty()) {
+                    val directMessage = DirectMessage(userId, messageText, photoUrl, date)
+                    repository.sendMessage(directMessage)
+                    message.value = ""
+                }
             }
         }
     }
 
-    fun fetchMessages() = liveData {
-        val mutableData: MutableList<DirectMessage>? = null
-        emit(mutableData)
+    @ExperimentalCoroutinesApi
+    fun fetchMessages() = liveData(Dispatchers.IO) {
+        repository.subscribeToChat().collect {
+            emit(it)
+        }
     }
 
     fun setAdapter(messages: MutableList<DirectMessage>) = getAdapter.run {
-        setListData(messages)
+        setListData(messages.asReversed())
         notifyDataSetChanged()
     }
 }
