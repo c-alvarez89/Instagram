@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.direct.DirectFragment">
+    tools:context=".ui.direct_message.DirectFragment">
 
     <TextView
         android:id="@+id/tv_message"

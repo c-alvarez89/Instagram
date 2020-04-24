@@ -7,14 +7,14 @@
 
         <variable
             name="viewModel"
-            type="com.meazza.instagram.ui.direct.chat.ChatViewModel" />
+            type="com.meazza.instagram.ui.direct_message.chat.ChatViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
-        tools:context=".ui.direct.chat.ChatFragment">
+        tools:context=".ui.direct_message.chat.ChatFragment">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/tb_chat"

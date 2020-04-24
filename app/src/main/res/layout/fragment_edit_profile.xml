@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
-        tools:context=".ui.main.profile.edit_profile.EditProfileFragment">
+        tools:context=".ui.user_profile.edit_profile.EditProfileFragment">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/tb_edit_profile"
@@ -88,6 +88,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_change_user_photo">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/name"
@@ -107,6 +108,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/username"
@@ -126,6 +128,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_website"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/website"
@@ -144,6 +147,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_bio"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/bio"

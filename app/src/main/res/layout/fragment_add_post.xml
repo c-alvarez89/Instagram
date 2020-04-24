@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:background="@color/white"
-    tools:context=".ui.main.add_post.AddPostFragment">
+    tools:context=".ui.add_post.AddPostFragment">
 
     <TextView
         android:layout_width="match_parent"

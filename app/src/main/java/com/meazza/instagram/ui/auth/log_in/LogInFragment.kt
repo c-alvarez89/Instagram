@@ -8,14 +8,10 @@ import androidx.navigation.fragment.findNavController
 import com.meazza.instagram.R
 import com.meazza.instagram.databinding.FragmentLogInBinding
 import com.meazza.instagram.ui.auth.AuthListener
-import com.meazza.instagram.ui.main.MainHostActivity
 import com.meazza.instagram.util.*
 import kotlinx.android.synthetic.main.fragment_log_in.*
-import org.jetbrains.anko.clearTask
-import org.jetbrains.anko.newTask
 import org.jetbrains.anko.okButton
 import org.jetbrains.anko.support.v4.alert
-import org.jetbrains.anko.support.v4.intentFor
 import org.koin.android.ext.android.inject
 
 class LogInFragment : Fragment(R.layout.fragment_log_in), AuthListener {
@@ -51,7 +47,7 @@ class LogInFragment : Fragment(R.layout.fragment_log_in), AuthListener {
     }
 
     override fun onSuccess() {
-        startActivity(intentFor<MainHostActivity>().newTask().clearTask())
+        findNavController().navigate(R.id.goto_feed)
     }
 
     override fun onFailure(messageCode: Int) {

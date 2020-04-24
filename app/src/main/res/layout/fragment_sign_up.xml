@@ -17,7 +17,7 @@
         tools:context=".ui.auth.sign_up.SignUpFragment">
 
         <ImageView
-            android:id="@+id/iv_user"
+            android:id="@+id/image_user"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="32dp"
@@ -48,7 +48,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_user" />
+            app:layout_constraintTop_toBottomOf="@+id/image_user" />
 
         <EditText
             android:id="@+id/et_email_sign_up"
@@ -112,7 +112,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/tv_already"
+            android:id="@+id/text_already"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/already_have_an_account"
@@ -131,11 +131,11 @@
             android:layout_marginStart="3dp"
             android:text="@string/log_in"
             android:theme="@style/BottomTextBlue"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_already"
+            app:layout_constraintBottom_toBottomOf="@+id/text_already"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/tv_already"
-            app:layout_constraintTop_toTopOf="@+id/tv_already" />
+            app:layout_constraintStart_toEndOf="@+id/text_already"
+            app:layout_constraintTop_toTopOf="@+id/text_already" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

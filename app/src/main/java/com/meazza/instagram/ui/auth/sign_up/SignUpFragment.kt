@@ -8,17 +8,13 @@ import androidx.navigation.fragment.findNavController
 import com.meazza.instagram.R
 import com.meazza.instagram.databinding.FragmentSignUpBinding
 import com.meazza.instagram.ui.auth.AuthListener
-import com.meazza.instagram.ui.main.MainHostActivity
 import com.meazza.instagram.util.EMPTY_FIELDS
 import com.meazza.instagram.util.INVALID_EMAIL
 import com.meazza.instagram.util.INVALID_PASSWORD
 import com.meazza.instagram.util.REGISTRATION_ERROR
 import kotlinx.android.synthetic.main.fragment_sign_up.*
-import org.jetbrains.anko.clearTask
-import org.jetbrains.anko.newTask
 import org.jetbrains.anko.okButton
 import org.jetbrains.anko.support.v4.alert
-import org.jetbrains.anko.support.v4.intentFor
 import org.koin.android.ext.android.inject
 
 class SignUpFragment : Fragment(R.layout.fragment_sign_up), AuthListener {
@@ -50,7 +46,7 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up), AuthListener {
     }
 
     override fun onSuccess() {
-        startActivity(intentFor<MainHostActivity>().newTask().clearTask())
+        findNavController().navigate(R.id.goto_feed)
     }
 
     override fun onFailure(messageCode: Int) {

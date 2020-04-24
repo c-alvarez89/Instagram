@@ -31,7 +31,7 @@ class ResetPasswordFragment : Fragment(R.layout.fragment_reset_password), AuthLi
 
     override fun onSuccess() {
         longToast(R.string.email_reset_password)
-        findNavController().navigate(R.id.goto_log_in)
+        findNavController().popBackStack()
     }
 
     override fun onFailure(messageCode: Int) {

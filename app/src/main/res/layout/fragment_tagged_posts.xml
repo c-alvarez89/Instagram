@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="800dp"
-    tools:context=".ui.main.profile.post_profile.TaggedPostsFragment">
+    tools:context=".ui.user_profile.post_profile.TaggedPostsFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView

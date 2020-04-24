@@ -8,8 +8,6 @@ object AuthRepository {
     private val mAuth by lazy { FirebaseAuth.getInstance() }
     val signOut by lazy { mAuth.signOut() }
 
-    val currentUser = mAuth.currentUser
-
     lateinit var userUid: String
 
     suspend fun signUpByEmail(email: String, password: String) {

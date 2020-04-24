@@ -5,7 +5,7 @@ import com.meazza.instagram.repository.DatabaseRepository
 import com.meazza.instagram.ui.auth.log_in.LogInViewModel
 import com.meazza.instagram.ui.auth.reset_password.ResetPasswordViewModel
 import com.meazza.instagram.ui.auth.sign_up.SignUpViewModel
-import com.meazza.instagram.ui.direct.chat.ChatViewModel
+import com.meazza.instagram.ui.direct_message.chat.ChatViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 

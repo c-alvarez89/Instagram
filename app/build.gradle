@@ -63,12 +63,13 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.1.1"
 
-    implementation 'com.google.firebase:firebase-core:17.3.0'
-    implementation 'com.google.firebase:firebase-auth:19.3.0'
-    implementation 'com.google.firebase:firebase-firestore:21.4.2'
+    implementation 'com.google.firebase:firebase-core:17.4.0'
+    implementation 'com.google.firebase:firebase-auth:19.3.1'
+    implementation 'com.google.firebase:firebase-firestore:21.4.3'
     implementation 'com.google.firebase:firebase-storage:19.1.1'
 
     implementation "io.coil-kt:coil:0.9.5"
+    implementation 'com.karumi:dexter:6.0.0'
     implementation "org.jetbrains.anko:anko:0.10.8"
     implementation 'org.koin:koin-androidx-viewmodel:2.0.1'
 
