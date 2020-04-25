@@ -3,39 +3,53 @@ package com.meazza.instagram.common
 import android.Manifest
 import android.app.Activity
 import com.karumi.dexter.Dexter
+import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionDeniedResponse
-import com.karumi.dexter.listener.PermissionGrantedResponse
 import com.karumi.dexter.listener.PermissionRequest
-import com.karumi.dexter.listener.single.PermissionListener
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 
 class Permissions(private val activity: Activity) {
 
-    private fun check(): PermissionState {
+    private val readExternalStorage = Manifest.permission.READ_EXTERNAL_STORAGE
+    private val camera = Manifest.permission.CAMERA
 
-        lateinit var result: PermissionState
+    fun checkAllPermissions(): PermissionState? {
+
+        var result: PermissionState? = null
 
         Dexter.withActivity(activity)
-            .withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
-            .withListener(object : PermissionListener {
-                override fun onPermissionGranted(response: PermissionGrantedResponse) {
-                    result = PermissionState.Granted
+            .withPermissions(readExternalStorage, camera)
+            .withListener(object : MultiplePermissionsListener {
+
+                override fun onPermissionsChecked(report: MultiplePermissionsReport?) {
+                    report?.let {
+
+                        if (it.areAllPermissionsGranted()) result =
+                            PermissionState.ALL_PERMISSIONS_GRANTED
+
+                        for (permission in report.deniedPermissionResponses) {
+                            when (permission.permissionName) {
+                                readExternalStorage -> result = permissionDenied(permission)
+                                camera -> result = permissionDenied(permission)
+                            }
+                        }
+                    }
                 }
 
                 override fun onPermissionRationaleShouldBeShown(
-                    permission: PermissionRequest,
-                    token: PermissionToken
+                    permissions: MutableList<PermissionRequest>?, token: PermissionToken?
                 ) {
-                    token.continuePermissionRequest()
+                    token?.continuePermissionRequest()
                 }
-
-                override fun onPermissionDenied(response: PermissionDeniedResponse) {
-                    result = PermissionState.Denied
-                }
-
             }).check()
 
         return result
+    }
+
+    private fun permissionDenied(permission: PermissionDeniedResponse): PermissionState? {
+        return if (permission.isPermanentlyDenied) PermissionState.PERMANENTLY_DENIED
+        else PermissionState.DENIED
     }
 }
 

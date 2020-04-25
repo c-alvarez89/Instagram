@@ -7,6 +7,7 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.tabs.TabLayoutMediator
 import com.meazza.instagram.R
@@ -29,6 +30,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         val mActivity = activity as AppCompatActivity
         mActivity.apply {
             setSupportActionBar(tb_profile)
+            title = ""
         }
     }
 
@@ -39,8 +41,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             pager_profile,
             TabLayoutMediator.TabConfigurationStrategy { tab, position ->
                 when (position) {
-                    0 -> tab.setIcon(R.drawable.ic_grid)
-                    1 -> tab.setIcon(R.drawable.ic_tagged_user)
+                    0 -> tab.setIcon(R.drawable.selector_grid)
+                    1 -> tab.setIcon(R.drawable.selector_tagged_user)
                 }
             }).attach()
     }
@@ -59,7 +61,16 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.mn_settings) {
             AuthRepository.signOut
-            findNavController().navigate(R.id.destination_welcome)
+            findNavController()
+                .navigate(
+                    R.id.destination_welcome,
+                    null,
+                    NavOptions.Builder()
+                        .setPopUpTo(
+                            R.id.nav_main,
+                            true
+                        ).build()
+                )
         }
         return super.onOptionsItemSelected(item)
     }

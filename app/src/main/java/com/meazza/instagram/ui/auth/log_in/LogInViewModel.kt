@@ -6,7 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthInvalidUserException
 import com.meazza.instagram.repository.AuthRepository
-import com.meazza.instagram.ui.auth.AuthListener
+import com.meazza.instagram.ui.StatusListener
 import com.meazza.instagram.util.EMPTY_FIELDS
 import com.meazza.instagram.util.LOGIN_ERROR
 import com.meazza.instagram.util.USER_NOT_FOUND
@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 
 class LogInViewModel(private val authRepository: AuthRepository) : ViewModel() {
 
-    var authListener: AuthListener? = null
+    var statusListener: StatusListener? = null
 
     var email = MutableLiveData<String>()
     var password = MutableLiveData<String>()
@@ -29,17 +29,17 @@ class LogInViewModel(private val authRepository: AuthRepository) : ViewModel() {
             if (!email.isNullOrEmpty() && !password.isNullOrEmpty()) {
                 try {
                     authRepository.loginByEmail(email, password)
-                    authListener?.onSuccess()
+                    statusListener?.onSuccess()
                 } catch (e: FirebaseAuthInvalidCredentialsException) {
-                    authListener?.onFailure(WRONG_PASSWORD)
+                    statusListener?.onFailure(WRONG_PASSWORD)
                 } catch (e: FirebaseAuthInvalidUserException) {
-                    authListener?.onFailure(USER_NOT_FOUND)
+                    statusListener?.onFailure(USER_NOT_FOUND)
                 } catch (e: Exception) {
-                    authListener?.onFailure(LOGIN_ERROR)
+                    statusListener?.onFailure(LOGIN_ERROR)
                     e.printStackTrace()
                 }
             } else {
-                authListener?.onFailure(EMPTY_FIELDS)
+                statusListener?.onFailure(EMPTY_FIELDS)
             }
         }
     }

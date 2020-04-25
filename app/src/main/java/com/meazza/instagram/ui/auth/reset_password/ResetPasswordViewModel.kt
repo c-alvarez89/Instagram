@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuthInvalidUserException
 import com.meazza.instagram.repository.AuthRepository
-import com.meazza.instagram.ui.auth.AuthListener
+import com.meazza.instagram.ui.StatusListener
 import com.meazza.instagram.util.EMPTY_FIELDS
 import com.meazza.instagram.util.INVALID_EMAIL
 import com.meazza.instagram.util.USER_NOT_FOUND
@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 
 class ResetPasswordViewModel(private val authRepository: AuthRepository) : ViewModel() {
 
-    var authListener: AuthListener? = null
+    var statusListener: StatusListener? = null
 
     var emailToResetPassword = MutableLiveData<String>()
 
@@ -26,19 +26,19 @@ class ResetPasswordViewModel(private val authRepository: AuthRepository) : ViewM
             if (!email.isNullOrEmpty()) {
                 try {
                     when {
-                        !isValidEmail(email) -> authListener?.onFailure(INVALID_EMAIL)
+                        !isValidEmail(email) -> statusListener?.onFailure(INVALID_EMAIL)
                         isValidEmail(email) -> {
                             authRepository.resetPassword(email)
-                            authListener?.onSuccess()
+                            statusListener?.onSuccess()
                         }
                     }
                 } catch (e: FirebaseAuthInvalidUserException) {
-                    authListener?.onFailure(USER_NOT_FOUND)
+                    statusListener?.onFailure(USER_NOT_FOUND)
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }
             } else {
-                authListener?.onFailure(EMPTY_FIELDS)
+                statusListener?.onFailure(EMPTY_FIELDS)
             }
         }
     }

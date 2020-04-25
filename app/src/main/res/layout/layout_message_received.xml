@@ -29,12 +29,12 @@
             android:textColor="@color/colorAccent"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/iv_change_user_photo"
+            app:layout_constraintStart_toEndOf="@+id/iv_photo_other_user"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="@string/hi" />
 
         <ImageView
-            android:id="@+id/iv_change_user_photo"
+            android:id="@+id/iv_photo_other_user"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="16dp"

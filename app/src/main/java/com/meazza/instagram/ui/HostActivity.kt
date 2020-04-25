@@ -21,10 +21,7 @@ class HostActivity : AppCompatActivity() {
 
         NavigationUI.setupWithNavController(bottom_nav, navController)
         setBottomNavVisibility()
-    }
 
-    override fun onStart() {
-        super.onStart()
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.destination_welcome -> mAuth.currentUser == null

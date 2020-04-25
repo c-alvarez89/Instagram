@@ -1,6 +1,5 @@
 package com.meazza.instagram.common
 
 enum class PermissionState {
-    Granted,
-    Denied
+    GRANTED, DENIED, ALL_PERMISSIONS_GRANTED, PERMANENTLY_DENIED
 }

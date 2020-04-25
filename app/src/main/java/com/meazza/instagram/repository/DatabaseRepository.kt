@@ -1,6 +1,5 @@
 package com.meazza.instagram.repository
 
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.meazza.instagram.model.DirectMessage
@@ -11,8 +10,6 @@ import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.tasks.await
 
 object DatabaseRepository {
-
-    private val user by lazy { FirebaseAuth.getInstance().currentUser }
 
     private const val USER_REF = "user"
     private const val CHAT_REF = "chat"

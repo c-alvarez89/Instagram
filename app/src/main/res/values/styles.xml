@@ -37,16 +37,25 @@
         <item name="android:textColor">@color/gray_dark</item>
     </style>
 
+    <style name="BottomTextBlack" parent="AppTheme">
+        <item name="fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
     <style name="BottomTextBlue" parent="AppTheme">
         <item name="fontFamily">@font/roboto_bold</item>
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/blue_dark</item>
     </style>
 
-    <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.Light">
-        <item name="android:fontFamily">@font/roboto_bold</item>
-        <item name="android:textColor">@color/colorAccent</item>
+    <style name="ToolbarTheme">
         <item name="android:background">@color/colorPrimary</item>
+    </style>
+
+    <style name="ToolbarTitle">
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textColor">@color/colorAccent</item>
     </style>
 
     <style name="TextInputStyle" parent="AppTheme">
@@ -58,6 +67,11 @@
         <item name="colorControlActivated">@color/gray_bubble</item>
         <item name="colorControlHighlight">@color/gray_bubble</item>
         <item name="android:textColorHint">@color/gray_bubble</item>
+    </style>
+
+    <style name="TextAppearance.Button" parent="TextAppearance.MaterialComponents.Button">
+        <item name="fontFamily">@font/roboto_medium</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
     </style>
 
 </resources>

@@ -17,13 +17,14 @@
             android:id="@+id/app_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:elevation="2dp"
+            android:background="@color/colorPrimary"
             app:toolbarId="@+id/tb_profile">
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:id="@+id/ctl_notification"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@color/colorPrimary"
                 app:expandedTitleGravity="top"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
@@ -34,7 +35,7 @@
                     android:fitsSystemWindows="true">
 
                     <ImageView
-                        android:id="@+id/iv_change_user_photo"
+                        android:id="@+id/iv_user_photo"
                         android:layout_width="88dp"
                         android:layout_height="88dp"
                         android:layout_marginStart="20dp"
@@ -53,10 +54,10 @@
                         android:baselineAligned="false"
                         android:orientation="horizontal"
                         android:weightSum="9"
-                        app:layout_constraintBottom_toBottomOf="@+id/iv_change_user_photo"
+                        app:layout_constraintBottom_toBottomOf="@+id/iv_user_photo"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/iv_change_user_photo"
-                        app:layout_constraintTop_toTopOf="@+id/iv_change_user_photo">
+                        app:layout_constraintStart_toEndOf="@+id/iv_user_photo"
+                        app:layout_constraintTop_toTopOf="@+id/iv_user_photo">
 
                         <LinearLayout
                             android:id="@+id/ll_posts"
@@ -155,7 +156,7 @@
                         android:text="@string/jonathan_doe"
                         android:textColor="@color/colorAccent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/iv_change_user_photo" />
+                        app:layout_constraintTop_toBottomOf="@+id/iv_user_photo" />
 
                     <TextView
                         android:id="@+id/tv_bio_user"
@@ -186,14 +187,15 @@
 
                     <Button
                         android:id="@+id/btn_edit_user_profile"
+                        style="@style/BottomTextBlack"
                         android:layout_width="0dp"
                         android:layout_height="30dp"
                         android:layout_marginTop="24dp"
                         android:layout_marginBottom="20dp"
-                        android:background="@drawable/background_button_profile"
-                        android:fontFamily="@font/roboto_regular"
+                        android:background="@drawable/selector_button_profile"
                         android:text="@string/edit_profile"
                         android:textColor="@color/colorAccent"
+                        android:theme="@style/BottomTextBlack"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="@+id/tv_website_user"
                         app:layout_constraintStart_toStartOf="@+id/tv_website_user"
@@ -227,6 +229,7 @@
                 android:id="@+id/tab_layout"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
+                android:background="@color/colorPrimary"
                 app:layout_collapseMode="pin"
                 app:tabBackground="@color/colorPrimary"
                 app:tabIndicatorHeight="1dp"

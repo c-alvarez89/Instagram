@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.meazza.instagram.R
 import com.meazza.instagram.databinding.FragmentSignUpBinding
-import com.meazza.instagram.ui.auth.AuthListener
+import com.meazza.instagram.ui.StatusListener
 import com.meazza.instagram.util.EMPTY_FIELDS
 import com.meazza.instagram.util.INVALID_EMAIL
 import com.meazza.instagram.util.INVALID_PASSWORD
@@ -17,7 +17,8 @@ import org.jetbrains.anko.okButton
 import org.jetbrains.anko.support.v4.alert
 import org.koin.android.ext.android.inject
 
-class SignUpFragment : Fragment(R.layout.fragment_sign_up), AuthListener {
+class SignUpFragment : Fragment(R.layout.fragment_sign_up),
+    StatusListener {
 
     private val signUpViewModel by inject<SignUpViewModel>()
 
@@ -29,7 +30,7 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up), AuthListener {
             viewModel = signUpViewModel
         }
 
-        signUpViewModel.authListener = this
+        signUpViewModel.statusListener = this
         setUiAction()
     }
 
