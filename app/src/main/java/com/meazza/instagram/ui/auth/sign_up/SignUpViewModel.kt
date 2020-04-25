@@ -4,8 +4,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
+import com.meazza.instagram.listener.StatusListener
 import com.meazza.instagram.repository.AuthRepository
-import com.meazza.instagram.ui.StatusListener
 import com.meazza.instagram.util.*
 import kotlinx.coroutines.launch
 

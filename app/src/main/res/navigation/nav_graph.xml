@@ -17,6 +17,14 @@
             android:id="@+id/goto_log_in"
             app:destination="@id/destination_login" />
     </fragment>
+
+    <action
+        android:id="@+id/action_global_welcome"
+        app:destination="@id/destination_welcome"
+        app:launchSingleTop="false"
+        app:popUpTo="@+id/nav_graph"
+        app:popUpToInclusive="true" />
+
     <fragment
         android:id="@+id/destination_sign_up"
         android:name="com.meazza.instagram.ui.auth.sign_up.SignUpFragment"
@@ -31,6 +39,7 @@
             app:popUpTo="@id/nav_main"
             app:popUpToInclusive="true" />
     </fragment>
+
     <fragment
         android:id="@+id/destination_login"
         android:name="com.meazza.instagram.ui.auth.log_in.LogInFragment"

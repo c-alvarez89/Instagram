@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.meazza.instagram.R
 import com.meazza.instagram.databinding.FragmentResetPasswordBinding
-import com.meazza.instagram.ui.StatusListener
+import com.meazza.instagram.listener.StatusListener
 import com.meazza.instagram.util.EMPTY_FIELDS
 import com.meazza.instagram.util.INVALID_EMAIL
 import com.meazza.instagram.util.USER_NOT_FOUND

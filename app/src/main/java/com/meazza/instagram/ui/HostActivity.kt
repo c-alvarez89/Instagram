@@ -5,7 +5,6 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
-import com.google.firebase.auth.FirebaseAuth
 import com.meazza.instagram.R
 import kotlinx.android.synthetic.main.activity_host.*
 
@@ -13,20 +12,12 @@ class HostActivity : AppCompatActivity() {
 
     private val navController by lazy { findNavController(R.id.nav_host_fragment) }
 
-    private val mAuth = FirebaseAuth.getInstance()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_host)
 
         NavigationUI.setupWithNavController(bottom_nav, navController)
         setBottomNavVisibility()
-
-        navController.addOnDestinationChangedListener { _, destination, _ ->
-            when (destination.id) {
-                R.id.destination_welcome -> mAuth.currentUser == null
-            }
-        }
     }
 
     private fun setBottomNavVisibility() {

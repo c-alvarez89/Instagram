@@ -14,10 +14,10 @@ import androidx.fragment.app.Fragment
 import coil.api.load
 import coil.transform.CircleCropTransformation
 import com.meazza.instagram.R
-import com.meazza.instagram.common.PermissionState
 import com.meazza.instagram.common.Permissions
 import com.meazza.instagram.databinding.FragmentEditProfileBinding
-import com.meazza.instagram.ui.UiActionListener
+import com.meazza.instagram.listener.UiActionListener
+import com.meazza.instagram.vo.PermissionState
 import kotlinx.android.synthetic.main.fragment_edit_profile.*
 import org.koin.android.ext.android.inject
 
