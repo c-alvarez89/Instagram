@@ -1,17 +1,16 @@
-package com.meazza.instagram.repository
+package com.meazza.instagram.data.network
 
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
-import com.meazza.instagram.model.DirectMessage
+import com.meazza.instagram.data.model.DirectMessage
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.tasks.await
 
-object DatabaseRepository {
+object MessagingService {
 
-    private const val USER_REF = "user"
     private const val CHAT_REF = "chat"
     private const val ORDER_BY = "sentAt"
 
@@ -26,14 +25,14 @@ object DatabaseRepository {
 
         val eventDocument = db.collection(CHAT_REF)
 
-        val subscription =
-            eventDocument.orderBy(ORDER_BY, Query.Direction.DESCENDING)
-                .addSnapshotListener { querySnapshot, _ ->
-                    querySnapshot?.let {
-                        val messages = it.toObjects(DirectMessage::class.java)
-                        offer(messages)
-                    }
+        val subscription = eventDocument
+            .orderBy(ORDER_BY, Query.Direction.DESCENDING)
+            .addSnapshotListener { querySnapshot, _ ->
+                querySnapshot?.let {
+                    val messages = it.toObjects(DirectMessage::class.java)
+                    offer(messages)
                 }
+            }
 
         awaitClose { subscription.remove() }
     }

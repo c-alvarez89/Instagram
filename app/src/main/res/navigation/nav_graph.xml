@@ -120,7 +120,7 @@
         tools:layout="@layout/fragment_chat" />
     <fragment
         android:id="@+id/destination_edit_profile"
-        android:name="com.meazza.instagram.ui.user_profile.edit_profile.EditProfileFragment"
+        android:name="com.meazza.instagram.ui.user_profile.EditProfileFragment"
         android:label="fragment_edit_profile"
         tools:layout="@layout/fragment_edit_profile" />
 </navigation>

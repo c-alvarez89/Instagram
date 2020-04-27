@@ -1,4 +1,4 @@
-package com.meazza.instagram.model
+package com.meazza.instagram.data.model
 
 import java.util.*
 

@@ -10,12 +10,12 @@ import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import com.meazza.instagram.vo.PermissionState
 
-class Permissions(private val activity: Activity) {
+class RequestPermission(private val activity: Activity) {
 
     private val readExternalStorage = Manifest.permission.READ_EXTERNAL_STORAGE
     private val camera = Manifest.permission.CAMERA
 
-    fun checkAllPermissions(): PermissionState? {
+    fun allPermissions(): PermissionState? {
 
         var result: PermissionState? = null
 

@@ -4,12 +4,18 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
+import com.meazza.instagram.data.model.User
+import com.meazza.instagram.data.network.AuthService
+import com.meazza.instagram.data.network.UserInstanceDB
 import com.meazza.instagram.listener.StatusListener
-import com.meazza.instagram.repository.AuthRepository
 import com.meazza.instagram.util.*
 import kotlinx.coroutines.launch
 
-class SignUpViewModel(private val authRepository: AuthRepository) : ViewModel() {
+class SignUpViewModel(
+    private val authRepository: AuthService,
+    private val userInstance: UserInstanceDB
+) :
+    ViewModel() {
 
     var statusListener: StatusListener? = null
 
@@ -31,6 +37,9 @@ class SignUpViewModel(private val authRepository: AuthRepository) : ViewModel() 
                         !isValidPassword(password) -> statusListener?.onFailure(INVALID_PASSWORD)
                         isValidEmail(email) && isValidPassword(password) -> {
                             authRepository.signUpByEmail(email, password)
+                            val userId = authRepository.userUid
+                            val user = User(userId, name, email)
+                            userInstance.createUser(user)
                             statusListener?.onSuccess()
                         }
                     }

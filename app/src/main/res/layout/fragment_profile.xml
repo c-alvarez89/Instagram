@@ -75,9 +75,10 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:fontFamily="@font/roboto_bold"
-                                android:text="@string/zero"
+                                android:text="@{viewModel.posts}"
                                 android:textColor="@color/colorAccent"
-                                android:textSize="19sp" />
+                                android:textSize="19sp"
+                                tools:text="@string/zero" />
 
                             <TextView
                                 android:id="@+id/text_posts"
@@ -103,9 +104,10 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:fontFamily="@font/roboto_bold"
-                                android:text="@string/zero"
+                                android:text="@{viewModel.followers}"
                                 android:textColor="@color/colorAccent"
-                                android:textSize="19sp" />
+                                android:textSize="19sp"
+                                tools:text="@string/zero" />
 
                             <TextView
                                 android:id="@+id/text_followers"
@@ -131,9 +133,10 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:fontFamily="@font/roboto_bold"
-                                android:text="@string/zero"
+                                android:text="@{viewModel.following}"
                                 android:textColor="@color/colorAccent"
-                                android:textSize="19sp" />
+                                android:textSize="19sp"
+                                tools:text="@string/zero" />
 
                             <TextView
                                 android:id="@+id/text_following"
@@ -156,7 +159,8 @@
                         android:layout_marginTop="8dp"
                         android:fontFamily="@font/roboto_medium"
                         android:minLines="1"
-                        android:text="@={viewModel.name}"
+                        android:text="@{viewModel.name}"
+                        tools:text="@string/jonathan_doe"
                         android:textColor="@color/colorAccent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/iv_user_photo" />
@@ -168,12 +172,13 @@
                         android:fontFamily="@font/roboto_regular"
                         android:lineSpacingMultiplier="1.1"
                         android:maxLines="4"
-                        android:text="@string/lorem_ipsum"
+                        android:text="@{viewModel.bio}"
                         android:textColor="@color/colorAccent"
                         android:textSize="14sp"
                         app:layout_constraintEnd_toEndOf="@+id/linearLayout"
                         app:layout_constraintStart_toStartOf="@+id/tv_name_user"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_name_user" />
+                        app:layout_constraintTop_toBottomOf="@+id/tv_name_user"
+                        tools:text="@string/lorem_ipsum" />
 
                     <TextView
                         android:id="@+id/tv_website_user"
@@ -182,11 +187,12 @@
                         android:layout_marginTop="2dp"
                         android:fontFamily="@font/roboto_regular"
                         android:minLines="1"
-                        android:text="@string/fake_webside"
+                        android:text="@{viewModel.website}"
                         android:textColor="@color/blue_dark"
                         app:layout_constraintEnd_toEndOf="@+id/tv_bio_user"
                         app:layout_constraintStart_toStartOf="@+id/tv_bio_user"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_bio_user" />
+                        app:layout_constraintTop_toBottomOf="@+id/tv_bio_user"
+                        tools:text="@string/fake_webside" />
 
                     <Button
                         android:id="@+id/btn_edit_user_profile"
@@ -219,10 +225,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_medium"
-                        android:text="@string/fake_nickname"
+                        android:text="@{viewModel.username}"
                         android:textAllCaps="false"
                         android:textColor="@color/colorAccent"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        tools:text="@string/fake_nickname" />
 
                 </androidx.appcompat.widget.Toolbar>
 

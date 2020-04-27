@@ -5,9 +5,9 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.meazza.instagram.R
+import com.meazza.instagram.data.model.DirectMessage
 import com.meazza.instagram.databinding.LayoutMessageReceivedBinding
 import com.meazza.instagram.databinding.LayoutMessageSentBinding
-import com.meazza.instagram.model.DirectMessage
 
 
 class ChatAdapter(private val userId: String) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -56,12 +56,10 @@ class ChatAdapter(private val userId: String) : RecyclerView.Adapter<RecyclerVie
 
         when (holder.itemViewType) {
             MESSAGE_SENT -> {
-                (holder as HolderSentMessage).itemBinding.directMessage =
-                    dataList[position]
+                (holder as HolderSentMessage).itemBinding.directMessage = dataList[position]
             }
             MESSAGE_RECEIVED -> {
-                (holder as HolderReceivedMessage).itemBinding.directMessage =
-                    dataList[position]
+                (holder as HolderReceivedMessage).itemBinding.directMessage = dataList[position]
             }
         }
     }

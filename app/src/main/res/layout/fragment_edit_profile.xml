@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.meazza.instagram.ui.user_profile.edit_profile.EditProfileViewModel" />
+            type="com.meazza.instagram.ui.user_profile.ProfileViewModel" />
 
     </data>
 
@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
-        tools:context=".ui.user_profile.edit_profile.EditProfileFragment">
+        tools:context=".ui.user_profile.EditProfileFragment">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/tb_edit_profile"
@@ -49,7 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:fontFamily="@font/roboto_regular"
-            android:onClick="@{()-> viewModel.changeUserPhoto()}"
+            android:onClick="@{()-> viewModel.uploadImage()}"
             android:text="@string/change_profile_photo"
             android:textColor="@color/blue"
             android:textSize="18sp"
@@ -96,6 +96,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/username"
+                android:text="@={viewModel.username}"
                 android:theme="@style/TextInputStyle" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -116,6 +117,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/website"
+                android:text="@={viewModel.website}"
                 android:theme="@style/TextInputStyle" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -135,6 +137,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/bio"
+                android:text="@={viewModel.bio}"
                 android:theme="@style/TextInputStyle" />
         </com.google.android.material.textfield.TextInputLayout>
 

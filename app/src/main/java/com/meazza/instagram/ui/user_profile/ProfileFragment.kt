@@ -12,8 +12,8 @@ import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.tabs.TabLayoutMediator
 import com.meazza.instagram.R
+import com.meazza.instagram.data.network.AuthService
 import com.meazza.instagram.databinding.FragmentProfileBinding
-import com.meazza.instagram.repository.AuthRepository
 import com.meazza.instagram.ui.user_profile.post_profile.ViewPagerProfileAdapter
 import kotlinx.android.synthetic.main.fragment_profile.*
 import org.koin.android.ext.android.inject
@@ -34,6 +34,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         setTabLayout()
         setUiAction()
         setToolbar()
+
+        profileViewModel.getUser()
     }
 
     private fun setToolbar() {
@@ -70,7 +72,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.mn_settings) {
-            AuthRepository.signOut
+            AuthService.signOut
             findNavController()
                 .navigate(
                     R.id.action_global_welcome, null,

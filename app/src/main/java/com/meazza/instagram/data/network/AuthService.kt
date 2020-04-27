@@ -1,9 +1,9 @@
-package com.meazza.instagram.repository
+package com.meazza.instagram.data.network
 
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.tasks.await
 
-object AuthRepository {
+object AuthService {
 
     private val mAuth by lazy { FirebaseAuth.getInstance() }
     val signOut by lazy { mAuth.signOut() }
@@ -11,8 +11,8 @@ object AuthRepository {
     lateinit var userUid: String
 
     suspend fun signUpByEmail(email: String, password: String) {
-        mAuth.createUserWithEmailAndPassword(email, password).apply {
-            if (isSuccessful) userUid = result?.user!!.uid
+        mAuth.createUserWithEmailAndPassword(email, password).addOnSuccessListener {
+            userUid = it.user!!.uid
         }.await()
     }
 
