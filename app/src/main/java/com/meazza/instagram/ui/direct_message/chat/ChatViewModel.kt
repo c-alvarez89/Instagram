@@ -7,23 +7,34 @@ import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuth
 import com.meazza.instagram.data.model.DirectMessage
 import com.meazza.instagram.data.network.MessagingService
+import com.meazza.instagram.data.network.UserInstanceDB
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import java.util.*
 
-class ChatViewModel(private val repository: MessagingService) : ViewModel() {
+class ChatViewModel(
+    private val repository: MessagingService,
+    private val userInstance: UserInstanceDB
+) :
+    ViewModel() {
 
     private val userId by lazy { FirebaseAuth.getInstance().currentUser?.uid.toString() }
 
+    val adapter = ChatAdapter(userId)
     var message = MutableLiveData<String>()
-    val getAdapter = ChatAdapter(userId)
+    var photoUrl = MutableLiveData<String>()
+
+    init {
+        if (photoUrl.value.isNullOrEmpty())
+            photoUrl.value = ""
+    }
 
     fun sendMessage() {
 
         val messageText = message.value
-        val photoUrl = ""
+        val photoUrl = photoUrl.value
         val date = Date()
 
         viewModelScope.launch {
@@ -49,8 +60,13 @@ class ChatViewModel(private val repository: MessagingService) : ViewModel() {
         }
     }
 
-    fun setAdapter(messages: MutableList<DirectMessage>) = getAdapter.run {
+    fun setAdapter(messages: MutableList<DirectMessage>) = adapter.run {
         setListData(messages.asReversed())
         notifyDataSetChanged()
+    }
+
+    fun getUser() = viewModelScope.launch {
+        val user = userInstance.getUser()
+        photoUrl.value = user?.photoUrl
     }
 }

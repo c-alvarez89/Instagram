@@ -4,10 +4,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
+import com.meazza.instagram.common.StatusCallback
 import com.meazza.instagram.data.model.User
 import com.meazza.instagram.data.network.AuthService
 import com.meazza.instagram.data.network.UserInstanceDB
-import com.meazza.instagram.listener.StatusListener
 import com.meazza.instagram.util.*
 import kotlinx.coroutines.launch
 
@@ -17,7 +17,7 @@ class SignUpViewModel(
 ) :
     ViewModel() {
 
-    var statusListener: StatusListener? = null
+    var statusCallback: StatusCallback? = null
 
     var userName = MutableLiveData<String>()
     var userEmail = MutableLiveData<String>()
@@ -33,24 +33,24 @@ class SignUpViewModel(
             if (!name.isNullOrEmpty() && !email.isNullOrEmpty() && !password.isNullOrEmpty()) {
                 try {
                     when {
-                        !isValidEmail(email) -> statusListener?.onFailure(INVALID_EMAIL)
-                        !isValidPassword(password) -> statusListener?.onFailure(INVALID_PASSWORD)
+                        !isValidEmail(email) -> statusCallback?.onFailure(INVALID_EMAIL)
+                        !isValidPassword(password) -> statusCallback?.onFailure(INVALID_PASSWORD)
                         isValidEmail(email) && isValidPassword(password) -> {
                             authRepository.signUpByEmail(email, password)
                             val userId = authRepository.userUid
                             val user = User(userId, name, email)
                             userInstance.createUser(user)
-                            statusListener?.onSuccess()
+                            statusCallback?.onSuccess()
                         }
                     }
                 } catch (e: FirebaseAuthUserCollisionException) {
-                    statusListener?.onFailure(EMAIL_ALREADY_EXISTS)
+                    statusCallback?.onFailure(EMAIL_ALREADY_EXISTS)
                 } catch (e: Exception) {
-                    statusListener?.onFailure(REGISTRATION_ERROR)
+                    statusCallback?.onFailure(REGISTRATION_ERROR)
                     e.printStackTrace()
                 }
             } else {
-                statusListener?.onFailure(EMPTY_FIELDS)
+                statusCallback?.onFailure(EMPTY_FIELDS)
             }
         }
     }

@@ -28,5 +28,7 @@ class ChatFragment : Fragment(R.layout.fragment_chat) {
             chatViewModel.setAdapter(it)
             rv_chat.smoothScrollToPosition(it.size)
         })
+
+        chatViewModel.getUser()
     }
 }

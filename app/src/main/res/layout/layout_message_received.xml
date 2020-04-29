@@ -39,7 +39,7 @@
             android:layout_height="40dp"
             android:layout_marginStart="16dp"
             android:contentDescription="@string/user_photo"
-            app:image="@{directMessage.userImageUrl}"
+            app:setImage="@{directMessage.photoUrl}"
             app:layout_constraintBottom_toBottomOf="@+id/tv_message_received"
             app:layout_constraintStart_toStartOf="parent"
             tools:srcCompat="@tools:sample/avatars" />

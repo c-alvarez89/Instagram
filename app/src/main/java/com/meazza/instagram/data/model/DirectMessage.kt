@@ -5,6 +5,6 @@ import java.util.*
 data class DirectMessage(
     val authorId: String = "",
     val message: String? = "",
-    val userImageUrl: String = "",
+    val photoUrl: String? = "",
     val sentAt: Date = Date()
 )

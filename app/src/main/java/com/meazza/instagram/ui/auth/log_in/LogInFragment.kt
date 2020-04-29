@@ -6,8 +6,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.meazza.instagram.R
+import com.meazza.instagram.common.StatusCallback
 import com.meazza.instagram.databinding.FragmentLogInBinding
-import com.meazza.instagram.listener.StatusListener
 import com.meazza.instagram.util.*
 import kotlinx.android.synthetic.main.fragment_log_in.*
 import org.jetbrains.anko.okButton
@@ -15,7 +15,7 @@ import org.jetbrains.anko.support.v4.alert
 import org.koin.android.ext.android.inject
 
 class LogInFragment : Fragment(R.layout.fragment_log_in),
-    StatusListener {
+    StatusCallback {
 
     private val logInViewModel by inject<LogInViewModel>()
 
@@ -27,7 +27,7 @@ class LogInFragment : Fragment(R.layout.fragment_log_in),
             viewModel = logInViewModel
         }
 
-        logInViewModel.statusListener = this
+        logInViewModel.statusCallback = this
         setUiAction()
     }
 

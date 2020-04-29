@@ -1,4 +1,4 @@
-package com.meazza.instagram.common
+package com.meazza.instagram.common.permission
 
 import android.Manifest
 import android.app.Activity
@@ -8,9 +8,8 @@ import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionDeniedResponse
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
-import com.meazza.instagram.vo.PermissionState
 
-class RequestPermission(private val activity: Activity) {
+class PermissionRequest(private val activity: Activity) {
 
     private val readExternalStorage = Manifest.permission.READ_EXTERNAL_STORAGE
     private val camera = Manifest.permission.CAMERA

@@ -46,7 +46,8 @@
                         android:contentDescription="@string/user_photo"
                         android:src="@drawable/ic_user_photo"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:setImage="@{viewModel.photoUrl}" />
 
                     <LinearLayout
                         android:id="@+id/linearLayout"
@@ -160,10 +161,10 @@
                         android:fontFamily="@font/roboto_medium"
                         android:minLines="1"
                         android:text="@{viewModel.name}"
-                        tools:text="@string/jonathan_doe"
                         android:textColor="@color/colorAccent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/iv_user_photo" />
+                        app:layout_constraintTop_toBottomOf="@+id/iv_user_photo"
+                        tools:text="@string/jonathan_doe" />
 
                     <TextView
                         android:id="@+id/tv_bio_user"

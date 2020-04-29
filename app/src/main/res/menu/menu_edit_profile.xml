@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/mn_save_changes"
         android:icon="@drawable/ic_check"
         android:title="@string/save_changes"
         app:showAsAction="always" />

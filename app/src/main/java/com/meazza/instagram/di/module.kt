@@ -21,7 +21,7 @@ val authModule = module {
 
 val chatModule = module {
     single { MessagingService }
-    viewModel { ChatViewModel(get()) }
+    viewModel { ChatViewModel(get(), get()) }
 }
 
 val profileModule = module {

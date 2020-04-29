@@ -11,7 +11,7 @@ import kotlinx.coroutines.tasks.await
 
 object MessagingService {
 
-    private const val CHAT_REF = "chat"
+    private const val CHAT_REF = "direct_messages"
     private const val ORDER_BY = "sentAt"
 
     private val db by lazy { FirebaseFirestore.getInstance() }
