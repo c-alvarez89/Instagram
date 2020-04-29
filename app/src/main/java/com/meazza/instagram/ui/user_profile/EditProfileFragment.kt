@@ -3,9 +3,6 @@ package com.meazza.instagram.ui.user_profile
 import android.app.Activity
 import android.app.Activity.RESULT_OK
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.ImageDecoder
-import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.Menu
@@ -20,17 +17,18 @@ import coil.api.load
 import coil.transform.CircleCropTransformation
 import com.meazza.instagram.R
 import com.meazza.instagram.common.OnItemClickListener
+import com.meazza.instagram.common.StatusCallback
 import com.meazza.instagram.common.permission.PermissionRequest
 import com.meazza.instagram.common.permission.PermissionState
 import com.meazza.instagram.databinding.FragmentEditProfileBinding
+import com.meazza.instagram.util.TRY_AGAIN
 import kotlinx.android.synthetic.main.fragment_edit_profile.*
+import org.jetbrains.anko.support.v4.longToast
 import org.koin.android.ext.android.inject
-import java.io.ByteArrayOutputStream
 
 
-@Suppress("NAME_SHADOWING", "DEPRECATION")
-class EditProfileFragment : Fragment(R.layout.fragment_edit_profile),
-    OnItemClickListener {
+class EditProfileFragment : Fragment(R.layout.fragment_edit_profile), OnItemClickListener,
+    StatusCallback {
 
     companion object {
         const val GALLERY_REQUEST_CODE = 101
@@ -79,40 +77,10 @@ class EditProfileFragment : Fragment(R.layout.fragment_edit_profile),
                 GALLERY_REQUEST_CODE -> {
 
                     val imageUri = data?.data
-
+                    imageUri?.let { profileViewModel.uploadImage(it) }
                     iv_change_user_photo.load(imageUri) {
                         crossfade(true)
                         transformations(CircleCropTransformation())
-                    }
-
-                    try {
-                        imageUri?.let {
-                            if (Build.VERSION.SDK_INT < 28) {
-                                val bitmap = MediaStore.Images.Media.getBitmap(
-                                    activity?.contentResolver,
-                                    imageUri
-                                )
-                                val stream = ByteArrayOutputStream()
-                                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream)
-                                val byteArray = stream.toByteArray()
-                                profileViewModel.uploadImage(byteArray)
-                            } else {
-                                val source = activity?.contentResolver?.let { contentResolver ->
-                                    ImageDecoder.createSource(
-                                        contentResolver,
-                                        imageUri
-                                    )
-                                }
-                                val bitmap =
-                                    source?.let { source -> ImageDecoder.decodeBitmap(source) }
-                                val stream = ByteArrayOutputStream()
-                                bitmap?.compress(Bitmap.CompressFormat.JPEG, 100, stream)
-                                val byteArray = stream.toByteArray()
-                                profileViewModel.uploadImage(byteArray)
-                            }
-                        }
-                    } catch (e: Exception) {
-                        e.printStackTrace()
                     }
                 }
             }
@@ -143,5 +111,11 @@ class EditProfileFragment : Fragment(R.layout.fragment_edit_profile),
             PermissionState.PERMANENTLY_DENIED -> {
             }
         }
+    }
+
+    override fun onSuccess() {}
+
+    override fun onFailure(messageCode: Int) {
+        if (messageCode == TRY_AGAIN) longToast(R.string.error)
     }
 }

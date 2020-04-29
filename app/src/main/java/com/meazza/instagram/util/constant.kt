@@ -8,3 +8,4 @@ const val USER_NOT_FOUND = 105
 const val WRONG_PASSWORD = 106
 const val REGISTRATION_ERROR = 107
 const val LOGIN_ERROR = 108
+const val TRY_AGAIN = 109
