@@ -7,7 +7,7 @@ import com.meazza.instagram.ui.auth.log_in.LogInViewModel
 import com.meazza.instagram.ui.auth.reset_password.ResetPasswordViewModel
 import com.meazza.instagram.ui.auth.sign_up.SignUpViewModel
 import com.meazza.instagram.ui.direct_message.chat.ChatViewModel
-import com.meazza.instagram.ui.user_profile.ProfileViewModel
+import com.meazza.instagram.ui.user_profile.UserInfoViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -24,6 +24,6 @@ val chatModule = module {
     viewModel { ChatViewModel(get(), get()) }
 }
 
-val profileModule = module {
-    viewModel { ProfileViewModel(get()) }
+val userModule = module {
+    viewModel { UserInfoViewModel(get()) }
 }

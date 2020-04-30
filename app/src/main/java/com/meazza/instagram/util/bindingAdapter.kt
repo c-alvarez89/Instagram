@@ -1,6 +1,8 @@
 package com.meazza.instagram.util
 
+import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import coil.api.load
 import coil.transform.CircleCropTransformation
@@ -8,7 +10,7 @@ import com.meazza.instagram.R
 
 @BindingAdapter("setImage")
 fun loadImage(imageView: ImageView, url: String) {
-    if (url == "") {
+    if (url.isEmpty()) {
         imageView.load(R.drawable.ic_user_photo) {
             transformations(CircleCropTransformation())
         }
@@ -18,5 +20,14 @@ fun loadImage(imageView: ImageView, url: String) {
             placeholder(R.drawable.ic_user_photo)
             transformations(CircleCropTransformation())
         }
+    }
+}
+
+@BindingAdapter("isTextEmpty")
+fun textViewVisibility(textView: TextView, text: String) {
+    if (text.isEmpty()) {
+        textView.visibility = View.GONE
+    } else {
+        textView.visibility = View.VISIBLE
     }
 }

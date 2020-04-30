@@ -10,7 +10,7 @@ import com.meazza.instagram.data.network.UserInstanceDB
 import com.meazza.instagram.util.TRY_AGAIN
 import kotlinx.coroutines.launch
 
-class ProfileViewModel(private val userInstance: UserInstanceDB) : ViewModel() {
+class UserInfoViewModel(private val userInstance: UserInstanceDB) : ViewModel() {
 
     var onClickListener: OnItemClickListener? = null
     var statusCallback: StatusCallback? = null
@@ -48,7 +48,6 @@ class ProfileViewModel(private val userInstance: UserInstanceDB) : ViewModel() {
             followers.value = user?.followersNumber.toString()
             following.value = user?.followingNumber.toString()
         } catch (e: Exception) {
-            statusCallback?.onFailure(TRY_AGAIN)
             e.printStackTrace()
         }
     }

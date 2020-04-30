@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.meazza.instagram.ui.user_profile.ProfileViewModel" />
+            type="com.meazza.instagram.ui.user_profile.UserInfoViewModel" />
 
     </data>
 
@@ -38,11 +38,11 @@
             android:contentDescription="@string/user_photo"
             android:onClick="@{()-> viewModel.changeUserPhoto()}"
             android:src="@drawable/ic_user_photo"
-            app:setImage="@{viewModel.photoUrl}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tb_edit_profile" />
+            app:layout_constraintTop_toBottomOf="@+id/tb_edit_profile"
+            app:setImage="@{viewModel.photoUrl}" />
 
         <TextView
             android:id="@+id/tv_change_user_photo"
@@ -76,6 +76,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/name"
+                android:inputType="textPersonName|textCapSentences|textCapWords"
                 android:text="@={viewModel.name}"
                 android:theme="@style/TextInputStyle" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -97,7 +98,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/username"
+                android:inputType="textNoSuggestions"
                 android:text="@={viewModel.username}"
+                android:textAllCaps="false"
                 android:theme="@style/TextInputStyle" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -118,7 +121,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/website"
+                android:inputType="textUri|textWebEditText"
                 android:text="@={viewModel.website}"
+                android:textAllCaps="false"
                 android:theme="@style/TextInputStyle" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -127,6 +132,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:textColorHint="@color/gray"
+            app:counterEnabled="true"
+            app:counterMaxLength="150"
             app:hintTextColor="@color/gray"
             app:layout_constraintEnd_toEndOf="@+id/textInputLayout3"
             app:layout_constraintHorizontal_bias="0.0"
@@ -138,6 +145,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/bio"
+                android:inputType="textMultiLine|textCapSentences|textAutoComplete|textImeMultiLine"
+                android:lines="4"
+                android:maxLength="150"
+                android:maxLines="4"
+                android:minLines="1"
+                android:singleLine="false"
                 android:text="@={viewModel.bio}"
                 android:theme="@style/TextInputStyle" />
         </com.google.android.material.textfield.TextInputLayout>

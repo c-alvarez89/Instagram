@@ -20,14 +20,14 @@ import org.koin.android.ext.android.inject
 
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
-    private val profileViewModel by inject<ProfileViewModel>()
+    private val userInfoViewModel by inject<UserInfoViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         DataBindingUtil.bind<FragmentProfileBinding>(view)?.apply {
             lifecycleOwner = this@ProfileFragment
-            viewModel = profileViewModel
+            viewModel = userInfoViewModel
         }
 
         setHasOptionsMenu(true)
@@ -35,7 +35,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         setUiAction()
         setToolbar()
 
-        profileViewModel.getUser()
+        userInfoViewModel.getUser()
     }
 
     private fun setToolbar() {

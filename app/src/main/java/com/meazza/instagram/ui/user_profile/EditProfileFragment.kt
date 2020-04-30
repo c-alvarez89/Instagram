@@ -34,21 +34,21 @@ class EditProfileFragment : Fragment(R.layout.fragment_edit_profile), OnItemClic
         const val GALLERY_REQUEST_CODE = 101
     }
 
-    private val profileViewModel by inject<ProfileViewModel>()
+    private val userInfoViewModel by inject<UserInfoViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         DataBindingUtil.bind<FragmentEditProfileBinding>(view)?.apply {
             lifecycleOwner = this@EditProfileFragment
-            viewModel = profileViewModel
+            viewModel = userInfoViewModel
         }
 
-        profileViewModel.onClickListener = this
+        userInfoViewModel.onClickListener = this
         setHasOptionsMenu(true)
         setToolbar()
 
-        profileViewModel.getUser()
+        userInfoViewModel.getUser()
     }
 
     private fun setToolbar() {
@@ -75,9 +75,8 @@ class EditProfileFragment : Fragment(R.layout.fragment_edit_profile), OnItemClic
 
             when (requestCode) {
                 GALLERY_REQUEST_CODE -> {
-
                     val imageUri = data?.data
-                    imageUri?.let { profileViewModel.uploadImage(it) }
+                    imageUri?.let { userInfoViewModel.uploadImage(it) }
                     iv_change_user_photo.load(imageUri) {
                         crossfade(true)
                         transformations(CircleCropTransformation())
@@ -94,7 +93,7 @@ class EditProfileFragment : Fragment(R.layout.fragment_edit_profile), OnItemClic
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.mn_save_changes) {
-            profileViewModel.saveChanges()
+            userInfoViewModel.saveChanges()
             findNavController().popBackStack()
         }
         return super.onOptionsItemSelected(item)
