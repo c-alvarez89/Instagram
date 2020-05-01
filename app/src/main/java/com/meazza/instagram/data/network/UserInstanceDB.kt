@@ -6,6 +6,7 @@ import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.meazza.instagram.data.model.User
+import com.meazza.instagram.util.*
 import kotlinx.coroutines.tasks.await
 
 object UserInstanceDB {
@@ -13,14 +14,6 @@ object UserInstanceDB {
     private val db by lazy { FirebaseFirestore.getInstance() }
     private val storage by lazy { FirebaseStorage.getInstance().reference }
     private val userUid by lazy { FirebaseAuth.getInstance().currentUser?.uid!! }
-
-    private const val USER_REF = "users"
-    private const val PROFILE_PHOTO_REF = "profile_photos"
-    private const val PHOTO_URL = "photoUrl"
-    private const val NAME = "name"
-    private const val USERNAME = "username"
-    private const val BIO = "bio"
-    private const val WEBSITE = "website"
 
     private val usersRef: CollectionReference = db.collection(USER_REF)
 

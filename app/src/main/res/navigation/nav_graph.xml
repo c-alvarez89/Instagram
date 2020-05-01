@@ -77,7 +77,7 @@
     </fragment>
     <fragment
         android:id="@+id/navigation_search"
-        android:name="com.meazza.instagram.ui.searching.SearchFragment"
+        android:name="com.meazza.instagram.ui.search.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" />
     <fragment

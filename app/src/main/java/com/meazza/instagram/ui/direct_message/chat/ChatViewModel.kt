@@ -27,8 +27,7 @@ class ChatViewModel(
     var photoUrl = MutableLiveData<String>()
 
     init {
-        if (photoUrl.value.isNullOrEmpty())
-            photoUrl.value = ""
+        if (photoUrl.value.isNullOrEmpty()) photoUrl.value = ""
     }
 
     fun sendMessage() {

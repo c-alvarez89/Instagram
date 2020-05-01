@@ -10,8 +10,7 @@ class App : Application() {
         super.onCreate()
         startKoin {
             androidContext(this@App)
-            modules(listOf(authModule, chatModule, userModule))
+            modules(listOf(authModule, userModule, searchModule, chatModule))
         }
     }
-
 }

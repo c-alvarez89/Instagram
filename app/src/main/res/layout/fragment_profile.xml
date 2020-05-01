@@ -216,7 +216,6 @@
                         app:layout_constraintStart_toStartOf="@+id/ll_user_info_text"
                         app:layout_constraintTop_toBottomOf="@+id/ll_user_info_text" />
 
-
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.appcompat.widget.Toolbar
@@ -235,6 +234,7 @@
                         android:textAllCaps="false"
                         android:textColor="@color/colorAccent"
                         android:textSize="18sp"
+                        app:toLowerCase="@{viewModel.username}"
                         tools:text="@string/fake_nickname" />
 
                 </androidx.appcompat.widget.Toolbar>
