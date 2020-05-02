@@ -17,7 +17,7 @@
         <item name="android:textColorHint">@color/gray_dark</item>
     </style>
 
-    <style name="ButtonBlueStyle" parent="@style/Widget.AppCompat.Button.Borderless">
+    <style name="ButtonBlueStyle" parent="@style/Widget.AppCompat.Button">
         <item name="fontFamily">@font/roboto_bold</item>
         <item name="textAllCaps">false</item>
         <item name="android:textSize">14sp</item>

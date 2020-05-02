@@ -1,5 +1,5 @@
 package com.meazza.instagram.common
 
-interface OnItemClickListener {
+interface OnViewClickListener {
     fun onClickFromViewModel()
 }

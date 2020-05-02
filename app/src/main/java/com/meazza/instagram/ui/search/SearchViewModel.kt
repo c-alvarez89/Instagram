@@ -6,12 +6,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import com.meazza.instagram.data.model.User
 import com.meazza.instagram.data.network.RequestDB
+import com.meazza.instagram.ui.search.adapter.SearchAdapter
 
 
 class SearchViewModel(private val requestDB: RequestDB) : ViewModel() {
 
-    val adapter = SearchAdapter()
-    var textQuery = MutableLiveData<String>()
+    val adapter = MutableLiveData<SearchAdapter>()
+    val textQuery = MutableLiveData<String>()
 
     fun queryTextListener() = object : SearchView.OnQueryTextListener {
         override fun onQueryTextSubmit(query: String): Boolean {
@@ -32,7 +33,7 @@ class SearchViewModel(private val requestDB: RequestDB) : ViewModel() {
         }
     }
 
-    fun setAdapter(userList: MutableList<User>) = adapter.run {
+    fun setAdapter(userList: MutableList<User>) = adapter.value?.run {
         setData(userList)
         notifyDataSetChanged()
     }

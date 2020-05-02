@@ -52,11 +52,12 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:setAdapter="@{viewModel.adapter}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tb_search" />
+            app:layout_constraintTop_toBottomOf="@+id/tb_search"
+            app:setAdapter="@{viewModel.adapter}"
+            tools:listitem="@layout/layout_user_found" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

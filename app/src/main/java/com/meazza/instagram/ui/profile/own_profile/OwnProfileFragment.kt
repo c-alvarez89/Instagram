@@ -1,4 +1,4 @@
-package com.meazza.instagram.ui.user_profile
+package com.meazza.instagram.ui.profile.own_profile
 
 import android.os.Bundle
 import android.view.Menu
@@ -13,44 +13,48 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.tabs.TabLayoutMediator
 import com.meazza.instagram.R
 import com.meazza.instagram.data.network.AuthService
-import com.meazza.instagram.databinding.FragmentProfileBinding
-import com.meazza.instagram.ui.user_profile.post_profile.ViewPagerProfileAdapter
-import kotlinx.android.synthetic.main.fragment_profile.*
+import com.meazza.instagram.databinding.FragmentOwnProfileBinding
+import com.meazza.instagram.ui.profile.adapter.ViewPagerProfileAdapter
+import kotlinx.android.synthetic.main.fragment_own_profile.*
 import org.koin.android.ext.android.inject
 
-class ProfileFragment : Fragment(R.layout.fragment_profile) {
+class OwnProfileFragment : Fragment(R.layout.fragment_own_profile) {
 
-    private val userInfoViewModel by inject<UserInfoViewModel>()
+    private val ownInfoViewModel by inject<OwnInfoViewModel>()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        ownInfoViewModel.getUser()
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        DataBindingUtil.bind<FragmentProfileBinding>(view)?.apply {
-            lifecycleOwner = this@ProfileFragment
-            viewModel = userInfoViewModel
+        DataBindingUtil.bind<FragmentOwnProfileBinding>(view)?.apply {
+            lifecycleOwner = this@OwnProfileFragment
+            viewModel = ownInfoViewModel
         }
 
         setHasOptionsMenu(true)
         setTabLayout()
         setUiAction()
         setToolbar()
-
-        userInfoViewModel.getUser()
     }
 
     private fun setToolbar() {
         val mActivity = activity as AppCompatActivity
         mActivity.apply {
-            setSupportActionBar(tb_profile)
+            setSupportActionBar(tb_own_profile)
             title = ""
         }
     }
 
     private fun setTabLayout() {
-        pager_profile.adapter = ViewPagerProfileAdapter(this)
+        pager_own_profile.adapter = ViewPagerProfileAdapter(this)
+
         TabLayoutMediator(
-            tab_layout,
-            pager_profile,
+            tab_layout_own_profile,
+            pager_own_profile,
             TabLayoutMediator.TabConfigurationStrategy { tab, position ->
                 when (position) {
                     0 -> tab.setIcon(R.drawable.selector_grid)
@@ -61,7 +65,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     private fun setUiAction() {
         btn_edit_user_profile.setOnClickListener {
-            findNavController().navigate(R.id.next_action)
+            findNavController().navigate(R.id.goto_profile)
         }
     }
 

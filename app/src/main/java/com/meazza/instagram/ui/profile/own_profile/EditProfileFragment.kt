@@ -1,4 +1,4 @@
-package com.meazza.instagram.ui.user_profile
+package com.meazza.instagram.ui.profile.own_profile
 
 import android.app.Activity
 import android.app.Activity.RESULT_OK
@@ -16,7 +16,7 @@ import androidx.navigation.fragment.findNavController
 import coil.api.load
 import coil.transform.CircleCropTransformation
 import com.meazza.instagram.R
-import com.meazza.instagram.common.OnItemClickListener
+import com.meazza.instagram.common.OnViewClickListener
 import com.meazza.instagram.common.StatusCallback
 import com.meazza.instagram.common.permission.PermissionRequest
 import com.meazza.instagram.common.permission.PermissionState
@@ -27,28 +27,31 @@ import org.jetbrains.anko.support.v4.longToast
 import org.koin.android.ext.android.inject
 
 
-class EditProfileFragment : Fragment(R.layout.fragment_edit_profile), OnItemClickListener,
+class EditProfileFragment : Fragment(R.layout.fragment_edit_profile), OnViewClickListener,
     StatusCallback {
 
     companion object {
         const val GALLERY_REQUEST_CODE = 101
     }
 
-    private val userInfoViewModel by inject<UserInfoViewModel>()
+    private val ownInfoViewModel by inject<OwnInfoViewModel>()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        ownInfoViewModel.getUser()
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         DataBindingUtil.bind<FragmentEditProfileBinding>(view)?.apply {
             lifecycleOwner = this@EditProfileFragment
-            viewModel = userInfoViewModel
+            viewModel = ownInfoViewModel
         }
 
-        userInfoViewModel.onClickListener = this
+        ownInfoViewModel.onClickListener = this
         setHasOptionsMenu(true)
         setToolbar()
-
-        userInfoViewModel.getUser()
     }
 
     private fun setToolbar() {
@@ -56,8 +59,10 @@ class EditProfileFragment : Fragment(R.layout.fragment_edit_profile), OnItemClic
         activity.apply {
             setSupportActionBar(tb_edit_profile)
             title = getString(R.string.edit_profile)
-            supportActionBar?.setDisplayHomeAsUpEnabled(true)
-            supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_close)
+            supportActionBar?.run {
+                setDisplayHomeAsUpEnabled(true)
+                setHomeAsUpIndicator(R.drawable.ic_close)
+            }
         }
     }
 
@@ -76,7 +81,7 @@ class EditProfileFragment : Fragment(R.layout.fragment_edit_profile), OnItemClic
             when (requestCode) {
                 GALLERY_REQUEST_CODE -> {
                     val imageUri = data?.data
-                    imageUri?.let { userInfoViewModel.uploadImage(it) }
+                    imageUri?.let { ownInfoViewModel.uploadImage(it) }
                     iv_change_user_photo.load(imageUri) {
                         crossfade(true)
                         transformations(CircleCropTransformation())
@@ -93,7 +98,7 @@ class EditProfileFragment : Fragment(R.layout.fragment_edit_profile), OnItemClic
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.mn_save_changes) {
-            userInfoViewModel.saveChanges()
+            ownInfoViewModel.saveChanges()
             findNavController().popBackStack()
         }
         return super.onOptionsItemSelected(item)

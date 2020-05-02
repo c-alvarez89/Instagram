@@ -17,14 +17,14 @@ class ChatAdapter(private val userId: String) : RecyclerView.Adapter<RecyclerVie
         private const val MESSAGE_RECEIVED = 102
     }
 
-    private var dataList = mutableListOf<DirectMessage>()
+    private var messagesList = mutableListOf<DirectMessage>()
 
-    fun setListData(data: MutableList<DirectMessage>) {
-        dataList = data
+    fun setListData(messages: MutableList<DirectMessage>) {
+        messagesList = messages
     }
 
     override fun getItemViewType(position: Int) =
-        if (dataList[position].authorId == userId) MESSAGE_SENT else MESSAGE_RECEIVED
+        if (messagesList[position].authorId == userId) MESSAGE_SENT else MESSAGE_RECEIVED
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
@@ -56,15 +56,15 @@ class ChatAdapter(private val userId: String) : RecyclerView.Adapter<RecyclerVie
 
         when (holder.itemViewType) {
             MESSAGE_SENT -> {
-                (holder as HolderSentMessage).itemBinding.directMessage = dataList[position]
+                (holder as HolderSentMessage).itemBinding.directMessage = messagesList[position]
             }
             MESSAGE_RECEIVED -> {
-                (holder as HolderReceivedMessage).itemBinding.directMessage = dataList[position]
+                (holder as HolderReceivedMessage).itemBinding.directMessage = messagesList[position]
             }
         }
     }
 
-    override fun getItemCount(): Int = if (dataList.size > 0) dataList.size else 0
+    override fun getItemCount(): Int = if (messagesList.size > 0) messagesList.size else 0
 
     inner class HolderSentMessage(val itemBinding: LayoutMessageSentBinding) :
         RecyclerView.ViewHolder(itemBinding.root)

@@ -18,7 +18,7 @@ object UserInstanceDB {
     private val usersRef: CollectionReference = db.collection(USER_REF)
 
     suspend fun createUser(user: User) {
-        usersRef.document(user.id).set(user).await()
+        user.id?.let { usersRef.document(it).set(user).await() }
     }
 
     suspend fun getUser(): User? {

@@ -1,18 +1,18 @@
-package com.meazza.instagram.ui.user_profile
+package com.meazza.instagram.ui.profile.own_profile
 
 import android.net.Uri
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.meazza.instagram.common.OnItemClickListener
+import com.meazza.instagram.common.OnViewClickListener
 import com.meazza.instagram.common.StatusCallback
 import com.meazza.instagram.data.network.UserInstanceDB
 import com.meazza.instagram.util.TRY_AGAIN
 import kotlinx.coroutines.launch
 
-class UserInfoViewModel(private val userInstance: UserInstanceDB) : ViewModel() {
+class OwnInfoViewModel(private val userInstance: UserInstanceDB) : ViewModel() {
 
-    var onClickListener: OnItemClickListener? = null
+    var onClickListener: OnViewClickListener? = null
     var statusCallback: StatusCallback? = null
 
     var name = MutableLiveData<String>()

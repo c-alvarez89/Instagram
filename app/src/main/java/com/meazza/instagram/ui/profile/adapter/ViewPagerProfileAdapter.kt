@@ -1,7 +1,9 @@
-package com.meazza.instagram.ui.user_profile.post_profile
+package com.meazza.instagram.ui.profile.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.meazza.instagram.ui.profile.post.PostsFragment
+import com.meazza.instagram.ui.profile.post.TaggedPostsFragment
 
 class ViewPagerProfileAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
 
@@ -9,7 +11,7 @@ class ViewPagerProfileAdapter(fragment: Fragment) : FragmentStateAdapter(fragmen
 
     override fun createFragment(position: Int): Fragment {
         return when (position) {
-            0 -> OwnPostsFragment()
+            0 -> PostsFragment()
             else -> TaggedPostsFragment()
         }
     }

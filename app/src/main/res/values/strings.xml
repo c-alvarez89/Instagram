@@ -59,4 +59,6 @@
     <string name="username">Username</string>
     <string name="website">Website</string>
     <string name="bio">Bio</string>
+    <string name="direct_message">Message</string>
+    <string name="follow">Follow</string>
 </resources>

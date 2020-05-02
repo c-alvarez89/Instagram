@@ -31,9 +31,6 @@
         android:label="fragment_sign_in"
         tools:layout="@layout/fragment_sign_up">
         <action
-            android:id="@+id/goto_log_in"
-            app:destination="@id/destination_login" />
-        <action
             android:id="@+id/goto_feed"
             app:destination="@id/navigation_feed"
             app:popUpTo="@id/nav_main"
@@ -45,9 +42,6 @@
         android:name="com.meazza.instagram.ui.auth.log_in.LogInFragment"
         android:label="fragment_log_in"
         tools:layout="@layout/fragment_log_in">
-        <action
-            android:id="@+id/goto_sign_up"
-            app:destination="@id/destination_sign_up" />
         <action
             android:id="@+id/goto_reset_password"
             app:destination="@id/destination_reset_password" />
@@ -79,7 +73,11 @@
         android:id="@+id/navigation_search"
         android:name="com.meazza.instagram.ui.search.SearchFragment"
         android:label="fragment_search"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/goto_profile"
+            app:destination="@id/destination_profile" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_add_post"
         android:name="com.meazza.instagram.ui.add_post.AddPostFragment"
@@ -91,10 +89,10 @@
         android:label="fragment_notification"
         tools:layout="@layout/fragment_notification" />
     <fragment
-        android:id="@+id/navigation_profile"
-        android:name="com.meazza.instagram.ui.user_profile.ProfileFragment"
-        android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile">
+        android:id="@+id/navigation_own_profile"
+        android:name="com.meazza.instagram.ui.profile.own_profile.OwnProfileFragment"
+        android:label="fragment_own_profile"
+        tools:layout="@layout/fragment_own_profile">
         <action
             android:id="@+id/next_action"
             app:destination="@id/destination_edit_profile" />
@@ -120,7 +118,16 @@
         tools:layout="@layout/fragment_chat" />
     <fragment
         android:id="@+id/destination_edit_profile"
-        android:name="com.meazza.instagram.ui.user_profile.EditProfileFragment"
+        android:name="com.meazza.instagram.ui.profile.own_profile.EditProfileFragment"
         android:label="fragment_edit_profile"
         tools:layout="@layout/fragment_edit_profile" />
+    <fragment
+        android:id="@+id/destination_profile"
+        android:name="com.meazza.instagram.ui.profile.ProfileFragment"
+        android:label="FragmentProfile"
+        tools:layout="@layout/fragment_profile" >
+        <argument
+            android:name="user"
+            app:argType="com.meazza.instagram.data.model.User" />
+    </fragment>
 </navigation>

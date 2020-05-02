@@ -15,6 +15,11 @@ class ChatFragment : Fragment(R.layout.fragment_chat) {
 
     private val chatViewModel by inject<ChatViewModel>()
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        chatViewModel.getUser()
+    }
+
     @ExperimentalCoroutinesApi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -24,11 +29,11 @@ class ChatFragment : Fragment(R.layout.fragment_chat) {
             viewModel = chatViewModel
         }
 
-        chatViewModel.fetchMessages().observe(viewLifecycleOwner, Observer {
-            chatViewModel.setAdapter(it)
-            rv_chat.smoothScrollToPosition(it.size)
-        })
-
-        chatViewModel.getUser()
+        chatViewModel.run {
+            fetchMessages().observe(viewLifecycleOwner, Observer {
+                setAdapter(it)
+                rv_chat.smoothScrollToPosition(it.size)
+            })
+        }
     }
 }

@@ -1,4 +1,4 @@
-package com.meazza.instagram.ui.search
+package com.meazza.instagram.ui.search.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,12 +8,13 @@ import com.meazza.instagram.R
 import com.meazza.instagram.data.model.User
 import com.meazza.instagram.databinding.LayoutUserFoundBinding
 
-class SearchAdapter : RecyclerView.Adapter<SearchAdapter.HolderUserFound>() {
+class SearchAdapter(val listener: RecyclerViewListener?) :
+    RecyclerView.Adapter<SearchAdapter.HolderUserFound>() {
 
-    private var dataList = mutableListOf<User>()
+    private var userList = mutableListOf<User>()
 
-    fun setData(data: MutableList<User>) {
-        dataList = data
+    fun setData(users: MutableList<User>) {
+        userList = users
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = HolderUserFound(
@@ -25,11 +26,16 @@ class SearchAdapter : RecyclerView.Adapter<SearchAdapter.HolderUserFound>() {
         )
     )
 
-    override fun onBindViewHolder(holder: SearchAdapter.HolderUserFound, position: Int) {
-        holder.itemBinding.user = dataList[position]
+    override fun onBindViewHolder(holder: HolderUserFound, position: Int) {
+        holder.itemBinding.run {
+            user = userList[position]
+            root.setOnClickListener {
+                listener?.onItemClickListener(userList[position])
+            }
+        }
     }
 
-    override fun getItemCount(): Int = if (dataList.size > 0) dataList.size else 0
+    override fun getItemCount(): Int = if (userList.size > 0) userList.size else 0
 
     inner class HolderUserFound(val itemBinding: LayoutUserFoundBinding) :
         RecyclerView.ViewHolder(itemBinding.root)
