@@ -2,10 +2,8 @@ package com.meazza.instagram.data.model
 
 import android.os.Parcel
 import android.os.Parcelable
-import com.google.firebase.firestore.Exclude
 
 data class User(
-    @get:Exclude
     val id: String? = "",
     val name: String? = "",
     val email: String? = "",

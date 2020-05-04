@@ -6,8 +6,8 @@ import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuth
 import com.meazza.instagram.data.model.DirectMessage
+import com.meazza.instagram.data.network.CurrentUserDB
 import com.meazza.instagram.data.network.MessagingService
-import com.meazza.instagram.data.network.UserInstanceDB
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
@@ -16,7 +16,7 @@ import java.util.*
 
 class ChatViewModel(
     private val repository: MessagingService,
-    private val userInstance: UserInstanceDB
+    private val userInstance: CurrentUserDB
 ) :
     ViewModel() {
 

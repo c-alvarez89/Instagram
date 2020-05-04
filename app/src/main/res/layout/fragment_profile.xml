@@ -182,6 +182,7 @@
                             android:text="@{viewModel.bio}"
                             android:textColor="@color/colorAccent"
                             android:textSize="14sp"
+                            app:isTextEmpty="@{viewModel.bio}"
                             tools:text="@string/lorem_ipsum" />
 
                         <TextView
@@ -193,6 +194,7 @@
                             android:minLines="1"
                             android:text="@{viewModel.website}"
                             android:textColor="@color/blue_dark"
+                            app:isTextEmpty="@{viewModel.website}"
                             tools:text="@string/fake_website" />
 
                     </LinearLayout>
@@ -217,8 +219,26 @@
                             android:layout_marginEnd="4dp"
                             android:layout_weight="1"
                             android:background="@drawable/background_button_blue"
+                            android:onClick="@{() -> viewModel.saveFollow()}"
                             android:text="@string/follow"
-                            android:theme="@style/ButtonBlueStyle" />
+                            android:theme="@style/ButtonBlueStyle"
+                            android:visibility="visible"
+                            app:showFollowButton="@{viewModel.isCurrentUserFollowing}" />
+
+                        <Button
+                            android:id="@+id/btn_following"
+                            style="?android:attr/borderlessButtonStyle"
+                            android:layout_width="0dp"
+                            android:layout_height="30dp"
+                            android:layout_marginEnd="4dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/selector_button_profile"
+                            android:onClick="@{() -> viewModel.stopFollowing()}"
+                            android:text="@string/following"
+                            android:textColor="@color/colorAccent"
+                            android:theme="@style/BottomTextBlack"
+                            android:visibility="gone"
+                            app:showFollowingButton="@{viewModel.isCurrentUserFollowing}" />
 
                         <Button
                             android:id="@+id/btn_send_message"

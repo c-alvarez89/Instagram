@@ -13,11 +13,17 @@ const val TRY_AGAIN = 109
 
 /** Firebase Constants */
 const val USER_REF = "user"
+const val FOLLOW_REF = "follow"
 const val DIRECT_MESSAGE_REF = "direct_message"
 const val PROFILE_PHOTO_REF = "profile_photo"
+const val UID = "uid"
 const val NAME = "name"
 const val USERNAME = "username"
 const val BIO = "bio"
 const val PHOTO_URL = "photoUrl"
 const val WEBSITE = "website"
 const val SENT_AT = "sentAt"
+const val FOLLOWER = "follower"
+const val FOLLOWING = "following"
+const val FOLLOWER_NUMBER = "followersNumber"
+const val FOLLOWING_NUMBER = "followingNumber"

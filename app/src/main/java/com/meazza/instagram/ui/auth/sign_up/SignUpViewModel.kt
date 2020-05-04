@@ -7,13 +7,13 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.meazza.instagram.common.StatusCallback
 import com.meazza.instagram.data.model.User
 import com.meazza.instagram.data.network.AuthService
-import com.meazza.instagram.data.network.UserInstanceDB
+import com.meazza.instagram.data.network.CurrentUserDB
 import com.meazza.instagram.util.*
 import kotlinx.coroutines.launch
 
 class SignUpViewModel(
     private val authRepository: AuthService,
-    private val userInstance: UserInstanceDB
+    private val userInstance: CurrentUserDB
 ) :
     ViewModel() {
 

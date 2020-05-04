@@ -2,6 +2,7 @@ package com.meazza.instagram.util
 
 import android.annotation.SuppressLint
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.SearchView
 import android.widget.TextView
@@ -46,4 +47,22 @@ fun setOnQueryTextListener(
     listener: SearchView.OnQueryTextListener
 ) {
     searchView.setOnQueryTextListener(listener)
+}
+
+@BindingAdapter("showFollowButton")
+fun showFollowButton(button: Button, isFollowing: Boolean) {
+    if (!isFollowing) {
+        button.visibility = View.VISIBLE
+    } else {
+        button.visibility = View.GONE
+    }
+}
+
+@BindingAdapter("showFollowingButton")
+fun showFollowingButton(button: Button, isFollowing: Boolean) {
+    if (isFollowing) {
+        button.visibility = View.VISIBLE
+    } else {
+        button.visibility = View.GONE
+    }
 }

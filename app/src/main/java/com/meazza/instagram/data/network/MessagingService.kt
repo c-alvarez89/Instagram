@@ -14,17 +14,16 @@ import kotlinx.coroutines.tasks.await
 object MessagingService {
 
     private val db by lazy { FirebaseFirestore.getInstance() }
+    private val directMessageRef = db.collection(DIRECT_MESSAGE_REF)
 
     suspend fun sendMessage(message: DirectMessage) {
-        db.collection(DIRECT_MESSAGE_REF).add(message).await()
+        directMessageRef.add(message).await()
     }
 
     @ExperimentalCoroutinesApi
     suspend fun subscribeToChat(): Flow<MutableList<DirectMessage>> = callbackFlow {
 
-        val eventDocument = db.collection(DIRECT_MESSAGE_REF)
-
-        val subscription = eventDocument
+        val subscription = directMessageRef
             .orderBy(SENT_AT, Query.Direction.DESCENDING)
             .addSnapshotListener { querySnapshot, _ ->
                 querySnapshot?.let {

@@ -1,9 +1,6 @@
 package com.meazza.instagram.di
 
-import com.meazza.instagram.data.network.AuthService
-import com.meazza.instagram.data.network.MessagingService
-import com.meazza.instagram.data.network.RequestDB
-import com.meazza.instagram.data.network.UserInstanceDB
+import com.meazza.instagram.data.network.*
 import com.meazza.instagram.ui.auth.log_in.LogInViewModel
 import com.meazza.instagram.ui.auth.reset_password.ResetPasswordViewModel
 import com.meazza.instagram.ui.auth.sign_up.SignUpViewModel
@@ -16,7 +13,7 @@ import org.koin.dsl.module
 
 val authModule = module {
     single { AuthService }
-    single { UserInstanceDB }
+    single { CurrentUserDB }
     viewModel { LogInViewModel(get()) }
     viewModel { SignUpViewModel(get(), get()) }
     viewModel { ResetPasswordViewModel(get()) }
@@ -32,7 +29,8 @@ val searchModule = module {
 }
 
 val profileModule = module {
-    viewModel { ProfileViewModel() }
+    single { FollowActionDB }
+    viewModel { ProfileViewModel(get()) }
 }
 
 val chatModule = module {

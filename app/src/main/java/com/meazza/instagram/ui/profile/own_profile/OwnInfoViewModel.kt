@@ -6,11 +6,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.meazza.instagram.common.OnViewClickListener
 import com.meazza.instagram.common.StatusCallback
-import com.meazza.instagram.data.network.UserInstanceDB
+import com.meazza.instagram.data.network.CurrentUserDB
 import com.meazza.instagram.util.TRY_AGAIN
 import kotlinx.coroutines.launch
 
-class OwnInfoViewModel(private val userInstance: UserInstanceDB) : ViewModel() {
+class OwnInfoViewModel(private val userInstance: CurrentUserDB) : ViewModel() {
 
     var onClickListener: OnViewClickListener? = null
     var statusCallback: StatusCallback? = null
