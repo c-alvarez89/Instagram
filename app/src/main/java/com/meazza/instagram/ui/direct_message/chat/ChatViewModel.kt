@@ -64,8 +64,10 @@ class ChatViewModel(
         notifyDataSetChanged()
     }
 
-    fun getUser() = viewModelScope.launch {
-        val user = userInstance.getUser()
-        photoUrl.value = user?.photoUrl
+    fun getUser() {
+        viewModelScope.launch {
+            val user = userInstance.getUser()
+            photoUrl.value = user?.photoUrl
+        }
     }
 }

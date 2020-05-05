@@ -21,20 +21,36 @@ class ProfileViewModel(private val followActionDb: FollowActionDB) : ViewModel()
     val followingNumber = MutableLiveData<String>()
     val isCurrentUserFollowing = MutableLiveData<Boolean>()
 
-    fun checkIfCurrentUserIsFollowing(instagrammerUid: String?) = liveData {
+    fun checkIfCurrentUserIsFollowing(instagrammerUid: String) = liveData {
         emit(followActionDb.checkIfCurrentUserIsFollowing(instagrammerUid))
     }
 
-    fun saveFollow() = viewModelScope.launch {
-        val instagrammer = instagramUser.value
-        followActionDb.saveFollow(instagrammer!!)
-        isCurrentUserFollowing.value = true
+    fun saveFollow() {
+        viewModelScope.launch {
+            val instagrammer = instagramUser.value
+            try {
+                followActionDb.saveFollow(instagrammer!!)
+                followersNumber.value =
+                    followActionDb.getFollowersNumber(instagrammer.id!!).toString()
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+            isCurrentUserFollowing.value = true
+        }
     }
 
-    fun stopFollowing() = viewModelScope.launch {
-        val instagrammer = instagramUser.value
-        followActionDb.stopFollowing(instagrammer!!)
-        isCurrentUserFollowing.value = false
+    fun stopFollowing() {
+        viewModelScope.launch {
+            val instagrammer = instagramUser.value
+            try {
+                followActionDb.stopFollowing(instagrammer!!)
+                followersNumber.value =
+                    followActionDb.getFollowersNumber(instagrammer.id!!).toString()
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+            isCurrentUserFollowing.value = false
+        }
     }
 }
 

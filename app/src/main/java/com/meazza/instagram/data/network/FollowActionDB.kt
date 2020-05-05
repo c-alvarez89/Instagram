@@ -1,7 +1,7 @@
 package com.meazza.instagram.data.network
 
-import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import com.meazza.instagram.data.model.User
 import com.meazza.instagram.util.*
@@ -15,21 +15,9 @@ object FollowActionDB {
     private val followRef = db.collection(FOLLOW_REF)
     private val usersRef = db.collection(USER_REF)
 
-    suspend fun checkIfCurrentUserIsFollowing(instagrammerUid: String?): Boolean? {
-
-        val isFollowing = MutableLiveData<Boolean>()
-
-        instagrammerUid?.let {
-            followRef.document(currentUserUid)
-                .collection(FOLLOWING).document(it)
-                .get().addOnCompleteListener { task ->
-                    val document = task.result
-                    isFollowing.value = document != null
-                }.await()
-        }
-
-        return isFollowing.value
-    }
+    suspend fun checkIfCurrentUserIsFollowing(instagrammerId: String): DocumentSnapshot? =
+        followRef.document(currentUserUid).collection(FOLLOWING).document(instagrammerId)
+            .get().await()
 
     suspend fun saveFollow(instagrammer: User) {
 
@@ -41,41 +29,43 @@ object FollowActionDB {
                 hashMapOf(
                     UID to instagramUserDocRef
                 )
-            ).addOnSuccessListener { countFollowing() }.await()
+            ).addOnSuccessListener { updateFollowing() }.await()
 
-        followRef.document(instagrammer.id)
-            .collection(FOLLOWER).document(currentUserUid).set(
-                hashMapOf(
-                    UID to currentUserDocRef
-                )
-            ).addOnSuccessListener { countFollowers(instagrammer.id) }.await()
+        followRef.document(instagrammer.id).collection(FOLLOWER).document(currentUserUid).set(
+            hashMapOf(
+                UID to currentUserDocRef
+            )
+        ).addOnSuccessListener { updateFollower(instagrammer.id) }.await()
     }
 
     suspend fun stopFollowing(instagrammer: User) {
         followRef.document(currentUserUid)
             .collection(FOLLOWING).document(instagrammer.id!!).delete()
             .addOnSuccessListener {
-                countFollowing()
+                updateFollowing()
             }.await()
 
         followRef.document(instagrammer.id)
             .collection(FOLLOWER).document(currentUserUid).delete()
             .addOnSuccessListener {
-                countFollowers(instagrammer.id)
+                updateFollower(instagrammer.id)
             }.await()
     }
 
-    private fun countFollowing() {
+    private fun updateFollowing() {
         followRef.document(currentUserUid).collection(FOLLOWING).get()
             .addOnSuccessListener {
                 usersRef.document(currentUserUid).update(FOLLOWING_NUMBER, it.size())
             }
     }
 
-    private fun countFollowers(uid: String) {
+    private fun updateFollower(uid: String) {
         followRef.document(uid).collection(FOLLOWER).get()
             .addOnSuccessListener {
                 usersRef.document(uid).update(FOLLOWER_NUMBER, it.size())
             }
     }
+
+    suspend fun getFollowersNumber(uid: String) =
+        followRef.document(uid).collection(FOLLOWER).get().await().size()
 }

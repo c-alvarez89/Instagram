@@ -7,6 +7,8 @@ import androidx.lifecycle.liveData
 import com.meazza.instagram.data.model.User
 import com.meazza.instagram.data.network.RequestDB
 import com.meazza.instagram.ui.search.adapter.SearchAdapter
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.collect
 
 
 class SearchViewModel(private val requestDB: RequestDB) : ViewModel() {
@@ -25,9 +27,12 @@ class SearchViewModel(private val requestDB: RequestDB) : ViewModel() {
         }
     }
 
+    @ExperimentalCoroutinesApi
     fun getUserSearch(text: String) = liveData {
         try {
-            emit(requestDB.requestUsers(text))
+            requestDB.requestUsers(text).collect {
+                emit(it)
+            }
         } catch (e: Exception) {
             e.printStackTrace()
         }

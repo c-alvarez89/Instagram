@@ -42,11 +42,14 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
+
         profileViewModel.run {
             checkIfCurrentUserIsFollowing(uid).observe(viewLifecycleOwner, Observer {
-                isCurrentUserFollowing.value = it
+                val document = it?.exists()
+                isCurrentUserFollowing.value = document == true
             })
         }
+
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 

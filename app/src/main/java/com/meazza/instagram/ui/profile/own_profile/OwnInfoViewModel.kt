@@ -36,42 +36,48 @@ class OwnInfoViewModel(private val userInstance: CurrentUserDB) : ViewModel() {
         onClickListener?.onClickFromViewModel()
     }
 
-    fun getUser() = viewModelScope.launch {
-        try {
-            val user = userInstance.getUser()
-            name.value = user?.name
-            username.value = user?.username
-            photoUrl.value = user?.photoUrl
-            bio.value = user?.bio
-            website.value = user?.website
-            posts.value = user?.postNumber.toString()
-            followers.value = user?.followersNumber.toString()
-            following.value = user?.followingNumber.toString()
-        } catch (e: Exception) {
-            e.printStackTrace()
+    fun getUser() {
+        viewModelScope.launch {
+            try {
+                val user = userInstance.getUser()
+                name.value = user?.name
+                username.value = user?.username
+                photoUrl.value = user?.photoUrl
+                bio.value = user?.bio
+                website.value = user?.website
+                posts.value = user?.postNumber.toString()
+                followers.value = user?.followersNumber.toString()
+                following.value = user?.followingNumber.toString()
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
         }
     }
 
-    fun saveChanges() = viewModelScope.launch {
-        try {
-            userInstance.updateUser(
-                name.value!!,
-                username.value!!,
-                bio.value!!,
-                website.value!!
-            )
-        } catch (e: Exception) {
-            statusCallback?.onFailure(TRY_AGAIN)
-            e.printStackTrace()
+    fun saveChanges() {
+        viewModelScope.launch {
+            try {
+                userInstance.updateUser(
+                    name.value!!,
+                    username.value!!,
+                    bio.value!!,
+                    website.value!!
+                )
+            } catch (e: Exception) {
+                statusCallback?.onFailure(TRY_AGAIN)
+                e.printStackTrace()
+            }
         }
     }
 
-    fun uploadImage(imageUri: Uri) = viewModelScope.launch {
-        try {
-            userInstance.uploadImage(imageUri)
-        } catch (e: Exception) {
-            statusCallback?.onFailure(TRY_AGAIN)
-            e.printStackTrace()
+    fun uploadImage(imageUri: Uri) {
+        viewModelScope.launch {
+            try {
+                userInstance.uploadImage(imageUri)
+            } catch (e: Exception) {
+                statusCallback?.onFailure(TRY_AGAIN)
+                e.printStackTrace()
+            }
         }
     }
 }

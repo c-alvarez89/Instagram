@@ -11,12 +11,14 @@ import com.meazza.instagram.data.model.User
 import com.meazza.instagram.databinding.FragmentSearchBinding
 import com.meazza.instagram.ui.search.adapter.RecyclerViewListener
 import com.meazza.instagram.ui.search.adapter.SearchAdapter
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.android.ext.android.inject
 
 class SearchFragment : Fragment(R.layout.fragment_search), RecyclerViewListener {
 
     private val searchViewModel by inject<SearchViewModel>()
 
+    @ExperimentalCoroutinesApi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
