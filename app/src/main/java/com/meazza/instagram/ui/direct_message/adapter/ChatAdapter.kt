@@ -1,4 +1,4 @@
-package com.meazza.instagram.ui.direct_message.chat
+package com.meazza.instagram.ui.direct_message.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

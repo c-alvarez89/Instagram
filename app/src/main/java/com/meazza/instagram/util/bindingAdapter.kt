@@ -57,12 +57,3 @@ fun showFollowButton(button: Button, isFollowing: Boolean) {
         button.visibility = View.GONE
     }
 }
-
-@BindingAdapter("showFollowingButton")
-fun showFollowingButton(button: Button, isFollowing: Boolean) {
-    if (isFollowing) {
-        button.visibility = View.VISIBLE
-    } else {
-        button.visibility = View.GONE
-    }
-}

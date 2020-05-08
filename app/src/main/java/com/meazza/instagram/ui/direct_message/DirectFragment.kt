@@ -1,19 +1,63 @@
 package com.meazza.instagram.ui.direct_message
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
+import androidx.lifecycle.Observer
 import com.meazza.instagram.R
+import com.meazza.instagram.data.model.User
+import com.meazza.instagram.databinding.FragmentDirectBinding
+import com.meazza.instagram.ui.direct_message.adapter.DirectAdapter
+import com.meazza.instagram.ui.search.adapter.RecyclerViewListener
 import kotlinx.android.synthetic.main.fragment_direct.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import org.koin.android.ext.android.inject
 
-class DirectFragment : Fragment(R.layout.fragment_direct) {
+@ExperimentalCoroutinesApi
+class DirectFragment : Fragment(R.layout.fragment_direct), RecyclerViewListener {
+
+    private val directViewModel by inject<DirectViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        tv_message.setOnClickListener {
-            findNavController().navigate(R.id.next_action)
+        DataBindingUtil.bind<FragmentDirectBinding>(view)?.apply {
+            lifecycleOwner = this@DirectFragment
+            viewModel = directViewModel
         }
+
+        directViewModel.run {
+            adapter.value = DirectAdapter(this@DirectFragment)
+            getConversations().observe(viewLifecycleOwner, Observer {
+                setAdapter(it)
+            })
+        }
+
+        setHasOptionsMenu(true)
+        setToolbar()
+    }
+
+    private fun setToolbar() {
+        val mActivity = activity as AppCompatActivity
+        mActivity.apply {
+            setSupportActionBar(tb_direct)
+            title = getString(R.string.direct)
+            supportActionBar?.run {
+                setDisplayHomeAsUpEnabled(true)
+                setHomeAsUpIndicator(R.drawable.ic_arrow_left)
+            }
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_direct, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onItemClickListener(user: User) {
     }
 }

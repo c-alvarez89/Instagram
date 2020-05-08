@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.tasks.await
 
 
-object RequestDB {
+object RequestData {
 
     private val db by lazy { FirebaseFirestore.getInstance() }
     private val usersRef: CollectionReference = db.collection(USER_REF)

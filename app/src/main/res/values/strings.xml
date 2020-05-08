@@ -60,5 +60,8 @@
     <string name="website">Website</string>
     <string name="bio">Bio</string>
     <string name="direct_message">Message</string>
+    <string name="direct">Direct</string>
     <string name="follow">Follow</string>
+    <string name="new_message">New Message</string>
+    <string name="last_message">Last message&#8230;</string>
 </resources>

@@ -7,22 +7,25 @@ import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuth
 import com.meazza.instagram.data.model.DirectMessage
 import com.meazza.instagram.data.network.CurrentUserDB
-import com.meazza.instagram.data.network.MessagingService
+import com.meazza.instagram.data.network.MessagingDB
+import com.meazza.instagram.ui.direct_message.adapter.ChatAdapter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import java.util.*
 
+@ExperimentalCoroutinesApi
 class ChatViewModel(
-    private val repository: MessagingService,
+    private val repository: MessagingDB,
     private val userInstance: CurrentUserDB
 ) :
     ViewModel() {
 
     private val userId by lazy { FirebaseAuth.getInstance().currentUser?.uid.toString() }
 
-    val adapter = ChatAdapter(userId)
+    val adapter =
+        ChatAdapter(userId)
     var message = MutableLiveData<String>()
     var photoUrl = MutableLiveData<String>()
 
@@ -52,7 +55,6 @@ class ChatViewModel(
         }
     }
 
-    @ExperimentalCoroutinesApi
     fun fetchMessages() = liveData(Dispatchers.IO) {
         repository.subscribeToChat().collect {
             emit(it)

@@ -115,7 +115,11 @@
         android:id="@+id/destination_chat"
         android:name="com.meazza.instagram.ui.direct_message.chat.ChatFragment"
         android:label="fragment_chat"
-        tools:layout="@layout/fragment_chat" />
+        tools:layout="@layout/fragment_chat" >
+        <argument
+            android:name="user"
+            app:argType="com.meazza.instagram.data.model.User" />
+    </fragment>
     <fragment
         android:id="@+id/destination_edit_profile"
         android:name="com.meazza.instagram.ui.profile.own_profile.EditProfileFragment"
@@ -129,5 +133,8 @@
         <argument
             android:name="user"
             app:argType="com.meazza.instagram.data.model.User" />
+        <action
+            android:id="@+id/action_destination_profile_to_destination_chat"
+            app:destination="@id/destination_chat" />
     </fragment>
 </navigation>
