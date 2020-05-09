@@ -1,6 +1,7 @@
 package com.meazza.instagram.ui.direct_message
 
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.View
@@ -34,7 +35,8 @@ class DirectFragment : Fragment(R.layout.fragment_direct), RecyclerViewListener 
         directViewModel.run {
             adapter.value = DirectAdapter(this@DirectFragment)
             getConversations().observe(viewLifecycleOwner, Observer {
-//                setAdapter(it)
+                setAdapter(it)
+                Log.d("direct", "Users : ${it.size}")
             })
         }
 

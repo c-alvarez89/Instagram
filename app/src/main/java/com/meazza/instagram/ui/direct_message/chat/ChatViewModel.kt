@@ -6,6 +6,8 @@ import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuth
 import com.meazza.instagram.data.model.DirectMessage
+import com.meazza.instagram.data.model.User
+import com.meazza.instagram.data.network.CurrentUserDB
 import com.meazza.instagram.data.network.MessagingDB
 import com.meazza.instagram.ui.direct_message.adapter.ChatAdapter
 import kotlinx.coroutines.Dispatchers
@@ -15,13 +17,16 @@ import kotlinx.coroutines.launch
 import java.util.*
 
 @ExperimentalCoroutinesApi
-class ChatViewModel(private val repository: MessagingDB) : ViewModel() {
+class ChatViewModel(
+    private val database: MessagingDB,
+    private val currentUserInstance: CurrentUserDB
+) : ViewModel() {
 
     private val currentUser by lazy { FirebaseAuth.getInstance().currentUser }
     private val userId = currentUser?.uid.toString()
 
     val adapter = ChatAdapter(userId)
-    val instagrammerId = MutableLiveData<String>()
+    val instagrammerUser = MutableLiveData<User>()
     val instagrammerName = MutableLiveData<String>()
     val instagrammerUsername = MutableLiveData<String>()
     val instagrammerPhoto = MutableLiveData<String>()
@@ -29,10 +34,10 @@ class ChatViewModel(private val repository: MessagingDB) : ViewModel() {
 
     fun sendMessage() {
 
-        val instagrammerId = instagrammerId.value
+        val instagrammer = instagrammerUser.value
         val messageText = message.value
-        val photoUrl = currentUser?.photoUrl.toString()
         val date = Date()
+        val photoRef = currentUserInstance.currentUserDocRef
 
         viewModelScope.launch {
             messageText?.let {
@@ -40,10 +45,10 @@ class ChatViewModel(private val repository: MessagingDB) : ViewModel() {
                     val directMessage = DirectMessage(
                         userId,
                         messageText,
-                        photoUrl,
+                        photoRef,
                         date
                     )
-                    instagrammerId?.let { id -> repository.saveMessage(id, directMessage) }
+                    instagrammer?.let { user -> database.saveMessage(user, directMessage) }
                     message.value = ""
                 }
             }
@@ -51,7 +56,7 @@ class ChatViewModel(private val repository: MessagingDB) : ViewModel() {
     }
 
     fun fetchMessages(instagrammerId: String) = liveData(Dispatchers.IO) {
-        repository.subscribeToChat(instagrammerId).collect {
+        database.subscribeToChat(instagrammerId).collect {
             emit(it)
         }
     }

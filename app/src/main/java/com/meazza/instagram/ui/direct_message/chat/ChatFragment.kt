@@ -28,7 +28,7 @@ class ChatFragment : Fragment(R.layout.fragment_chat) {
         instagrammer = arguments?.let { ChatFragmentArgs.fromBundle(it).user }
 
         chatViewModel.run {
-            instagrammerId.value = instagrammer?.id
+            instagrammerUser.value = instagrammer
             instagrammerName.value = instagrammer?.name
             instagrammerUsername.value = instagrammer?.username
             instagrammerPhoto.value = instagrammer?.photoUrl
