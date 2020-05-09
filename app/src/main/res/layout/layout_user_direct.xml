@@ -45,7 +45,7 @@
             android:textColor="@color/colorAccent"
             app:layout_constraintBottom_toTopOf="@+id/guideline2"
             app:layout_constraintStart_toEndOf="@+id/iv_user"
-            tools:text="@string/jonathan_doe" />
+            tools:text="@string/fake_name" />
 
         <TextView
             android:id="@+id/tv_last_message"

@@ -56,6 +56,10 @@
         <item name="android:background">@color/colorPrimary</item>
     </style>
 
+    <style name="ToolbarWhite">
+        <item name="android:background">@color/white</item>
+    </style>
+
     <style name="ToolbarTitle">
         <item name="android:textSize">18sp</item>
         <item name="android:fontFamily">@font/roboto_medium</item>

@@ -8,8 +8,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.tabs.TabLayoutMediator
 import com.meazza.instagram.R
+import com.meazza.instagram.data.model.User
 import com.meazza.instagram.databinding.FragmentProfileBinding
 import com.meazza.instagram.ui.profile.adapter.ViewPagerProfileAdapter
 import kotlinx.android.synthetic.main.fragment_profile.*
@@ -18,12 +20,13 @@ import org.koin.android.ext.android.inject
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     private val profileViewModel by inject<ProfileViewModel>()
+    private var instagrammer: User? = null
     private lateinit var uid: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val instagrammer = arguments?.let { ProfileFragmentArgs.fromBundle(it).user }
+        instagrammer = arguments?.let { ProfileFragmentArgs.fromBundle(it).user }
         uid = instagrammer?.id.toString()
 
         profileViewModel.run {
@@ -64,6 +67,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         setHasOptionsMenu(true)
         setToolbar()
         setTabLayout()
+        setUiAction()
     }
 
     private fun setToolbar() {
@@ -75,6 +79,13 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                 setDisplayHomeAsUpEnabled(true)
                 setHomeAsUpIndicator(R.drawable.ic_arrow_left)
             }
+        }
+    }
+
+    private fun setUiAction() {
+        btn_send_message.setOnClickListener {
+            val direction = instagrammer?.let { user -> ProfileFragmentDirections.gotoChat(user) }
+            direction?.let { action -> findNavController().navigate(action) }
         }
     }
 

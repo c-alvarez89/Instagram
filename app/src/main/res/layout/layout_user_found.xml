@@ -45,7 +45,7 @@
             android:textColor="@color/colorAccent"
             app:layout_constraintBottom_toTopOf="@+id/guideline2"
             app:layout_constraintStart_toEndOf="@+id/iv_user"
-            tools:text="@string/fake_nickname" />
+            tools:text="@string/fake_username" />
 
         <TextView
             android:id="@+id/tv_user_name"
@@ -58,7 +58,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/tv_username"
             app:layout_constraintTop_toTopOf="@+id/guideline2"
-            tools:text="@string/jonathan_doe" />
+            tools:text="@string/fake_name" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -2,6 +2,7 @@ package com.meazza.instagram.data.network
 
 import android.net.Uri
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.meazza.instagram.data.model.User
@@ -12,6 +13,7 @@ object CurrentUserDB {
 
     private val db by lazy { FirebaseFirestore.getInstance() }
     private val storage by lazy { FirebaseStorage.getInstance().reference }
+    private val currentUser by lazy { FirebaseAuth.getInstance().currentUser }
     private val currentUserUid by lazy { FirebaseAuth.getInstance().currentUser?.uid!! }
 
     private val usersRef = db.collection(USER_REF)
@@ -46,5 +48,13 @@ object CurrentUserDB {
 
     private fun updatePhoto(photoUrl: String) {
         usersRef.document(currentUserUid).update(PHOTO_URL, photoUrl)
+    }
+
+    suspend fun updateCurrentUserPhoto(photo: Uri) {
+        val profile = UserProfileChangeRequest
+            .Builder()
+            .setPhotoUri(photo)
+            .build()
+        currentUser?.updateProfile(profile)?.await()
     }
 }

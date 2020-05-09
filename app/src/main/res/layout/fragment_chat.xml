@@ -21,11 +21,58 @@
             android:layout_width="0dp"
             android:layout_height="48dp"
             android:elevation="2dp"
-            android:theme="@style/ToolbarTheme"
+            android:theme="@style/ToolbarWhite"
+            app:contentInsetStart="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:titleTextAppearance="@style/ToolbarTitle" />
+            app:titleTextAppearance="@style/ToolbarTitle">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/iv_user_photo_chat"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:contentDescription="@string/user_photo"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:setImage="@{viewModel.instagrammerPhoto}"
+                    app:srcCompat="@drawable/ic_user_photo" />
+
+                <TextView
+                    android:id="@+id/tv_name_chat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@{viewModel.instagrammerName}"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_username_chat"
+                    app:layout_constraintStart_toEndOf="@+id/iv_user_photo_chat"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_chainStyle="packed"
+                    tools:text="@string/fake_name" />
+
+                <TextView
+                    android:id="@+id/tv_username_chat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@{viewModel.instagrammerUsername}"
+                    android:textColor="@color/gray_dark"
+                    android:textSize="13sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/tv_name_chat"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_name_chat"
+                    tools:text="@string/fake_username" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.appcompat.widget.Toolbar>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_chat"

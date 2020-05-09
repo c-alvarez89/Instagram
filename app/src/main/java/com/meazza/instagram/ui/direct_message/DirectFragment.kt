@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.meazza.instagram.R
 import com.meazza.instagram.data.model.User
 import com.meazza.instagram.databinding.FragmentDirectBinding
@@ -33,7 +34,7 @@ class DirectFragment : Fragment(R.layout.fragment_direct), RecyclerViewListener 
         directViewModel.run {
             adapter.value = DirectAdapter(this@DirectFragment)
             getConversations().observe(viewLifecycleOwner, Observer {
-                setAdapter(it)
+//                setAdapter(it)
             })
         }
 
@@ -59,5 +60,7 @@ class DirectFragment : Fragment(R.layout.fragment_direct), RecyclerViewListener 
     }
 
     override fun onItemClickListener(user: User) {
+        val action = DirectFragmentDirections.gotoChat(user)
+        findNavController().navigate(action)
     }
 }

@@ -170,7 +170,7 @@
                             android:minLines="1"
                             android:text="@{viewModel.name}"
                             android:textColor="@color/colorAccent"
-                            tools:text="@string/jonathan_doe" />
+                            tools:text="@string/fake_name" />
 
                         <TextView
                             android:id="@+id/tv_bio_profile"
@@ -271,7 +271,7 @@
                         android:textAllCaps="false"
                         android:textColor="@color/colorAccent"
                         android:textSize="18sp"
-                        tools:text="@string/fake_nickname" />
+                        tools:text="@string/fake_username" />
 
                 </androidx.appcompat.widget.Toolbar>
 

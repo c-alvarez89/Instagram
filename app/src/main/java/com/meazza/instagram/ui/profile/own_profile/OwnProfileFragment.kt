@@ -65,7 +65,7 @@ class OwnProfileFragment : Fragment(R.layout.fragment_own_profile) {
 
     private fun setUiAction() {
         btn_edit_user_profile.setOnClickListener {
-            findNavController().navigate(R.id.next_action)
+            findNavController().navigate(R.id.goto_chat)
         }
     }
 

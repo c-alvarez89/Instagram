@@ -4,7 +4,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.meazza.instagram.data.model.DirectMessage
-import com.meazza.instagram.data.model.User
 import com.meazza.instagram.util.DIRECT_MESSAGE_REF
 import com.meazza.instagram.util.SENT_AT
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -17,32 +16,36 @@ import kotlinx.coroutines.tasks.await
 object MessagingDB {
 
     private val db by lazy { FirebaseFirestore.getInstance() }
-    private val currentUserUid by lazy { FirebaseAuth.getInstance().currentUser?.uid!! }
+    private val currentUser by lazy { FirebaseAuth.getInstance().currentUser }
+
+    private val currentUserUid = currentUser?.uid.toString()
 
     private val directMessageRef = db.collection(DIRECT_MESSAGE_REF)
 
-    suspend fun sendMessage(message: DirectMessage) {
-        directMessageRef.add(message).await()
+    suspend fun saveMessage(instagrammerId: String, message: DirectMessage) {
+        db.collection(currentUserUid).document(instagrammerId).collection(instagrammerId)
+            .add(message).await()
+        db.collection(instagrammerId).document(currentUserUid).collection(currentUserUid)
+            .add(message).await()
     }
 
-    suspend fun subscribeToChat(): Flow<MutableList<DirectMessage>> = callbackFlow {
+    suspend fun subscribeToChat(instagrammerId: String): Flow<MutableList<DirectMessage>> =
+        callbackFlow {
 
-        val subscription = directMessageRef
-            .orderBy(SENT_AT, Query.Direction.DESCENDING)
-            .addSnapshotListener { querySnapshot, _ ->
-                querySnapshot?.let {
-                    val messages = it.toObjects(DirectMessage::class.java)
-                    offer(messages)
+            val subscription = directMessageRef.document(currentUserUid)
+                .collection(instagrammerId)
+                .orderBy(SENT_AT, Query.Direction.DESCENDING)
+                .addSnapshotListener { querySnapshot, _ ->
+                    querySnapshot?.let {
+                        val messages = it.toObjects(DirectMessage::class.java)
+                        offer(messages)
+                    }
                 }
-            }
 
-        awaitClose { subscription.remove() }
-    }
+            awaitClose { subscription.remove() }
+        }
 
-    suspend fun getConversations(): Flow<MutableList<User>> = callbackFlow {
-        directMessageRef.document(currentUserUid)
-            .collection("anotherUserId").get().addOnSuccessListener {
-                offer(it.toObjects(User::class.java))
-            }.await()
+    suspend fun getConversations() {
+        db.collection(currentUserUid).get().await()
     }
 }

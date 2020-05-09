@@ -6,7 +6,6 @@ import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuth
 import com.meazza.instagram.data.model.DirectMessage
-import com.meazza.instagram.data.network.CurrentUserDB
 import com.meazza.instagram.data.network.MessagingDB
 import com.meazza.instagram.ui.direct_message.adapter.ChatAdapter
 import kotlinx.coroutines.Dispatchers
@@ -16,27 +15,23 @@ import kotlinx.coroutines.launch
 import java.util.*
 
 @ExperimentalCoroutinesApi
-class ChatViewModel(
-    private val repository: MessagingDB,
-    private val userInstance: CurrentUserDB
-) :
-    ViewModel() {
+class ChatViewModel(private val repository: MessagingDB) : ViewModel() {
 
-    private val userId by lazy { FirebaseAuth.getInstance().currentUser?.uid.toString() }
+    private val currentUser by lazy { FirebaseAuth.getInstance().currentUser }
+    private val userId = currentUser?.uid.toString()
 
-    val adapter =
-        ChatAdapter(userId)
+    val adapter = ChatAdapter(userId)
+    val instagrammerId = MutableLiveData<String>()
+    val instagrammerName = MutableLiveData<String>()
+    val instagrammerUsername = MutableLiveData<String>()
+    val instagrammerPhoto = MutableLiveData<String>()
     var message = MutableLiveData<String>()
-    var photoUrl = MutableLiveData<String>()
-
-    init {
-        if (photoUrl.value.isNullOrEmpty()) photoUrl.value = ""
-    }
 
     fun sendMessage() {
 
+        val instagrammerId = instagrammerId.value
         val messageText = message.value
-        val photoUrl = photoUrl.value
+        val photoUrl = currentUser?.photoUrl.toString()
         val date = Date()
 
         viewModelScope.launch {
@@ -48,15 +43,15 @@ class ChatViewModel(
                         photoUrl,
                         date
                     )
-                    repository.sendMessage(directMessage)
+                    instagrammerId?.let { id -> repository.saveMessage(id, directMessage) }
                     message.value = ""
                 }
             }
         }
     }
 
-    fun fetchMessages() = liveData(Dispatchers.IO) {
-        repository.subscribeToChat().collect {
+    fun fetchMessages(instagrammerId: String) = liveData(Dispatchers.IO) {
+        repository.subscribeToChat(instagrammerId).collect {
             emit(it)
         }
     }
@@ -64,12 +59,5 @@ class ChatViewModel(
     fun setAdapter(messages: MutableList<DirectMessage>) = adapter.run {
         setListData(messages.asReversed())
         notifyDataSetChanged()
-    }
-
-    fun getUser() {
-        viewModelScope.launch {
-            val user = userInstance.getUser()
-            photoUrl.value = user?.photoUrl
-        }
     }
 }

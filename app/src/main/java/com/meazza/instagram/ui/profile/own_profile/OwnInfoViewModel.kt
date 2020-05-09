@@ -73,7 +73,10 @@ class OwnInfoViewModel(private val userInstance: CurrentUserDB) : ViewModel() {
     fun uploadImage(imageUri: Uri) {
         viewModelScope.launch {
             try {
-                userInstance.uploadImage(imageUri)
+                userInstance.run {
+                    uploadImage(imageUri)
+                    updateCurrentUserPhoto(imageUri)
+                }
             } catch (e: Exception) {
                 statusCallback?.onFailure(TRY_AGAIN)
                 e.printStackTrace()

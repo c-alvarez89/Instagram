@@ -38,6 +38,6 @@ val profileModule = module {
 @ExperimentalCoroutinesApi
 val directMessageModule = module {
     single { MessagingDB }
-    viewModel { ChatViewModel(get(), get()) }
+    viewModel { ChatViewModel(get()) }
     viewModel { DirectViewModel(get()) }
 }
