@@ -126,6 +126,7 @@
                 android:background="@color/white"
                 android:fontFamily="@font/roboto_regular"
                 android:hint="@string/message"
+                android:inputType="textCapSentences"
                 android:maxLines="5"
                 android:text="@={viewModel.message}"
                 android:textColor="@color/colorAccent"

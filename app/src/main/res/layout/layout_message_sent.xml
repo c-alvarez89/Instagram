@@ -17,20 +17,26 @@
 
         <TextView
             android:id="@+id/tv_message_sent"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="2dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="4dp"
+            android:layout_marginBottom="2dp"
             android:background="@drawable/background_bubble_chat_sent"
             android:fontFamily="@font/roboto_regular"
-            android:padding="20dp"
+            android:maxWidth="240dp"
+            android:paddingStart="16dp"
+            android:paddingTop="12dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="12dp"
             android:text="@{directMessage.message}"
+            android:textAlignment="gravity"
             android:textColor="@color/colorAccent"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="@string/enter_your_instagram_info" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
