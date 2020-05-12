@@ -65,4 +65,12 @@
     <string name="new_message">New Message</string>
     <string name="last_message">Last message&#8230;</string>
     <string name="info">Info</string>
+    <string name="gallery">Gallery</string>
+    <string name="photo">Photo</string>
+    <string name="new_post">New post</string>
+    <string name="close">Close</string>
+    <string name="flash">Flash</string>
+    <string name="front_facing_camera">Front facing camera</string>
+    <string name="capture_picture">Capture picture</string>
+    <string name="filter">Filter</string>
 </resources>

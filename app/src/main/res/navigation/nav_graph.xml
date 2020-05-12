@@ -82,7 +82,11 @@
         android:id="@+id/navigation_add_post"
         android:name="com.meazza.instagram.ui.add_post.AddPostFragment"
         android:label="fragment_add_post"
-        tools:layout="@layout/fragment_add_post" />
+        tools:layout="@layout/fragment_add_post">
+        <action
+            android:id="@+id/goto_filter"
+            app:destination="@id/destination_filter" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_notification"
         android:name="com.meazza.instagram.ui.notification.NotificationFragment"
@@ -115,7 +119,7 @@
         android:id="@+id/destination_chat"
         android:name="com.meazza.instagram.ui.direct_message.chat.ChatFragment"
         android:label="fragment_chat"
-        tools:layout="@layout/fragment_chat" >
+        tools:layout="@layout/fragment_chat">
         <argument
             android:name="user"
             app:argType="com.meazza.instagram.data.model.User" />
@@ -129,12 +133,22 @@
         android:id="@+id/destination_profile"
         android:name="com.meazza.instagram.ui.profile.ProfileFragment"
         android:label="FragmentProfile"
-        tools:layout="@layout/fragment_profile" >
+        tools:layout="@layout/fragment_profile">
         <argument
             android:name="user"
             app:argType="com.meazza.instagram.data.model.User" />
         <action
             android:id="@+id/goto_chat"
             app:destination="@id/destination_chat" />
+    </fragment>
+    <fragment
+        android:id="@+id/destination_filter"
+        android:name="com.meazza.instagram.ui.add_post.filter.FilterFragment"
+        android:label="fragment_filter"
+        tools:layout="@layout/fragment_filter">
+        <argument
+            android:name="image"
+            app:argType="android.graphics.Bitmap"
+            app:nullable="true" />
     </fragment>
 </navigation>
