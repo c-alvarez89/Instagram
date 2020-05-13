@@ -11,16 +11,17 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.meazza.instagram.R
+import com.meazza.instagram.common.UserListener
 import com.meazza.instagram.data.model.User
 import com.meazza.instagram.databinding.FragmentDirectBinding
 import com.meazza.instagram.ui.direct_message.adapter.DirectAdapter
-import com.meazza.instagram.ui.search.adapter.RecyclerViewListener
 import kotlinx.android.synthetic.main.fragment_direct.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.android.ext.android.inject
 
 @ExperimentalCoroutinesApi
-class DirectFragment : Fragment(R.layout.fragment_direct), RecyclerViewListener {
+class DirectFragment : Fragment(R.layout.fragment_direct),
+    UserListener {
 
     private val directViewModel by inject<DirectViewModel>()
 

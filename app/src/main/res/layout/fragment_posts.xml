@@ -5,7 +5,6 @@
     android:layout_height="wrap_content"
     tools:context=".ui.profile.post.PostsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:id="@+id/tv_post"
         android:layout_width="match_parent"

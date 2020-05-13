@@ -2,9 +2,6 @@ package com.meazza.instagram.ui.add_post.from
 
 import android.app.Activity
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.ImageDecoder
-import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
@@ -18,7 +15,7 @@ import kotlinx.android.synthetic.main.fragment_gallery.*
 
 class GalleryFragment : Fragment(R.layout.fragment_gallery) {
 
-    private var imageSelected: Bitmap? = null
+    private var imageSelected = ""
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -35,10 +32,8 @@ class GalleryFragment : Fragment(R.layout.fragment_gallery) {
             findNavController().popBackStack()
         }
         tv_next_gallery.setOnClickListener {
-            if (imageSelected != null) {
-                val action = AddPostFragmentDirections.gotoFilter(imageSelected)
-                findNavController().navigate(action)
-            }
+            val action = AddPostFragmentDirections.gotoFilter(imageSelected)
+            findNavController().navigate(action)
         }
     }
 
@@ -57,31 +52,8 @@ class GalleryFragment : Fragment(R.layout.fragment_gallery) {
             when (requestCode) {
                 EditProfileFragment.GALLERY_REQUEST_CODE -> {
                     val imageUri = data?.data
-                    try {
-                        imageUri?.let {
-                            if (Build.VERSION.SDK_INT < 28) {
-                                val bitmap = MediaStore.Images.Media.getBitmap(
-                                    activity?.contentResolver,
-                                    imageUri
-                                )
-                                imageSelected = bitmap
-                                iv_image_selected.load(bitmap)
-                            } else {
-                                val source = activity?.contentResolver?.let { contentResolver ->
-                                    ImageDecoder.createSource(
-                                        contentResolver,
-                                        imageUri
-                                    )
-                                }
-                                val bitmap =
-                                    source?.let { source -> ImageDecoder.decodeBitmap(source) }
-                                imageSelected = bitmap
-                                iv_image_selected.load(bitmap)
-                            }
-                        }
-                    } catch (e: Exception) {
-                        e.printStackTrace()
-                    }
+                    iv_image_selected.load(imageUri)
+                    imageSelected = imageUri.toString()
                 }
             }
         }

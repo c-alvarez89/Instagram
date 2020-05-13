@@ -7,14 +7,15 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.meazza.instagram.R
+import com.meazza.instagram.common.UserListener
 import com.meazza.instagram.data.model.User
 import com.meazza.instagram.databinding.FragmentSearchBinding
-import com.meazza.instagram.ui.search.adapter.RecyclerViewListener
 import com.meazza.instagram.ui.search.adapter.SearchAdapter
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.android.ext.android.inject
 
-class SearchFragment : Fragment(R.layout.fragment_search), RecyclerViewListener {
+class SearchFragment : Fragment(R.layout.fragment_search),
+    UserListener {
 
     private val searchViewModel by inject<SearchViewModel>()
 

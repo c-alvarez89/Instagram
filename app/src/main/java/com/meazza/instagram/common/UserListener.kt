@@ -1,7 +1,8 @@
-package com.meazza.instagram.ui.search.adapter
+package com.meazza.instagram.common
 
 import com.meazza.instagram.data.model.User
 
-interface RecyclerViewListener {
+
+interface UserListener {
     fun onItemClickListener(user: User)
 }

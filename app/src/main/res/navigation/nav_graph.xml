@@ -147,8 +147,7 @@
         android:label="fragment_filter"
         tools:layout="@layout/fragment_filter">
         <argument
-            android:name="image"
-            app:argType="android.graphics.Bitmap"
-            app:nullable="true" />
+            android:name="imageUri"
+            app:argType="string" />
     </fragment>
 </navigation>
