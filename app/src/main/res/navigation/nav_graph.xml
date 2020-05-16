@@ -149,5 +149,17 @@
         <argument
             android:name="imageUri"
             app:argType="string" />
+        <action
+            android:id="@+id/goto_new_post"
+            app:destination="@id/newPostFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newPostFragment"
+        android:name="com.meazza.instagram.ui.add_post.share.NewPostFragment"
+        android:label="fragment_new_post"
+        tools:layout="@layout/fragment_new_post">
+        <argument
+            android:name="bitmap"
+            app:argType="android.graphics.Bitmap" />
     </fragment>
 </navigation>

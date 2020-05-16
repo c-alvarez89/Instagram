@@ -73,4 +73,6 @@
     <string name="front_facing_camera">Front facing camera</string>
     <string name="capture_picture">Capture picture</string>
     <string name="filter">Filter</string>
+    <string name="new_post_image">New post image</string>
+    <string name="write_a_caption">Write a caption&#8230;</string>
 </resources>

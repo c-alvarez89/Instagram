@@ -33,11 +33,11 @@ object MessagingDB {
 
         conversationRef.document(currentUserUid).collection(currentUserUid)
             .document(instagrammer.id)
-            .set(hashMapOf(DOC_REF to instagramUserDocRef)).await()
+            .set(hashMapOf(DOC_REFERENCE to instagramUserDocRef)).await()
 
         conversationRef.document(instagrammer.id).collection(instagrammer.id)
             .document(currentUserUid)
-            .set(hashMapOf(DOC_REF to currentUserDocRef)).await()
+            .set(hashMapOf(DOC_REFERENCE to currentUserDocRef)).await()
     }
 
     suspend fun subscribeToChat(instagrammerId: String): Flow<MutableList<DirectMessage>> =
@@ -63,7 +63,7 @@ object MessagingDB {
             .collection(currentUserUid).get().await()
 
         for (document in query) {
-            val snapshot = document.getDocumentReference(DOC_REF)?.get()?.await()
+            val snapshot = document.getDocumentReference(DOC_REFERENCE)?.get()?.await()
             val user = snapshot?.toObject(User::class.java)
             user?.let { userList.add(it) }
         }

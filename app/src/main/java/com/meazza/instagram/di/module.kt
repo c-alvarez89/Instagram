@@ -1,6 +1,7 @@
 package com.meazza.instagram.di
 
 import com.meazza.instagram.data.network.*
+import com.meazza.instagram.ui.add_post.share.NewPostViewModel
 import com.meazza.instagram.ui.auth.log_in.LogInViewModel
 import com.meazza.instagram.ui.auth.reset_password.ResetPasswordViewModel
 import com.meazza.instagram.ui.auth.sign_up.SignUpViewModel
@@ -33,6 +34,11 @@ val searchModule = module {
 val profileModule = module {
     single { FollowActionDB }
     viewModel { ProfileViewModel(get()) }
+}
+
+val postModule = module {
+    single { PostActionDB }
+    viewModel { NewPostViewModel(get()) }
 }
 
 @ExperimentalCoroutinesApi

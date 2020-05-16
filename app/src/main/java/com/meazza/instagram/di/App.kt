@@ -18,6 +18,7 @@ class App : Application() {
                     userModule,
                     searchModule,
                     profileModule,
+                    postModule,
                     directMessageModule
                 )
             )

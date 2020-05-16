@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ui.add_post.share.NewPostFragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tb_new_post"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:elevation="2dp"
+        android:theme="@style/ToolbarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleTextAppearance="@style/ToolbarTitle" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tb_new_post">
+
+        <ImageView
+            android:id="@+id/iv_new_post"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="16dp"
+            android:contentDescription="@string/new_post_image"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="@+id/et_caption"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/et_caption"
+            tools:src="@tools:sample/backgrounds/scenic" />
+
+        <MultiAutoCompleteTextView
+            android:id="@+id/et_caption"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="32dp"
+            android:background="@color/white"
+            android:fontFamily="@font/roboto_regular"
+            android:gravity="start|top"
+            android:hint="@string/write_a_caption"
+            android:inputType="textMultiLine|textCapSentences"
+            android:maxLines="16"
+            android:textColor="@color/colorAccent"
+            android:textColorHint="@color/gray_icon"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_new_post"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
