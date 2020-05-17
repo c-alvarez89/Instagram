@@ -17,26 +17,20 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
-import com.google.firebase.auth.FirebaseAuth
 import com.meazza.instagram.R
-import com.meazza.instagram.data.model.Post
 import com.meazza.instagram.ui.add_post.adapter.FilterThumbnailAdapter
-import com.meazza.instagram.ui.add_post.share.NewPostViewModel
 import com.zomato.photofilters.FilterPack
 import com.zomato.photofilters.utils.ThumbnailItem
 import com.zomato.photofilters.utils.ThumbnailsManager
 import kotlinx.android.synthetic.main.fragment_filter.*
-import org.koin.android.ext.android.inject
-import java.io.ByteArrayOutputStream
 
 
 @Suppress("DEPRECATION", "NAME_SHADOWING")
 class FilterFragment : Fragment(R.layout.fragment_filter), FilterListener {
 
-    private val newPostViewModel by inject<NewPostViewModel>()
-    private val userUid by lazy { FirebaseAuth.getInstance().currentUser?.uid }
-
     private val filterList = ArrayList<ThumbnailItem>()
+    private var imageString: String? = null
+    private var filterName: String? = null
     private var originalImage: Bitmap? = null
     private var newImage: Bitmap? = null
 
@@ -54,8 +48,8 @@ class FilterFragment : Fragment(R.layout.fragment_filter), FilterListener {
     }
 
     private fun getBitmap() {
-        val image = arguments?.let { FilterFragmentArgs.fromBundle(it).imageUri }
-        val imageUri = Uri.parse(image)
+        imageString = arguments?.let { FilterFragmentArgs.fromBundle(it).imageUri }
+        val imageUri = Uri.parse(imageString)
         try {
             imageUri?.let {
                 if (Build.VERSION.SDK_INT < 28) {
@@ -136,14 +130,6 @@ class FilterFragment : Fragment(R.layout.fragment_filter), FilterListener {
         setHasFixedSize(true)
     }
 
-    private fun addNewPost(bitmap: Bitmap) {
-        val stream = ByteArrayOutputStream()
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream)
-        val byteArray = stream.toByteArray()
-        val post = Post(userUid!!)
-        newPostViewModel.addImagePost(post, byteArray)
-    }
-
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_next, menu)
         super.onCreateOptionsMenu(menu, inflater)
@@ -151,20 +137,18 @@ class FilterFragment : Fragment(R.layout.fragment_filter), FilterListener {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.mn_next) {
-            newImage?.let {
-                val thumbnail = Bitmap.createScaledBitmap(it, 128, 128, true)
-                val action = FilterFragmentDirections.gotoNewPost(thumbnail)
-                findNavController().navigate(action)
-                addNewPost(it)
-            }
+            val imagePost = FilterImage(imageString, filterName)
+            val action = FilterFragmentDirections.gotoNewPost(imagePost)
+            findNavController().navigate(action)
         }
         return super.onOptionsItemSelected(item)
     }
 
     override fun onClickItem(item: ThumbnailItem) {
-        val image = originalImage?.copy(originalImage?.config, true)
+        val copyImage = originalImage?.copy(originalImage?.config, true)
         val filter = item.filter
-        newImage = filter.processFilter(image)
+        filterName = item.filterName
+        newImage = filter.processFilter(copyImage)
         iv_preview_image.load(newImage)
     }
 }

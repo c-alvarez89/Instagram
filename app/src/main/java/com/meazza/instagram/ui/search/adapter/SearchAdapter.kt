@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.meazza.instagram.R
-import com.meazza.instagram.common.UserListener
+import com.meazza.instagram.common.listener.UserListener
 import com.meazza.instagram.data.model.User
 import com.meazza.instagram.databinding.LayoutUserFoundBinding
 

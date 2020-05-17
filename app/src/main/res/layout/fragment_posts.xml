@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:context=".ui.profile.post.PostsFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/tv_post"
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.meazza.instagram.ui.profile.post.PostsViewModel" />
+    </data>
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="800dp"
-        android:gravity="center"
-        android:text="@string/hello_blank_fragment"
-        android:textSize="24sp" />
+        android:layout_height="match_parent"
+        tools:context=".ui.profile.post.PostsFragment">
 
-</FrameLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_posts"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:setAdapter="@{viewModel.adapter}"
+            app:spanCount="3"
+            tools:listitem="@layout/layout_profile_post" />
+    </FrameLayout>
+</layout>

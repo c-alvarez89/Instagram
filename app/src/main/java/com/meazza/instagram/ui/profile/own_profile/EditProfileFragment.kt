@@ -16,8 +16,8 @@ import androidx.navigation.fragment.findNavController
 import coil.api.load
 import coil.transform.CircleCropTransformation
 import com.meazza.instagram.R
-import com.meazza.instagram.common.OnViewClickListener
-import com.meazza.instagram.common.StatusCallback
+import com.meazza.instagram.common.listener.OnViewClickListener
+import com.meazza.instagram.common.listener.StatusCallback
 import com.meazza.instagram.common.permission.PermissionRequest
 import com.meazza.instagram.common.permission.PermissionState
 import com.meazza.instagram.databinding.FragmentEditProfileBinding
@@ -27,7 +27,8 @@ import org.jetbrains.anko.support.v4.longToast
 import org.koin.android.ext.android.inject
 
 
-class EditProfileFragment : Fragment(R.layout.fragment_edit_profile), OnViewClickListener,
+class EditProfileFragment : Fragment(R.layout.fragment_edit_profile),
+    OnViewClickListener,
     StatusCallback {
 
     companion object {

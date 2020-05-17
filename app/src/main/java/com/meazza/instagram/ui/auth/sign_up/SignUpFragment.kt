@@ -6,7 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.meazza.instagram.R
-import com.meazza.instagram.common.StatusCallback
+import com.meazza.instagram.common.listener.StatusCallback
 import com.meazza.instagram.databinding.FragmentSignUpBinding
 import com.meazza.instagram.util.EMPTY_FIELDS
 import com.meazza.instagram.util.INVALID_EMAIL
@@ -17,7 +17,8 @@ import org.jetbrains.anko.okButton
 import org.jetbrains.anko.support.v4.alert
 import org.koin.android.ext.android.inject
 
-class SignUpFragment : Fragment(R.layout.fragment_sign_up), StatusCallback {
+class SignUpFragment : Fragment(R.layout.fragment_sign_up),
+    StatusCallback {
 
     private val signUpViewModel by inject<SignUpViewModel>()
 

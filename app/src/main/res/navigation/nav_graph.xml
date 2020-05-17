@@ -159,7 +159,7 @@
         android:label="fragment_new_post"
         tools:layout="@layout/fragment_new_post">
         <argument
-            android:name="bitmap"
-            app:argType="android.graphics.Bitmap" />
+            android:name="filterImage"
+            app:argType="com.meazza.instagram.ui.add_post.filter.FilterImage" />
     </fragment>
 </navigation>

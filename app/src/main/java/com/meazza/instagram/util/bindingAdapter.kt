@@ -53,6 +53,17 @@ fun setUserPhotoChat(imageView: ImageView, reference: DocumentReference?) {
     }
 }
 
+@BindingAdapter("setImagePost")
+fun loadImagePost(imageView: ImageView, url: String?) {
+    if (url == "") {
+        imageView.load(R.color.gray)
+    } else {
+        imageView.load(url) {
+            crossfade(true)
+        }
+    }
+}
+
 @BindingAdapter("isTextEmpty")
 fun textViewVisibility(textView: TextView, text: String?) {
     if (text == "") {

@@ -1,4 +1,4 @@
-package com.meazza.instagram.common
+package com.meazza.instagram.common.listener
 
 import com.meazza.instagram.data.model.User
 

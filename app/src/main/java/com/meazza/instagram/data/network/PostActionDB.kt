@@ -32,4 +32,14 @@ object PostActionDB {
         postRef.document(currentUserUid!!).collection(currentUserUid!!).document(postId)
             .update(POST_IMAGE_URL, imageUrl)
     }
+
+    suspend fun getPosts(userId: String): MutableList<Post> {
+        val posts = mutableListOf<Post>()
+        val query = postRef.document(userId).collection(userId).get().await()
+        for (document in query) {
+            val post = document.toObject(Post::class.java)
+            posts.add(post)
+        }
+        return posts
+    }
 }

@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
-import com.meazza.instagram.common.StatusCallback
+import com.meazza.instagram.common.listener.StatusCallback
 import com.meazza.instagram.data.model.User
 import com.meazza.instagram.data.network.AuthService
 import com.meazza.instagram.data.network.CurrentUserDB

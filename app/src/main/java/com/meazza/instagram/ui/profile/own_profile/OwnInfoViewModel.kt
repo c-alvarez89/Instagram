@@ -4,8 +4,8 @@ import android.net.Uri
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.meazza.instagram.common.OnViewClickListener
-import com.meazza.instagram.common.StatusCallback
+import com.meazza.instagram.common.listener.OnViewClickListener
+import com.meazza.instagram.common.listener.StatusCallback
 import com.meazza.instagram.data.network.CurrentUserDB
 import com.meazza.instagram.util.TRY_AGAIN
 import kotlinx.coroutines.launch

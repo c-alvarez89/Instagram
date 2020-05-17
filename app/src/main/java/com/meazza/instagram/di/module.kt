@@ -9,6 +9,7 @@ import com.meazza.instagram.ui.direct_message.DirectViewModel
 import com.meazza.instagram.ui.direct_message.chat.ChatViewModel
 import com.meazza.instagram.ui.profile.ProfileViewModel
 import com.meazza.instagram.ui.profile.own_profile.OwnInfoViewModel
+import com.meazza.instagram.ui.profile.post.PostsViewModel
 import com.meazza.instagram.ui.search.SearchViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -39,6 +40,7 @@ val profileModule = module {
 val postModule = module {
     single { PostActionDB }
     viewModel { NewPostViewModel(get()) }
+    viewModel { PostsViewModel(get()) }
 }
 
 @ExperimentalCoroutinesApi

@@ -75,4 +75,6 @@
     <string name="filter">Filter</string>
     <string name="new_post_image">New post image</string>
     <string name="write_a_caption">Write a caption&#8230;</string>
+    <string name="share">Share</string>
+    <string name="image_post">Image post</string>
 </resources>
