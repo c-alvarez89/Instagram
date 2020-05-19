@@ -5,11 +5,11 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.meazza.instagram.R
-import com.meazza.instagram.common.listener.UserListener
+import com.meazza.instagram.common.listener.OnUserClickListener
 import com.meazza.instagram.data.model.User
 import com.meazza.instagram.databinding.LayoutUserFoundBinding
 
-class SearchAdapter(val listener: UserListener?) :
+class SearchAdapter(val listener: OnUserClickListener?) :
     RecyclerView.Adapter<SearchAdapter.HolderUserFound>() {
 
     private var userList = mutableListOf<User>()

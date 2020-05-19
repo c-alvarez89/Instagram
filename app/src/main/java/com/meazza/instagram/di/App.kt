@@ -16,6 +16,7 @@ class App : Application() {
                 listOf(
                     authModule,
                     userModule,
+                    feedModule,
                     searchModule,
                     profileModule,
                     postModule,

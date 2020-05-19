@@ -26,7 +26,7 @@ class HostActivity : AppCompatActivity() {
                 R.id.navigation_feed -> bottom_nav.visibility = View.VISIBLE
                 R.id.navigation_search -> bottom_nav.visibility = View.VISIBLE
                 R.id.navigation_notification -> bottom_nav.visibility = View.VISIBLE
-                R.id.navigation_own_profile -> bottom_nav.visibility = View.VISIBLE
+                R.id.navigation_profile -> bottom_nav.visibility = View.VISIBLE
                 else -> bottom_nav.visibility = View.GONE
             }
         }

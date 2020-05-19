@@ -77,4 +77,10 @@
     <string name="write_a_caption">Write a caption&#8230;</string>
     <string name="share">Share</string>
     <string name="image_post">Image post</string>
+    <string name="menu">Menu</string>
+    <string name="like">Like</string>
+    <string name="comments">Comments</string>
+    <string name="view_all_comments">View all comments</string>
+    <string name="time_ago">11 days ago</string>
+    <string name="caption">Caption</string>
 </resources>

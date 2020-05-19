@@ -2,10 +2,10 @@ package com.meazza.instagram.ui.profile.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.meazza.instagram.ui.profile.post.PostsFragment
-import com.meazza.instagram.ui.profile.post.TaggedPostsFragment
+import com.meazza.instagram.ui.post.PostsFragment
+import com.meazza.instagram.ui.post.tagged.TaggedPostsFragment
 
-class ViewPagerProfileAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
+class ProfileViewPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
 
     override fun getItemCount(): Int = 2
 

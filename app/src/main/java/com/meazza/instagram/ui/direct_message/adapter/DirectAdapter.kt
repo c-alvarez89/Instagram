@@ -5,10 +5,10 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.meazza.instagram.R
-import com.meazza.instagram.common.listener.UserListener
+import com.meazza.instagram.common.listener.OnUserClickListener
 import com.meazza.instagram.databinding.LayoutUserDirectBinding
 
-class DirectAdapter(val listener: UserListener) :
+class DirectAdapter(val listener: OnUserClickListener) :
     RecyclerView.Adapter<DirectAdapter.HolderUserDirect>() {
 
     private var userList = mutableListOf<com.meazza.instagram.data.model.User>()

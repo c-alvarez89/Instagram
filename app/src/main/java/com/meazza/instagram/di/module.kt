@@ -1,15 +1,16 @@
 package com.meazza.instagram.di
 
 import com.meazza.instagram.data.network.*
-import com.meazza.instagram.ui.add_post.share.NewPostViewModel
+import com.meazza.instagram.ui.add_post.create_post.CreatePostViewModel
 import com.meazza.instagram.ui.auth.log_in.LogInViewModel
 import com.meazza.instagram.ui.auth.reset_password.ResetPasswordViewModel
 import com.meazza.instagram.ui.auth.sign_up.SignUpViewModel
 import com.meazza.instagram.ui.direct_message.DirectViewModel
 import com.meazza.instagram.ui.direct_message.chat.ChatViewModel
+import com.meazza.instagram.ui.feed.FeedViewModel
+import com.meazza.instagram.ui.post.PostsViewModel
 import com.meazza.instagram.ui.profile.ProfileViewModel
-import com.meazza.instagram.ui.profile.own_profile.OwnInfoViewModel
-import com.meazza.instagram.ui.profile.post.PostsViewModel
+import com.meazza.instagram.ui.profile.edit_profile.EditProfileViewModel
 import com.meazza.instagram.ui.search.SearchViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -24,7 +25,11 @@ val authModule = module {
 }
 
 val userModule = module {
-    viewModel { OwnInfoViewModel(get()) }
+    viewModel { EditProfileViewModel(get()) }
+}
+
+val feedModule = module {
+    viewModel { FeedViewModel(get()) }
 }
 
 val searchModule = module {
@@ -34,12 +39,12 @@ val searchModule = module {
 
 val profileModule = module {
     single { FollowActionDB }
-    viewModel { ProfileViewModel(get()) }
+    viewModel { ProfileViewModel(get(), get()) }
 }
 
 val postModule = module {
     single { PostActionDB }
-    viewModel { NewPostViewModel(get()) }
+    viewModel { CreatePostViewModel(get()) }
     viewModel { PostsViewModel(get()) }
 }
 

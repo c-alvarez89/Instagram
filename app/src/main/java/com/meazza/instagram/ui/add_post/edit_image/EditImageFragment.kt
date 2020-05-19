@@ -1,4 +1,4 @@
-package com.meazza.instagram.ui.add_post.filter
+package com.meazza.instagram.ui.add_post.edit_image
 
 import android.graphics.Bitmap
 import android.graphics.ImageDecoder
@@ -18,15 +18,18 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
 import com.meazza.instagram.R
+import com.meazza.instagram.common.listener.OnFilterClickListener
+import com.meazza.instagram.data.model.EditedImage
 import com.meazza.instagram.ui.add_post.adapter.FilterThumbnailAdapter
 import com.zomato.photofilters.FilterPack
 import com.zomato.photofilters.utils.ThumbnailItem
 import com.zomato.photofilters.utils.ThumbnailsManager
-import kotlinx.android.synthetic.main.fragment_filter.*
+import kotlinx.android.synthetic.main.fragment_edit_image.*
 
 
 @Suppress("DEPRECATION", "NAME_SHADOWING")
-class FilterFragment : Fragment(R.layout.fragment_filter), FilterListener {
+class EditImageFragment : Fragment(R.layout.fragment_edit_image),
+    OnFilterClickListener {
 
     private val filterList = ArrayList<ThumbnailItem>()
     private var imageString: String? = null
@@ -48,7 +51,7 @@ class FilterFragment : Fragment(R.layout.fragment_filter), FilterListener {
     }
 
     private fun getBitmap() {
-        imageString = arguments?.let { FilterFragmentArgs.fromBundle(it).imageUri }
+        imageString = arguments?.let { EditImageFragmentArgs.fromBundle(it).imageUri }
         val imageUri = Uri.parse(imageString)
         try {
             imageUri?.let {
@@ -117,7 +120,7 @@ class FilterFragment : Fragment(R.layout.fragment_filter), FilterListener {
 
     private fun setRecyclerView() = rv_filters.run {
 
-        val mAdapter = FilterThumbnailAdapter(this@FilterFragment)
+        val mAdapter = FilterThumbnailAdapter(this@EditImageFragment)
 
         mAdapter.apply {
             setListData(filterList)
@@ -137,8 +140,11 @@ class FilterFragment : Fragment(R.layout.fragment_filter), FilterListener {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.mn_next) {
-            val imagePost = FilterImage(imageString, filterName)
-            val action = FilterFragmentDirections.gotoNewPost(imagePost)
+            val imagePost = EditedImage(
+                imageString,
+                filterName
+            )
+            val action = EditImageFragmentDirections.gotoNewPost(imagePost)
             findNavController().navigate(action)
         }
         return super.onOptionsItemSelected(item)

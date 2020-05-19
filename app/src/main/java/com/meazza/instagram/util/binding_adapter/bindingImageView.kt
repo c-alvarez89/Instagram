@@ -1,11 +1,6 @@
-package com.meazza.instagram.util
+package com.meazza.instagram.util.binding_adapter
 
-import android.annotation.SuppressLint
-import android.view.View
-import android.widget.Button
 import android.widget.ImageView
-import android.widget.SearchView
-import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import coil.api.load
 import coil.transform.CircleCropTransformation
@@ -61,37 +56,5 @@ fun loadImagePost(imageView: ImageView, url: String?) {
         imageView.load(url) {
             crossfade(true)
         }
-    }
-}
-
-@BindingAdapter("isTextEmpty")
-fun textViewVisibility(textView: TextView, text: String?) {
-    if (text == "") {
-        textView.visibility = View.GONE
-    } else {
-        textView.visibility = View.VISIBLE
-    }
-}
-
-@SuppressLint("DefaultLocale")
-@BindingAdapter("toLowerCase")
-fun toLowerCase(textView: TextView, text: String?) {
-    textView.text = text?.toLowerCase() ?: ""
-}
-
-@BindingAdapter("setQueryTextListener")
-fun setOnQueryTextListener(
-    searchView: SearchView,
-    listener: SearchView.OnQueryTextListener
-) {
-    searchView.setOnQueryTextListener(listener)
-}
-
-@BindingAdapter("showFollowButton")
-fun showFollowButton(button: Button, isFollowing: Boolean) {
-    if (!isFollowing) {
-        button.visibility = View.VISIBLE
-    } else {
-        button.visibility = View.GONE
     }
 }

@@ -7,13 +7,13 @@
 
         <variable
             name="viewModel"
-            type="com.meazza.instagram.ui.profile.post.PostsViewModel" />
+            type="com.meazza.instagram.ui.post.PostsViewModel" />
     </data>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.profile.post.PostsFragment">
+        tools:context=".ui.post.PostsFragment">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_posts"
@@ -22,6 +22,6 @@
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:setAdapter="@{viewModel.adapter}"
             app:spanCount="3"
-            tools:listitem="@layout/layout_profile_post" />
+            tools:listitem="@layout/layout_post" />
     </FrameLayout>
 </layout>

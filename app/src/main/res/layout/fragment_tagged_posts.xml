@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="800dp"
-    tools:context=".ui.profile.post.TaggedPostsFragment">
+    tools:context=".ui.post.tagged.TaggedPostsFragment">
 
     <TextView
         android:layout_width="match_parent"

@@ -6,7 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.meazza.instagram.R
-import com.meazza.instagram.common.listener.StatusCallback
+import com.meazza.instagram.common.callback.StatusCallback
 import com.meazza.instagram.databinding.FragmentLogInBinding
 import com.meazza.instagram.util.*
 import kotlinx.android.synthetic.main.fragment_log_in.*

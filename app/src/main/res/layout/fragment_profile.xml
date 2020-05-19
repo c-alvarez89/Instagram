@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
-        tools:context=".ui.profile.own_profile.OwnProfileFragment">
+        tools:context=".ui.profile.edit_profile.OwnProfileFragment">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/app_bar_profile"
@@ -199,12 +199,31 @@
 
                     </LinearLayout>
 
+                    <Button
+                        android:id="@+id/btn_edit_user_profile"
+                        style="@style/BottomTextBlack"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@drawable/selector_button_profile"
+                        android:text="@string/edit_profile"
+                        android:textColor="@color/colorAccent"
+                        android:theme="@style/BottomTextBlack"
+                        android:visibility="visible"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/ll_profile_info"
+                        app:layout_constraintStart_toStartOf="@+id/ll_profile_info"
+                        app:layout_constraintTop_toBottomOf="@+id/ll_profile_info" />
+
                     <LinearLayout
+                        android:id="@+id/ll_buttons"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
                         android:layout_marginBottom="20dp"
                         android:orientation="horizontal"
+                        android:visibility="gone"
                         android:weightSum="2"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="@+id/ll_profile_info"
@@ -271,6 +290,7 @@
                         android:textAllCaps="false"
                         android:textColor="@color/colorAccent"
                         android:textSize="18sp"
+                        app:toLowerCase="@{viewModel.username}"
                         tools:text="@string/fake_username" />
 
                 </androidx.appcompat.widget.Toolbar>

@@ -25,6 +25,10 @@
         app:popUpTo="@+id/nav_graph"
         app:popUpToInclusive="true" />
 
+    <action
+        android:id="@+id/action_set_user"
+        app:destination="@id/navigation_profile" />
+
     <fragment
         android:id="@+id/destination_sign_up"
         android:name="com.meazza.instagram.ui.auth.sign_up.SignUpFragment"
@@ -68,6 +72,9 @@
         <action
             android:id="@+id/goto_messages"
             app:destination="@id/destination_direct" />
+        <action
+            android:id="@+id/goto_profile"
+            app:destination="@id/navigation_profile" />
     </fragment>
     <fragment
         android:id="@+id/navigation_search"
@@ -76,7 +83,7 @@
         tools:layout="@layout/fragment_search">
         <action
             android:id="@+id/goto_profile"
-            app:destination="@id/destination_profile" />
+            app:destination="@id/navigation_profile" />
     </fragment>
     <fragment
         android:id="@+id/navigation_add_post"
@@ -85,27 +92,26 @@
         tools:layout="@layout/fragment_add_post">
         <action
             android:id="@+id/goto_filter"
-            app:destination="@id/destination_filter" />
+            app:destination="@id/destination_edit_image" />
     </fragment>
     <fragment
         android:id="@+id/navigation_notification"
         android:name="com.meazza.instagram.ui.notification.NotificationFragment"
         android:label="fragment_notification"
-        tools:layout="@layout/fragment_notification" />
-    <fragment
-        android:id="@+id/navigation_own_profile"
-        android:name="com.meazza.instagram.ui.profile.own_profile.OwnProfileFragment"
-        android:label="fragment_own_profile"
-        tools:layout="@layout/fragment_own_profile">
+        tools:layout="@layout/fragment_notification">
         <action
-            android:id="@+id/goto_chat"
-            app:destination="@id/destination_edit_profile" />
+            android:id="@+id/goto_profile"
+            app:destination="@id/navigation_profile" />
     </fragment>
     <fragment
         android:id="@+id/destination_camera"
         android:name="com.meazza.instagram.ui.camera.CameraFragment"
         android:label="fragment_camera"
-        tools:layout="@layout/fragment_camera" />
+        tools:layout="@layout/fragment_camera">
+        <action
+            android:id="@+id/action_destination_camera_to_destination_filter"
+            app:destination="@id/destination_edit_image" />
+    </fragment>
     <fragment
         android:id="@+id/destination_direct"
         android:name="com.meazza.instagram.ui.direct_message.DirectFragment"
@@ -126,11 +132,11 @@
     </fragment>
     <fragment
         android:id="@+id/destination_edit_profile"
-        android:name="com.meazza.instagram.ui.profile.own_profile.EditProfileFragment"
+        android:name="com.meazza.instagram.ui.profile.edit_profile.EditProfileFragment"
         android:label="fragment_edit_profile"
         tools:layout="@layout/fragment_edit_profile" />
     <fragment
-        android:id="@+id/destination_profile"
+        android:id="@+id/navigation_profile"
         android:name="com.meazza.instagram.ui.profile.ProfileFragment"
         android:label="FragmentProfile"
         tools:layout="@layout/fragment_profile">
@@ -138,28 +144,43 @@
             android:name="user"
             app:argType="com.meazza.instagram.data.model.User" />
         <action
+            android:id="@+id/goto_edit_profile"
+            app:destination="@id/destination_edit_profile" />
+        <action
+            android:id="@+id/goto_post_detail"
+            app:destination="@id/destination_post_detail" />
+        <action
             android:id="@+id/goto_chat"
             app:destination="@id/destination_chat" />
     </fragment>
     <fragment
-        android:id="@+id/destination_filter"
-        android:name="com.meazza.instagram.ui.add_post.filter.FilterFragment"
+        android:id="@+id/destination_edit_image"
+        android:name="com.meazza.instagram.ui.add_post.edit_image.EditImageFragment"
         android:label="fragment_filter"
-        tools:layout="@layout/fragment_filter">
+        tools:layout="@layout/fragment_edit_image">
         <argument
             android:name="imageUri"
             app:argType="string" />
         <action
             android:id="@+id/goto_new_post"
-            app:destination="@id/newPostFragment" />
+            app:destination="@id/destination_create_post" />
     </fragment>
     <fragment
-        android:id="@+id/newPostFragment"
-        android:name="com.meazza.instagram.ui.add_post.share.NewPostFragment"
+        android:id="@+id/destination_create_post"
+        android:name="com.meazza.instagram.ui.add_post.create_post.CreatePostFragment"
         android:label="fragment_new_post"
-        tools:layout="@layout/fragment_new_post">
+        tools:layout="@layout/fragment_create_post">
         <argument
-            android:name="filterImage"
-            app:argType="com.meazza.instagram.ui.add_post.filter.FilterImage" />
+            android:name="edited_image"
+            app:argType="com.meazza.instagram.data.model.EditedImage" />
+    </fragment>
+    <fragment
+        android:id="@+id/destination_post_detail"
+        android:name="com.meazza.instagram.ui.post.detail.PostDetailFragment"
+        android:label="fragment_post_detail"
+        tools:layout="@layout/fragment_post_detail">
+        <argument
+            android:name="post"
+            app:argType="com.meazza.instagram.data.model.Post" />
     </fragment>
 </navigation>

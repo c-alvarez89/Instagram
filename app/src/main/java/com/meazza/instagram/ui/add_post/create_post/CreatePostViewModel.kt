@@ -1,4 +1,4 @@
-package com.meazza.instagram.ui.add_post.share
+package com.meazza.instagram.ui.add_post.create_post
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -7,7 +7,7 @@ import com.meazza.instagram.data.model.Post
 import com.meazza.instagram.data.network.PostActionDB
 import kotlinx.coroutines.launch
 
-class NewPostViewModel(private val postDb: PostActionDB) : ViewModel() {
+class CreatePostViewModel(private val postDb: PostActionDB) : ViewModel() {
 
     var caption = MutableLiveData<String>()
 

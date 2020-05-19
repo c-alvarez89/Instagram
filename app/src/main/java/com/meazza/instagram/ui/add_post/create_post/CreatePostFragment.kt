@@ -1,4 +1,4 @@
-package com.meazza.instagram.ui.add_post.share
+package com.meazza.instagram.ui.add_post.create_post
 
 import android.graphics.Bitmap
 import android.graphics.ImageDecoder
@@ -17,17 +17,17 @@ import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import coil.api.load
 import com.meazza.instagram.R
-import com.meazza.instagram.databinding.FragmentNewPostBinding
+import com.meazza.instagram.databinding.FragmentCreatePostBinding
 import com.zomato.photofilters.FilterPack
 import com.zomato.photofilters.imageprocessors.Filter
-import kotlinx.android.synthetic.main.fragment_new_post.*
+import kotlinx.android.synthetic.main.fragment_create_post.*
 import org.koin.android.ext.android.inject
 import java.io.ByteArrayOutputStream
 
 @Suppress("NAME_SHADOWING", "DEPRECATION")
-class NewPostFragment : Fragment(R.layout.fragment_new_post) {
+class CreatePostFragment : Fragment(R.layout.fragment_create_post) {
 
-    private val newPostViewModel by inject<NewPostViewModel>()
+    private val createPostViewModel by inject<CreatePostViewModel>()
 
     private var originalImage: Bitmap? = null
     private var filterName: String? = null
@@ -41,9 +41,9 @@ class NewPostFragment : Fragment(R.layout.fragment_new_post) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        DataBindingUtil.bind<FragmentNewPostBinding>(view)?.apply {
-            lifecycleOwner = this@NewPostFragment
-            viewModel = newPostViewModel
+        DataBindingUtil.bind<FragmentCreatePostBinding>(view)?.apply {
+            lifecycleOwner = this@CreatePostFragment
+            viewModel = createPostViewModel
         }
 
         getBitmap()
@@ -52,7 +52,7 @@ class NewPostFragment : Fragment(R.layout.fragment_new_post) {
     }
 
     private fun getBitmap() {
-        val imagePost = arguments?.let { NewPostFragmentArgs.fromBundle(it).filterImage }
+        val imagePost = arguments?.let { CreatePostFragmentArgs.fromBundle(it).editedImage }
         val imageUri = Uri.parse(imagePost?.image)
         filterName = imagePost?.filter
         try {
@@ -130,7 +130,7 @@ class NewPostFragment : Fragment(R.layout.fragment_new_post) {
         val stream = ByteArrayOutputStream()
         copyImage?.compress(Bitmap.CompressFormat.JPEG, 100, stream)
         val byteArray = stream.toByteArray()
-        newPostViewModel.addImagePost(byteArray)
+        createPostViewModel.addImagePost(byteArray)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

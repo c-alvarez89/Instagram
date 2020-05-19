@@ -1,4 +1,4 @@
-package com.meazza.instagram.ui.profile.post
+package com.meazza.instagram.ui.post.tagged
 
 import android.os.Bundle
 import android.view.View

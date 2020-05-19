@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".ui.add_post.filter.FilterFragment">
+    tools:context=".ui.add_post.edit_image.EditImageFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/tb_filter"

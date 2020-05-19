@@ -1,7 +1,7 @@
-package com.meazza.instagram.ui.add_post.filter
+package com.meazza.instagram.common.listener
 
 import com.zomato.photofilters.utils.ThumbnailItem
 
-interface FilterListener {
+interface OnFilterClickListener {
     fun onClickItem(item: ThumbnailItem)
 }

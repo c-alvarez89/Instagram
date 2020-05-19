@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthInvalidUserException
-import com.meazza.instagram.common.listener.StatusCallback
+import com.meazza.instagram.common.callback.StatusCallback
 import com.meazza.instagram.data.network.AuthService
 import com.meazza.instagram.util.EMPTY_FIELDS
 import com.meazza.instagram.util.LOGIN_ERROR

@@ -1,14 +1,15 @@
-package com.meazza.instagram.ui.profile.adapter
+package com.meazza.instagram.ui.post.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.meazza.instagram.R
+import com.meazza.instagram.common.listener.OnPostClickListener
 import com.meazza.instagram.data.model.Post
-import com.meazza.instagram.databinding.LayoutProfilePostBinding
+import com.meazza.instagram.databinding.LayoutPostBinding
 
-class PostAdapter(private val listener: PostListener) :
+class PostAdapter(private val listener: OnPostClickListener) :
     RecyclerView.Adapter<PostAdapter.ProfilePostHolder>() {
 
     private var postList = mutableListOf<Post>()
@@ -21,7 +22,7 @@ class PostAdapter(private val listener: PostListener) :
         ProfilePostHolder(
             DataBindingUtil.inflate(
                 LayoutInflater.from(parent.context),
-                R.layout.layout_profile_post,
+                R.layout.layout_post,
                 parent,
                 false
             )
@@ -38,6 +39,6 @@ class PostAdapter(private val listener: PostListener) :
 
     override fun getItemCount(): Int = if (postList.size > 0) postList.size else 0
 
-    inner class ProfilePostHolder(val itemBinding: LayoutProfilePostBinding) :
+    inner class ProfilePostHolder(val itemBinding: LayoutPostBinding) :
         RecyclerView.ViewHolder(itemBinding.root)
 }

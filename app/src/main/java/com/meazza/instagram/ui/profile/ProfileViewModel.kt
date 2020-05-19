@@ -5,12 +5,16 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import com.meazza.instagram.data.model.User
+import com.meazza.instagram.data.network.CurrentUserDB
 import com.meazza.instagram.data.network.FollowActionDB
 import kotlinx.coroutines.launch
 
-class ProfileViewModel(private val followActionDb: FollowActionDB) : ViewModel() {
+class ProfileViewModel(
+    private val followActionDb: FollowActionDB,
+    private val currentUserDb: CurrentUserDB
+) : ViewModel() {
 
-    val instagramUser = MutableLiveData<User>()
+    val user = MutableLiveData<User>()
     val name = MutableLiveData<String>()
     val username = MutableLiveData<String>()
     val bio = MutableLiveData<String>()
@@ -19,7 +23,13 @@ class ProfileViewModel(private val followActionDb: FollowActionDB) : ViewModel()
     val postsNumber = MutableLiveData<String>()
     val followersNumber = MutableLiveData<String>()
     val followingNumber = MutableLiveData<String>()
+
+    val isCurrentUser = MutableLiveData<Boolean>()
     val isCurrentUserFollowing = MutableLiveData<Boolean>()
+
+    fun getCurrentUser() = liveData {
+        emit(currentUserDb.getUser())
+    }
 
     fun checkIfCurrentUserIsFollowing(instagrammerUid: String) = liveData {
         emit(followActionDb.checkIfCurrentUserIsFollowing(instagrammerUid))
@@ -27,7 +37,7 @@ class ProfileViewModel(private val followActionDb: FollowActionDB) : ViewModel()
 
     fun saveFollow() {
         viewModelScope.launch {
-            val instagrammer = instagramUser.value
+            val instagrammer = user.value
             try {
                 followActionDb.saveFollow(instagrammer!!)
                 followersNumber.value =
@@ -41,7 +51,7 @@ class ProfileViewModel(private val followActionDb: FollowActionDB) : ViewModel()
 
     fun stopFollowing() {
         viewModelScope.launch {
-            val instagrammer = instagramUser.value
+            val instagrammer = user.value
             try {
                 followActionDb.stopFollowing(instagrammer!!)
                 followersNumber.value =

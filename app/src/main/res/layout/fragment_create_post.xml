@@ -7,14 +7,14 @@
 
         <variable
             name="viewModel"
-            type="com.meazza.instagram.ui.add_post.share.NewPostViewModel" />
+            type="com.meazza.instagram.ui.add_post.create_post.CreatePostViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
-        tools:context=".ui.add_post.share.NewPostFragment">
+        tools:context=".ui.add_post.create_post.CreatePostFragment">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/tb_new_post"

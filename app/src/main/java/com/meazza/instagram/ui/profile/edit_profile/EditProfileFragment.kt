@@ -1,4 +1,4 @@
-package com.meazza.instagram.ui.profile.own_profile
+package com.meazza.instagram.ui.profile.edit_profile
 
 import android.app.Activity
 import android.app.Activity.RESULT_OK
@@ -16,8 +16,8 @@ import androidx.navigation.fragment.findNavController
 import coil.api.load
 import coil.transform.CircleCropTransformation
 import com.meazza.instagram.R
+import com.meazza.instagram.common.callback.StatusCallback
 import com.meazza.instagram.common.listener.OnViewClickListener
-import com.meazza.instagram.common.listener.StatusCallback
 import com.meazza.instagram.common.permission.PermissionRequest
 import com.meazza.instagram.common.permission.PermissionState
 import com.meazza.instagram.databinding.FragmentEditProfileBinding
@@ -35,11 +35,11 @@ class EditProfileFragment : Fragment(R.layout.fragment_edit_profile),
         const val GALLERY_REQUEST_CODE = 101
     }
 
-    private val ownInfoViewModel by inject<OwnInfoViewModel>()
+    private val editProfileViewModel by inject<EditProfileViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        ownInfoViewModel.getUser()
+        editProfileViewModel.getUser()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -47,10 +47,10 @@ class EditProfileFragment : Fragment(R.layout.fragment_edit_profile),
 
         DataBindingUtil.bind<FragmentEditProfileBinding>(view)?.apply {
             lifecycleOwner = this@EditProfileFragment
-            viewModel = ownInfoViewModel
+            viewModel = editProfileViewModel
         }
 
-        ownInfoViewModel.onClickListener = this
+        editProfileViewModel.onClickListener = this
         setHasOptionsMenu(true)
         setToolbar()
     }
@@ -82,7 +82,7 @@ class EditProfileFragment : Fragment(R.layout.fragment_edit_profile),
             when (requestCode) {
                 GALLERY_REQUEST_CODE -> {
                     val imageUri = data?.data
-                    imageUri?.let { ownInfoViewModel.uploadImage(it) }
+                    imageUri?.let { editProfileViewModel.uploadImage(it) }
                     iv_change_user_photo.load(imageUri) {
                         crossfade(true)
                         transformations(CircleCropTransformation())
@@ -99,7 +99,7 @@ class EditProfileFragment : Fragment(R.layout.fragment_edit_profile),
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.mn_save_changes) {
-            ownInfoViewModel.saveChanges()
+            editProfileViewModel.saveChanges()
             findNavController().popBackStack()
         }
         return super.onOptionsItemSelected(item)

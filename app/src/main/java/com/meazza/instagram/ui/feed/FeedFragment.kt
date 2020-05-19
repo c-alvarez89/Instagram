@@ -7,14 +7,19 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.meazza.instagram.R
+import com.meazza.instagram.data.model.User
 import kotlinx.android.synthetic.main.fragment_feed.*
+import org.koin.android.ext.android.inject
 
 class FeedFragment : Fragment(R.layout.fragment_feed) {
+
+    private val feedViewModel by inject<FeedViewModel>()
 
     private val mAuth = FirebaseAuth.getInstance()
 
@@ -27,6 +32,14 @@ class FeedFragment : Fragment(R.layout.fragment_feed) {
                 NavOptions.Builder().setPopUpTo(R.id.nav_main, true).build()
             )
         }
+
+        var currentUser = User()
+        feedViewModel.getCurrentUser().observe(viewLifecycleOwner, Observer {
+            if (it != null) {
+                currentUser = it
+            }
+        })
+        FeedFragmentDirections.gotoProfile(currentUser)
 
         setHasOptionsMenu(true)
         setToolbar()

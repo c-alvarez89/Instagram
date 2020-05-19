@@ -3,6 +3,6 @@ package com.meazza.instagram.common.listener
 import com.meazza.instagram.data.model.User
 
 
-interface UserListener {
+interface OnUserClickListener {
     fun onItemClickListener(user: User)
 }
