@@ -14,7 +14,8 @@ class ProfileViewModel(
     private val currentUserDb: CurrentUserDB
 ) : ViewModel() {
 
-    val user = MutableLiveData<User>()
+    val instagrammer = MutableLiveData<User>()
+    val id = MutableLiveData<String>()
     val name = MutableLiveData<String>()
     val username = MutableLiveData<String>()
     val bio = MutableLiveData<String>()
@@ -37,7 +38,7 @@ class ProfileViewModel(
 
     fun saveFollow() {
         viewModelScope.launch {
-            val instagrammer = user.value
+            val instagrammer = instagrammer.value
             try {
                 followActionDb.saveFollow(instagrammer!!)
                 followersNumber.value =
@@ -51,7 +52,7 @@ class ProfileViewModel(
 
     fun stopFollowing() {
         viewModelScope.launch {
-            val instagrammer = user.value
+            val instagrammer = instagrammer.value
             try {
                 followActionDb.stopFollowing(instagrammer!!)
                 followersNumber.value =

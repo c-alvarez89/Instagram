@@ -12,8 +12,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
-@BindingAdapter("setImage")
-fun loadImage(imageView: ImageView, url: String?) {
+@BindingAdapter("setRoundImage")
+fun setRoundImage(imageView: ImageView, url: String?) {
     if (url == "") {
         imageView.load(R.drawable.ic_user_photo) {
             transformations(CircleCropTransformation())
@@ -23,6 +23,17 @@ fun loadImage(imageView: ImageView, url: String?) {
             crossfade(true)
             placeholder(R.drawable.ic_user_photo)
             transformations(CircleCropTransformation())
+        }
+    }
+}
+
+@BindingAdapter("setSquareImage")
+fun setSquareImage(imageView: ImageView, url: String?) {
+    if (url == "") {
+        imageView.load(R.color.gray)
+    } else {
+        imageView.load(url) {
+            crossfade(true)
         }
     }
 }
@@ -44,17 +55,6 @@ fun setUserPhotoChat(imageView: ImageView, reference: DocumentReference?) {
                 placeholder(R.drawable.ic_user_photo)
                 transformations(CircleCropTransformation())
             }
-        }
-    }
-}
-
-@BindingAdapter("setImagePost")
-fun loadImagePost(imageView: ImageView, url: String?) {
-    if (url == "") {
-        imageView.load(R.color.gray)
-    } else {
-        imageView.load(url) {
-            crossfade(true)
         }
     }
 }

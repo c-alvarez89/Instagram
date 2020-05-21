@@ -45,7 +45,7 @@ class CreatePostFragment : Fragment(R.layout.fragment_create_post) {
             lifecycleOwner = this@CreatePostFragment
             viewModel = createPostViewModel
         }
-
+        createPostViewModel.getCurrentUser()
         getBitmap()
         setToolbar()
         setThumbnail()

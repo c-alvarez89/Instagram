@@ -8,7 +8,6 @@ import com.meazza.instagram.R
 
 class PhotoFragment : Fragment(R.layout.fragment_photo) {
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
     }

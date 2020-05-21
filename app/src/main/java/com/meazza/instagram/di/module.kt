@@ -44,13 +44,13 @@ val profileModule = module {
 
 val postModule = module {
     single { PostActionDB }
-    viewModel { CreatePostViewModel(get()) }
     viewModel { PostsViewModel(get()) }
+    viewModel { CreatePostViewModel(get(), get()) }
 }
 
 @ExperimentalCoroutinesApi
 val directMessageModule = module {
     single { MessagingDB }
-    viewModel { ChatViewModel(get(), get()) }
     viewModel { DirectViewModel(get()) }
+    viewModel { ChatViewModel(get(), get()) }
 }

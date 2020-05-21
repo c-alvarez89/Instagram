@@ -47,7 +47,7 @@
                         android:src="@drawable/ic_user_photo"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:setImage="@{viewModel.photoUrl}" />
+                        app:setRoundImage="@{viewModel.photoUrl}" />
 
                     <LinearLayout
                         android:id="@+id/linearLayout"
@@ -214,7 +214,8 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="@+id/ll_profile_info"
                         app:layout_constraintStart_toStartOf="@+id/ll_profile_info"
-                        app:layout_constraintTop_toBottomOf="@+id/ll_profile_info" />
+                        app:layout_constraintTop_toBottomOf="@+id/ll_profile_info"
+                        app:showEditProfileButton="@{viewModel.isCurrentUser}" />
 
                     <LinearLayout
                         android:id="@+id/ll_buttons"
@@ -228,7 +229,8 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="@+id/ll_profile_info"
                         app:layout_constraintStart_toStartOf="@+id/ll_profile_info"
-                        app:layout_constraintTop_toBottomOf="@+id/ll_profile_info">
+                        app:layout_constraintTop_toBottomOf="@+id/ll_profile_info"
+                        app:showEditProfileButton="@{!viewModel.isCurrentUser}">
 
                         <Button
                             android:id="@+id/btn_follow"

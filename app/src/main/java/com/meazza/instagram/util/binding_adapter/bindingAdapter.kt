@@ -5,12 +5,8 @@ import android.widget.Button
 import android.widget.SearchView
 import androidx.databinding.BindingAdapter
 
-
 @BindingAdapter("setQueryTextListener")
-fun setOnQueryTextListener(
-    searchView: SearchView,
-    listener: SearchView.OnQueryTextListener
-) {
+fun setOnQueryTextListener(searchView: SearchView, listener: SearchView.OnQueryTextListener) {
     searchView.setOnQueryTextListener(listener)
 }
 
@@ -20,5 +16,14 @@ fun showFollowButton(button: Button, isFollowing: Boolean) {
         button.visibility = View.VISIBLE
     } else {
         button.visibility = View.GONE
+    }
+}
+
+@BindingAdapter("showEditProfileButton")
+fun showEditProfileButton(view: View, isCurrentUser: Boolean) {
+    if (isCurrentUser) {
+        view.visibility = View.VISIBLE
+    } else {
+        view.visibility = View.GONE
     }
 }

@@ -8,25 +8,41 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.tabs.TabLayoutMediator
+import com.google.firebase.auth.FirebaseAuth
 import com.meazza.instagram.R
 import com.meazza.instagram.data.model.User
 import com.meazza.instagram.data.network.AuthService
 import com.meazza.instagram.databinding.FragmentProfileBinding
+import com.meazza.instagram.di.preferences
 import com.meazza.instagram.ui.profile.adapter.ProfileViewPagerAdapter
 import kotlinx.android.synthetic.main.fragment_profile.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.android.ext.android.inject
 
+@ExperimentalCoroutinesApi
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     private val profileViewModel by inject<ProfileViewModel>()
+    private val currentUserUid by lazy { FirebaseAuth.getInstance().currentUser?.uid }
 
-    private var user = MutableLiveData<User>()
-    private var instagrammerUid: String? = null
+    private var user: User? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        try {
+            arguments.takeIf { true }?.run {
+                user = ProfileFragmentArgs.fromBundle(this).user
+                if (user?.id == currentUserUid) user = null
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -36,58 +52,33 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             viewModel = profileViewModel
         }
 
-        user.value = arguments?.let { ProfileFragmentArgs.fromBundle(it).user }
-
-
-        profileViewModel.run {
-            instagrammerUid?.let {
-                checkIfCurrentUserIsFollowing(it).observe(viewLifecycleOwner, Observer { document ->
-                    val existsDocument = document?.exists()
-                    isCurrentUserFollowing.value = existsDocument == true
-                })
-            }
-
-            getCurrentUser().observe(viewLifecycleOwner, Observer { instagrammer ->
-                user.value = instagrammer
-                name.value = instagrammer?.name
-                username.value = instagrammer?.username
-                photoUrl.value = instagrammer?.photoUrl
-                bio.value = instagrammer?.bio
-                website.value = instagrammer?.website
-                postsNumber.value = instagrammer?.postNumber.toString()
-                followersNumber.value = instagrammer?.followersNumber.toString()
-                followingNumber.value = instagrammer?.followingNumber.toString()
-            })
+        when {
+            user == null -> setCurrentUser()
+            user != null -> setInstagrammer()
         }
 
-        setHasOptionsMenu(true)
         setToolbar()
         setTabLayout()
         setUiAction()
     }
 
     private fun setToolbar() {
+        setHasOptionsMenu(true)
         val mActivity = activity as AppCompatActivity
         mActivity.apply {
             setSupportActionBar(tb_profile)
             title = ""
             supportActionBar?.run {
-                setDisplayHomeAsUpEnabled(true)
-                setHomeAsUpIndicator(R.drawable.ic_arrow_left)
+                if (profileViewModel.isCurrentUser.value == false) {
+                    setDisplayHomeAsUpEnabled(true)
+                    setHomeAsUpIndicator(R.drawable.ic_arrow_left)
+                }
             }
         }
     }
 
-    private fun setUiAction() {
-        /* btn_send_message.setOnClickListener {
-             val direction = instagrammer?.let { user -> ProfileFragmentDirections.gotoChat(user) }
-             direction?.let { action -> findNavController().navigate(action) }
-         }*/
-    }
-
     private fun setTabLayout() {
         pager_profile.adapter = ProfileViewPagerAdapter(this)
-
         TabLayoutMediator(
             tab_layout_profile,
             pager_profile,
@@ -99,8 +90,54 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             }).attach()
     }
 
+    private fun setUiAction() {
+        btn_send_message.setOnClickListener {
+            val direction = ProfileFragmentDirections.gotoChat(user!!)
+            findNavController().navigate(direction)
+        }
+    }
+
+    private fun setCurrentUser() {
+        profileViewModel.run {
+            isCurrentUser.value = true
+            getCurrentUser().observe(viewLifecycleOwner, Observer { currentUser ->
+                user = currentUser
+                setUserInfo(currentUser)
+                preferences.instagrammerId = user?.id
+            })
+        }
+    }
+
+    private fun setInstagrammer() {
+        setUserInfo(user)
+        profileViewModel.run {
+            isCurrentUser.value = false
+            checkIfCurrentUserIsFollowing(user?.id!!).observe(viewLifecycleOwner, Observer {
+                val existsDocument = it?.exists()
+                isCurrentUserFollowing.value = existsDocument == true
+            })
+        }
+    }
+
+    private fun setUserInfo(user: User?) {
+        profileViewModel.run {
+            instagrammer.value = user
+            name.value = user?.name
+            username.value = user?.username
+            photoUrl.value = user?.photoUrl
+            bio.value = user?.bio
+            website.value = user?.website
+            postsNumber.value = user?.postNumber.toString()
+            followersNumber.value = user?.followersNumber.toString()
+            followingNumber.value = user?.followingNumber.toString()
+        }
+    }
+
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.menu_profile, menu)
+        if (profileViewModel.isCurrentUser.value == true) inflater.inflate(
+            R.menu.menu_profile,
+            menu
+        )
         super.onCreateOptionsMenu(menu, inflater)
     }
 

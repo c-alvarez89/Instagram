@@ -11,12 +11,12 @@ class PostsViewModel(private val postsDb: PostActionDB) : ViewModel() {
 
     val adapter = MutableLiveData<PostAdapter>()
 
-    fun getPost(userId: String) = liveData {
+    fun getPosts(userId: String) = liveData {
         emit(postsDb.getPosts(userId))
     }
 
-    fun setAdapter(post: MutableList<Post>) = adapter.value?.run {
-        setList(post)
+    fun setAdapter(posts: MutableList<Post>) = adapter.value?.run {
+        setList(posts)
         notifyDataSetChanged()
     }
 }

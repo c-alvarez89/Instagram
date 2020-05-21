@@ -25,7 +25,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:setImage="@{user.photoUrl}"
+            app:setRoundImage="@{user.photoUrl}"
             app:srcCompat="@drawable/ic_user_photo" />
 
         <androidx.constraintlayout.widget.Guideline

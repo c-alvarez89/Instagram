@@ -24,7 +24,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:setImagePost="@{post.postImageUrl}"
+            app:setSquareImage="@{post.postImageUrl}"
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
