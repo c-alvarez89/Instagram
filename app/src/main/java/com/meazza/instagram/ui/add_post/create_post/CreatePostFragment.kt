@@ -11,6 +11,7 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavOptions
@@ -18,6 +19,7 @@ import androidx.navigation.fragment.findNavController
 import coil.api.load
 import com.meazza.instagram.R
 import com.meazza.instagram.databinding.FragmentCreatePostBinding
+import com.meazza.instagram.util.setToolbar
 import com.zomato.photofilters.FilterPack
 import com.zomato.photofilters.imageprocessors.Filter
 import kotlinx.android.synthetic.main.fragment_create_post.*
@@ -45,10 +47,17 @@ class CreatePostFragment : Fragment(R.layout.fragment_create_post) {
             lifecycleOwner = this@CreatePostFragment
             viewModel = createPostViewModel
         }
+
         createPostViewModel.getCurrentUser()
+
         getBitmap()
-        setToolbar()
         setThumbnail()
+        setHasOptionsMenu(true)
+        setToolbar(
+            activity as AppCompatActivity,
+            tb_new_post as Toolbar,
+            getString(R.string.new_post)
+        )
     }
 
     private fun getBitmap() {
@@ -77,19 +86,6 @@ class CreatePostFragment : Fragment(R.layout.fragment_create_post) {
             }
         } catch (e: Exception) {
             e.printStackTrace()
-        }
-    }
-
-    private fun setToolbar() {
-        val mActivity = activity as AppCompatActivity
-        setHasOptionsMenu(true)
-        mActivity.apply {
-            setSupportActionBar(tb_new_post)
-            title = getString(R.string.new_post)
-            supportActionBar?.run {
-                setDisplayHomeAsUpEnabled(true)
-                setHomeAsUpIndicator(R.drawable.ic_arrow_left)
-            }
         }
     }
 

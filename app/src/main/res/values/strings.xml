@@ -78,9 +78,12 @@
     <string name="share">Share</string>
     <string name="image_post">Image post</string>
     <string name="menu">Menu</string>
-    <string name="like">Like</string>
+    <string name="like">1 Like</string>
+    <string name="likes">%s Likes</string>
     <string name="comments">Comments</string>
-    <string name="view_all_comments">View all comments</string>
-    <string name="time_ago">11 days ago</string>
-    <string name="caption">Caption</string>
+    <string name="view_comment">View 1 comment</string>
+    <string name="view_all_comments">View all %s comments</string>
+    <string name="time_ago">December 10</string>
+    <string name="caption">username Caption</string>
+    <string name="zero_likes">0 Likes</string>
 </resources>

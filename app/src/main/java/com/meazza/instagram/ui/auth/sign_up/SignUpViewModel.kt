@@ -14,8 +14,7 @@ import kotlinx.coroutines.launch
 class SignUpViewModel(
     private val authRepository: AuthService,
     private val userInstance: CurrentUserDB
-) :
-    ViewModel() {
+) : ViewModel() {
 
     var statusCallback: StatusCallback? = null
 

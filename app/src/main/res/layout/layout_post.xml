@@ -14,10 +14,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <ImageView
+        <com.meazza.instagram.common.decoration.SquareImageView
             android:id="@+id/iv_post"
-            android:layout_width="128dp"
-            android:layout_height="128dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:contentDescription="@string/image_post"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"

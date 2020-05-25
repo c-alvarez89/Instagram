@@ -14,8 +14,7 @@ import com.meazza.instagram.util.USER_NOT_FOUND
 import org.jetbrains.anko.support.v4.longToast
 import org.koin.android.ext.android.inject
 
-class ResetPasswordFragment : Fragment(R.layout.fragment_reset_password),
-    StatusCallback {
+class ResetPasswordFragment : Fragment(R.layout.fragment_reset_password), StatusCallback {
 
     private val resetViewModel by inject<ResetPasswordViewModel>()
 

@@ -16,16 +16,14 @@
         android:background="@color/white"
         tools:context=".ui.add_post.create_post.CreatePostFragment">
 
-        <androidx.appcompat.widget.Toolbar
+        <include
             android:id="@+id/tb_new_post"
+            layout="@layout/toolbar_basic"
             android:layout_width="0dp"
             android:layout_height="48dp"
-            android:elevation="2dp"
-            android:theme="@style/ToolbarTheme"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:titleTextAppearance="@style/ToolbarTitle" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -69,7 +67,6 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

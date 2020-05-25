@@ -14,11 +14,13 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.firebase.auth.FirebaseAuth
 import com.meazza.instagram.R
+import com.meazza.instagram.common.adapter.InstagramViewPagerAdapter
 import com.meazza.instagram.data.model.User
 import com.meazza.instagram.data.network.AuthService
 import com.meazza.instagram.databinding.FragmentProfileBinding
 import com.meazza.instagram.di.preferences
-import com.meazza.instagram.ui.profile.adapter.ProfileViewPagerAdapter
+import com.meazza.instagram.ui.post.PostsFragment
+import com.meazza.instagram.ui.post.tagged.TaggedPostsFragment
 import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.android.ext.android.inject
@@ -78,7 +80,11 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     }
 
     private fun setTabLayout() {
-        pager_profile.adapter = ProfileViewPagerAdapter(this)
+
+        val posts = PostsFragment()
+        val tagged = TaggedPostsFragment()
+
+        pager_profile.adapter = InstagramViewPagerAdapter(this, posts, tagged)
         TabLayoutMediator(
             tab_layout_profile,
             pager_profile,
@@ -91,8 +97,19 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     }
 
     private fun setUiAction() {
+
         btn_send_message.setOnClickListener {
             val direction = ProfileFragmentDirections.gotoChat(user!!)
+            findNavController().navigate(direction)
+        }
+
+        ll_followers_profile.setOnClickListener {
+            val direction = ProfileFragmentDirections.gotoFollowers(user!!)
+            findNavController().navigate(direction)
+        }
+
+        ll_following_profile.setOnClickListener {
+            val direction = ProfileFragmentDirections.gotoFollowers(user!!)
             findNavController().navigate(direction)
         }
     }

@@ -4,11 +4,8 @@ import android.view.View
 import android.widget.Button
 import android.widget.SearchView
 import androidx.databinding.BindingAdapter
-
-@BindingAdapter("setQueryTextListener")
-fun setOnQueryTextListener(searchView: SearchView, listener: SearchView.OnQueryTextListener) {
-    searchView.setOnQueryTextListener(listener)
-}
+import androidx.recyclerview.widget.RecyclerView
+import com.meazza.instagram.common.decoration.GridSpacingItemDecoration
 
 @BindingAdapter("showFollowButton")
 fun showFollowButton(button: Button, isFollowing: Boolean) {
@@ -26,4 +23,14 @@ fun showEditProfileButton(view: View, isCurrentUser: Boolean) {
     } else {
         view.visibility = View.GONE
     }
+}
+
+@BindingAdapter("setQueryTextListener")
+fun setOnQueryTextListener(searchView: SearchView, listener: SearchView.OnQueryTextListener) {
+    searchView.setOnQueryTextListener(listener)
+}
+
+@BindingAdapter("itemDecoration")
+fun addItemDecoration(recyclerView: RecyclerView, decoration: GridSpacingItemDecoration) {
+    recyclerView.addItemDecoration(decoration)
 }

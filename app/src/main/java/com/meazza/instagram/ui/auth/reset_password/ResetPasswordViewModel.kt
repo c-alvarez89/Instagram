@@ -15,7 +15,6 @@ import kotlinx.coroutines.launch
 class ResetPasswordViewModel(private val authRepository: AuthService) : ViewModel() {
 
     var statusCallback: StatusCallback? = null
-
     var emailToResetPassword = MutableLiveData<String>()
 
     fun resetPassword() {

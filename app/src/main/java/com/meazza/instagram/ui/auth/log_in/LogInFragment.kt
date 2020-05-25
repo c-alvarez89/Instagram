@@ -14,8 +14,7 @@ import org.jetbrains.anko.okButton
 import org.jetbrains.anko.support.v4.alert
 import org.koin.android.ext.android.inject
 
-class LogInFragment : Fragment(R.layout.fragment_log_in),
-    StatusCallback {
+class LogInFragment : Fragment(R.layout.fragment_log_in), StatusCallback {
 
     private val logInViewModel by inject<LogInViewModel>()
 

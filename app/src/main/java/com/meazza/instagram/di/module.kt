@@ -9,6 +9,7 @@ import com.meazza.instagram.ui.direct_message.DirectViewModel
 import com.meazza.instagram.ui.direct_message.chat.ChatViewModel
 import com.meazza.instagram.ui.feed.FeedViewModel
 import com.meazza.instagram.ui.post.PostsViewModel
+import com.meazza.instagram.ui.post.detail.PostDetailViewModel
 import com.meazza.instagram.ui.profile.ProfileViewModel
 import com.meazza.instagram.ui.profile.edit_profile.EditProfileViewModel
 import com.meazza.instagram.ui.search.SearchViewModel
@@ -45,6 +46,7 @@ val profileModule = module {
 val postModule = module {
     single { PostActionDB }
     viewModel { PostsViewModel(get()) }
+    viewModel { PostDetailViewModel() }
     viewModel { CreatePostViewModel(get(), get()) }
 }
 

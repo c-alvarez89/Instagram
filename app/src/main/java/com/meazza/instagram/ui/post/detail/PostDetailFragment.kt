@@ -2,13 +2,61 @@ package com.meazza.instagram.ui.post.detail
 
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.meazza.instagram.R
+import com.meazza.instagram.data.model.Post
+import com.meazza.instagram.databinding.FragmentPostDetailBinding
+import kotlinx.android.synthetic.main.fragment_post_detail.*
+import org.koin.android.ext.android.inject
 
 
 class PostDetailFragment : Fragment(R.layout.fragment_post_detail) {
 
+    private val postDetailViewModel by inject<PostDetailViewModel>()
+
+    private var post: Post? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        post = arguments?.let { PostDetailFragmentArgs.fromBundle(it).post }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        DataBindingUtil.bind<FragmentPostDetailBinding>(view)?.apply {
+            lifecycleOwner = this@PostDetailFragment
+            viewModel = postDetailViewModel
+        }
+
+        setToolbar()
+        setPostInfo()
+    }
+
+    private fun setToolbar() {
+        val mActivity = activity as AppCompatActivity
+        setHasOptionsMenu(true)
+        mActivity.apply {
+            setSupportActionBar(tb_post_detail)
+            title = getString(R.string.posts)
+            supportActionBar?.run {
+                setDisplayHomeAsUpEnabled(true)
+                setHomeAsUpIndicator(R.drawable.ic_arrow_left)
+            }
+        }
+    }
+
+    private fun setPostInfo() {
+        postDetailViewModel.run {
+            userPhotoUrl.value = post?.userPhotoUrl
+            username.value = post?.username
+            postImageUrl.value = post?.postImageUrl
+            likes.value = post?.likesNumber
+            caption.value = post?.caption
+            comments.value = post?.commentsNumber
+            timeAgo.value = post?.publicationDate
+        }
     }
 }

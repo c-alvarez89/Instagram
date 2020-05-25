@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
-import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupWithNavController
 import com.meazza.instagram.R
 import kotlinx.android.synthetic.main.activity_host.*
 
@@ -16,7 +16,7 @@ class HostActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_host)
 
-        NavigationUI.setupWithNavController(bottom_nav, navController)
+        bottom_nav.setupWithNavController(navController)
         setBottomNavVisibility()
     }
 

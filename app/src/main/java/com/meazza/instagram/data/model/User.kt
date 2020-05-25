@@ -16,6 +16,7 @@ data class User(
     val followersNumber: Int = 0,
     val followingNumber: Int = 0
 ) : Parcelable {
+
     constructor(parcel: Parcel) : this(
         parcel.readString(),
         parcel.readString(),
@@ -28,8 +29,7 @@ data class User(
         parcel.readInt(),
         parcel.readInt(),
         parcel.readInt()
-    ) {
-    }
+    )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(id)

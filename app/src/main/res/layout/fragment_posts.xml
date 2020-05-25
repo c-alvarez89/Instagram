@@ -19,6 +19,7 @@
             android:id="@+id/rv_posts"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            app:itemDecoration="@{viewModel.addItemDecoration()}"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:setAdapter="@{viewModel.adapter}"
             app:spanCount="3"

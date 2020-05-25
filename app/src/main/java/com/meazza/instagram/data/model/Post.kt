@@ -16,6 +16,7 @@ data class Post(
     val commentsNumber: Int = 0,
     val publicationDate: Date? = Date()
 ) : Parcelable {
+
     constructor(parcel: Parcel) : this(
         parcel.readString(),
         parcel.readString(),

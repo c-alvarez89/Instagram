@@ -1,5 +1,6 @@
 package com.meazza.instagram.data.network
 
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.meazza.instagram.data.model.Post
@@ -11,6 +12,8 @@ object PostActionDB {
 
     private val db by lazy { FirebaseFirestore.getInstance() }
     private val storage by lazy { FirebaseStorage.getInstance().reference }
+    private val currentUserId by lazy { FirebaseAuth.getInstance().currentUser?.uid }
+
     private val postRef = db.collection(POST_REF)
 
     suspend fun createPost(post: Post, image: ByteArray) {
@@ -31,15 +34,16 @@ object PostActionDB {
             .update(POST_IMAGE_URL, imageUrl)
     }
 
-    suspend fun getPosts(userId: String): MutableList<Post> {
+    suspend fun getPosts(): MutableList<Post> {
 
         val posts = mutableListOf<Post>()
-        val querySnapshot = postRef.document(userId).collection(userId).get().await()
+        val query = postRef.document(currentUserId!!).collection(currentUserId!!).get().await()
 
-        for (document in querySnapshot) {
+        for (document in query) {
             val post = document.toObject(Post::class.java)
             posts.add(post)
         }
+
         return posts
     }
 }

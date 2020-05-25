@@ -17,8 +17,7 @@ import org.jetbrains.anko.okButton
 import org.jetbrains.anko.support.v4.alert
 import org.koin.android.ext.android.inject
 
-class SignUpFragment : Fragment(R.layout.fragment_sign_up),
-    StatusCallback {
+class SignUpFragment : Fragment(R.layout.fragment_sign_up), StatusCallback {
 
     private val signUpViewModel by inject<SignUpViewModel>()
 

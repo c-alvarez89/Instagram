@@ -9,13 +9,13 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import coil.api.load
 import com.meazza.instagram.R
-import com.meazza.instagram.ui.add_post.AddPostFragmentDirections
+import com.meazza.instagram.ui.add_post.AddPostContainerDirections
 import com.meazza.instagram.ui.profile.edit_profile.EditProfileFragment
 import kotlinx.android.synthetic.main.fragment_gallery.*
 
 class GalleryFragment : Fragment(R.layout.fragment_gallery) {
 
-    private var imageSelected = ""
+    private var imageSelected: String? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -32,8 +32,10 @@ class GalleryFragment : Fragment(R.layout.fragment_gallery) {
             findNavController().popBackStack()
         }
         tv_next_gallery.setOnClickListener {
-            val action = AddPostFragmentDirections.gotoFilter(imageSelected)
-            findNavController().navigate(action)
+            imageSelected?.let {
+                val action = AddPostContainerDirections.gotoFilter(it)
+                findNavController().navigate(action)
+            }
         }
     }
 

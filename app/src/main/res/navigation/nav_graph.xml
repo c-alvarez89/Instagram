@@ -87,9 +87,9 @@
     </fragment>
     <fragment
         android:id="@+id/navigation_add_post"
-        android:name="com.meazza.instagram.ui.add_post.AddPostFragment"
+        android:name="com.meazza.instagram.ui.add_post.AddPostContainer"
         android:label="fragment_add_post"
-        tools:layout="@layout/fragment_add_post">
+        tools:layout="@layout/container_add_post">
         <action
             android:id="@+id/goto_filter"
             app:destination="@id/destination_edit_image" />
@@ -152,6 +152,9 @@
         <action
             android:id="@+id/goto_chat"
             app:destination="@id/destination_chat" />
+        <action
+            android:id="@+id/goto_followers"
+            app:destination="@id/followersContainer" />
     </fragment>
     <fragment
         android:id="@+id/destination_edit_image"
@@ -182,5 +185,14 @@
         <argument
             android:name="post"
             app:argType="com.meazza.instagram.data.model.Post" />
+    </fragment>
+    <fragment
+        android:id="@+id/followersContainer"
+        android:name="com.meazza.instagram.ui.profile.follower.FollowersContainer"
+        android:label="container_followers"
+        tools:layout="@layout/container_followers" >
+        <argument
+            android:name="user"
+            app:argType="com.meazza.instagram.data.model.User" />
     </fragment>
 </navigation>

@@ -20,7 +20,7 @@ import coil.api.load
 import com.meazza.instagram.R
 import com.meazza.instagram.common.listener.OnFilterClickListener
 import com.meazza.instagram.data.model.EditedImage
-import com.meazza.instagram.ui.add_post.adapter.FilterThumbnailAdapter
+import com.meazza.instagram.util.setToolbar
 import com.zomato.photofilters.FilterPack
 import com.zomato.photofilters.utils.ThumbnailItem
 import com.zomato.photofilters.utils.ThumbnailsManager
@@ -44,8 +44,9 @@ class EditImageFragment : Fragment(R.layout.fragment_edit_image),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setHasOptionsMenu(true)
+        setToolbar(activity as AppCompatActivity, tb_filter, "")
         getBitmap()
-        setToolbar()
         setFilters()
         setRecyclerView()
     }
@@ -77,18 +78,6 @@ class EditImageFragment : Fragment(R.layout.fragment_edit_image),
             }
         } catch (e: Exception) {
             e.printStackTrace()
-        }
-    }
-
-    private fun setToolbar() {
-        val mActivity = activity as AppCompatActivity
-        setHasOptionsMenu(true)
-        mActivity.apply {
-            setSupportActionBar(tb_filter)
-            supportActionBar?.run {
-                setHomeAsUpIndicator(R.drawable.ic_arrow_left)
-                setDisplayHomeAsUpEnabled(true)
-            }
         }
     }
 
@@ -133,20 +122,19 @@ class EditImageFragment : Fragment(R.layout.fragment_edit_image),
         setHasFixedSize(true)
     }
 
+    private fun gotoCreatePost() {
+        val imagePost = EditedImage(imageString, filterName)
+        val action = EditImageFragmentDirections.gotoNewPost(imagePost)
+        findNavController().navigate(action)
+    }
+
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_next, menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.mn_next) {
-            val imagePost = EditedImage(
-                imageString,
-                filterName
-            )
-            val action = EditImageFragmentDirections.gotoNewPost(imagePost)
-            findNavController().navigate(action)
-        }
+        if (item.itemId == R.id.mn_next) gotoCreatePost()
         return super.onOptionsItemSelected(item)
     }
 

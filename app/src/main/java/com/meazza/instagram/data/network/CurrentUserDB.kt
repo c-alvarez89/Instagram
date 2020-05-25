@@ -46,7 +46,6 @@ object CurrentUserDB {
             }.await()
     }
 
-
     private fun updatePhoto(photoUrl: String) {
         usersRef.document(currentUserUid).update(PHOTO_URL, photoUrl)
     }
