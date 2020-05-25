@@ -8,6 +8,7 @@
         <variable
             name="post"
             type="com.meazza.instagram.data.model.Post" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -26,5 +27,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:setSquareImage="@{post.postImageUrl}"
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

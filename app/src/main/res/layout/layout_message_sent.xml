@@ -8,6 +8,7 @@
         <variable
             name="directMessage"
             type="com.meazza.instagram.data.model.DirectMessage" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -39,4 +40,5 @@
             tools:text="@string/enter_your_instagram_info" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

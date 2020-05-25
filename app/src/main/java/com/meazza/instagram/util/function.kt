@@ -1,8 +1,10 @@
 package com.meazza.instagram.util
 
 import android.util.Patterns
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.FragmentActivity
 import com.meazza.instagram.R
 import java.util.regex.Pattern
 
@@ -17,13 +19,31 @@ fun isValidPassword(password: String): Boolean {
     return pattern.matcher(password).matches()
 }
 
-fun setToolbar(activity: AppCompatActivity, toolbar: Toolbar, toolbarTitle: String) {
-    activity.apply {
-        setSupportActionBar(toolbar)
+fun setToolbarWithBackArrow(activity: FragmentActivity?, toolbar: View, toolbarTitle: String) {
+    val mActivity = activity as AppCompatActivity
+    mActivity.apply {
+        setSupportActionBar(toolbar as Toolbar)
         title = toolbarTitle
         supportActionBar?.run {
             setDisplayHomeAsUpEnabled(true)
             setHomeAsUpIndicator(R.drawable.ic_arrow_left)
+        }
+    }
+}
+
+fun setToolbarWithLeftIcon(
+    activity: FragmentActivity?,
+    toolbar: View,
+    toolbarTitle: String,
+    icon: Int
+) {
+    val mActivity = activity as AppCompatActivity
+    mActivity.apply {
+        setSupportActionBar(toolbar as Toolbar)
+        title = toolbarTitle
+        supportActionBar?.run {
+            setDisplayHomeAsUpEnabled(true)
+            setHomeAsUpIndicator(icon)
         }
     }
 }

@@ -9,7 +9,6 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -22,6 +21,7 @@ import com.meazza.instagram.common.permission.PermissionRequest
 import com.meazza.instagram.common.permission.PermissionState
 import com.meazza.instagram.databinding.FragmentEditProfileBinding
 import com.meazza.instagram.util.TRY_AGAIN
+import com.meazza.instagram.util.setToolbarWithLeftIcon
 import kotlinx.android.synthetic.main.fragment_edit_profile.*
 import org.jetbrains.anko.support.v4.longToast
 import org.koin.android.ext.android.inject
@@ -52,19 +52,12 @@ class EditProfileFragment : Fragment(R.layout.fragment_edit_profile),
 
         editProfileViewModel.onClickListener = this
         setHasOptionsMenu(true)
-        setToolbar()
-    }
-
-    private fun setToolbar() {
-        val activity = activity as AppCompatActivity
-        activity.apply {
-            setSupportActionBar(tb_edit_profile)
-            title = getString(R.string.edit_profile)
-            supportActionBar?.run {
-                setDisplayHomeAsUpEnabled(true)
-                setHomeAsUpIndicator(R.drawable.ic_close)
-            }
-        }
+        setToolbarWithLeftIcon(
+            activity,
+            tb_edit_profile,
+            getString(R.string.edit_profile),
+            R.drawable.ic_close
+        )
     }
 
     private fun pickImageFromGallery() {

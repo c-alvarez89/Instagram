@@ -188,7 +188,7 @@
     </fragment>
     <fragment
         android:id="@+id/followersContainer"
-        android:name="com.meazza.instagram.ui.profile.follower.FollowersContainer"
+        android:name="com.meazza.instagram.ui.follower.FollowersContainer"
         android:label="container_followers"
         tools:layout="@layout/container_followers" >
         <argument

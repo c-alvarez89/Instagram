@@ -8,13 +8,14 @@
         <variable
             name="viewModel"
             type="com.meazza.instagram.ui.profile.ProfileViewModel" />
+
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
-        tools:context=".ui.profile.edit_profile.OwnProfileFragment">
+        tools:context=".ui.profile.ProfileFragment">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/app_bar_profile"
@@ -201,7 +202,7 @@
 
                     <Button
                         android:id="@+id/btn_edit_user_profile"
-                        style="@style/BottomTextBlack"
+                        style="@style/TextBlack"
                         android:layout_width="0dp"
                         android:layout_height="30dp"
                         android:layout_marginTop="24dp"
@@ -209,7 +210,7 @@
                         android:background="@drawable/selector_button_profile"
                         android:text="@string/edit_profile"
                         android:textColor="@color/colorAccent"
-                        android:theme="@style/BottomTextBlack"
+                        android:theme="@style/TextBlack"
                         android:visibility="visible"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="@+id/ll_profile_info"
@@ -242,7 +243,7 @@
                             android:background="@drawable/background_button_blue"
                             android:onClick="@{() -> viewModel.saveFollow()}"
                             android:text="@string/follow"
-                            android:theme="@style/ButtonBlueStyle"
+                            android:theme="@style/ButtonBlueBackground"
                             android:visibility="visible"
                             app:showFollowButton="@{viewModel.isCurrentUserFollowing}" />
 
@@ -257,13 +258,13 @@
                             android:onClick="@{() -> viewModel.stopFollowing()}"
                             android:text="@string/following"
                             android:textColor="@color/colorAccent"
-                            android:theme="@style/BottomTextBlack"
+                            android:theme="@style/TextBlack"
                             android:visibility="gone"
                             app:showFollowButton="@{!viewModel.isCurrentUserFollowing}" />
 
                         <Button
                             android:id="@+id/btn_send_message"
-                            style="@style/BottomTextBlack"
+                            style="@style/TextBlack"
                             android:layout_width="0dp"
                             android:layout_height="30dp"
                             android:layout_marginStart="4dp"
@@ -271,7 +272,7 @@
                             android:background="@drawable/selector_button_profile"
                             android:text="@string/direct_message"
                             android:textColor="@color/colorAccent"
-                            android:theme="@style/BottomTextBlack" />
+                            android:theme="@style/TextBlack" />
                     </LinearLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -317,4 +318,5 @@
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
 </layout>

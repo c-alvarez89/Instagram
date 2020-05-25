@@ -4,13 +4,13 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.meazza.instagram.R
 import com.meazza.instagram.data.model.User
 import com.meazza.instagram.databinding.FragmentChatBinding
+import com.meazza.instagram.util.setToolbarWithBackArrow
 import kotlinx.android.synthetic.main.fragment_chat.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.android.ext.android.inject
@@ -53,19 +53,7 @@ class ChatFragment : Fragment(R.layout.fragment_chat) {
         }
 
         setHasOptionsMenu(true)
-        setToolbar()
-    }
-
-    private fun setToolbar() {
-        val mActivity = activity as AppCompatActivity
-        mActivity.apply {
-            setSupportActionBar(tb_chat)
-            title = ""
-            supportActionBar?.run {
-                setDisplayHomeAsUpEnabled(true)
-                setHomeAsUpIndicator(R.drawable.ic_arrow_left)
-            }
-        }
+        setToolbarWithBackArrow(activity, tb_chat, "")
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

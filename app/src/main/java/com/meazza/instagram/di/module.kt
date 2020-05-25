@@ -30,7 +30,7 @@ val userModule = module {
 }
 
 val feedModule = module {
-    viewModel { FeedViewModel(get()) }
+    viewModel { FeedViewModel() }
 }
 
 val searchModule = module {

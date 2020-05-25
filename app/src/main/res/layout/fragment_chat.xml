@@ -8,6 +8,7 @@
         <variable
             name="viewModel"
             type="com.meazza.instagram.ui.direct_message.chat.ChatViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -26,7 +27,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:titleTextAppearance="@style/ToolbarTitle">
+            app:titleTextAppearance="@style/ToolbarTextTitle">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="wrap_content"
@@ -70,6 +71,7 @@
                     app:layout_constraintStart_toStartOf="@+id/tv_name_chat"
                     app:layout_constraintTop_toBottomOf="@+id/tv_name_chat"
                     tools:text="@string/fake_username" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.appcompat.widget.Toolbar>
@@ -85,9 +87,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tb_chat"
-            app:setAdapter="@{viewModel.adapter}">
-
-        </androidx.recyclerview.widget.RecyclerView>
+            app:setAdapter="@{viewModel.adapter}" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
@@ -179,4 +179,5 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

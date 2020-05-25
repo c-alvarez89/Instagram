@@ -8,6 +8,7 @@
         <variable
             name="viewModel"
             type="com.meazza.instagram.ui.search.SearchViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,15 +21,14 @@
             android:id="@+id/tb_search"
             android:layout_width="0dp"
             android:layout_height="48dp"
-            android:background="?attr/colorPrimary"
+            android:background="@color/colorPrimary"
             android:elevation="2dp"
             android:minHeight="?attr/actionBarSize"
-            android:theme="@style/ToolbarTheme"
             app:contentInsetStart="12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:titleTextAppearance="@style/ToolbarTitle">
+            app:titleTextAppearance="@style/ToolbarTextTitle">
 
             <SearchView
                 android:id="@+id/search_view"
@@ -60,4 +60,5 @@
             tools:listitem="@layout/layout_user_found" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

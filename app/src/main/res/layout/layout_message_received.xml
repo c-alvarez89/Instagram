@@ -8,6 +8,7 @@
         <variable
             name="directMessage"
             type="com.meazza.instagram.data.model.DirectMessage" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -49,4 +50,5 @@
             tools:srcCompat="@tools:sample/avatars" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

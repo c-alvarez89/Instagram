@@ -8,6 +8,7 @@
         <variable
             name="viewModel"
             type="com.meazza.instagram.ui.post.detail.PostDetailViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,16 +17,14 @@
         android:background="@color/white"
         tools:context=".ui.post.detail.PostDetailFragment">
 
-        <androidx.appcompat.widget.Toolbar
+        <include
             android:id="@+id/tb_post_detail"
+            layout="@layout/toolbar_default"
             android:layout_width="0dp"
             android:layout_height="48dp"
-            android:elevation="2dp"
-            android:theme="@style/ToolbarTheme"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:titleTextAppearance="@style/ToolbarTitle" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/iv_user_photo_post"
@@ -154,4 +153,5 @@
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

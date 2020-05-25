@@ -11,12 +11,13 @@
         android:id="@+id/tb_photo"
         android:layout_width="0dp"
         android:layout_height="48dp"
+        android:background="@color/colorPrimary"
         android:elevation="2dp"
-        android:theme="@style/ToolbarTheme"
+        android:theme="@style/AppTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:titleTextAppearance="@style/ToolbarTitle">
+        app:titleTextAppearance="@style/ToolbarTextTitle">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

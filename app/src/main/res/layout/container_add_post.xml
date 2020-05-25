@@ -8,7 +8,6 @@
     android:background="@color/white"
     tools:context=".ui.add_post.AddPostContainer">
 
-
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/pager_add_post"
         android:layout_width="0dp"
@@ -31,6 +30,5 @@
         app:tabRippleColor="@android:color/transparent"
         app:tabSelectedTextColor="@color/colorAccent"
         app:tabTextColor="@color/gray_dark" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

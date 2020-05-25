@@ -8,6 +8,7 @@
         <variable
             name="viewModel"
             type="com.meazza.instagram.ui.direct_message.DirectViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,21 +17,18 @@
         android:background="@color/white"
         tools:context=".ui.direct_message.DirectFragment">
 
-        <androidx.appcompat.widget.Toolbar
+        <include
             android:id="@+id/tb_direct"
+            layout="@layout/toolbar_default"
             android:layout_width="0dp"
             android:layout_height="48dp"
-            android:elevation="2dp"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="@style/ToolbarTheme"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/btn_search"
-            style="@style/ButtonTextGray"
+            style="@style/ButtonTextFontRegular"
             android:layout_width="0dp"
             android:layout_height="36dp"
             android:layout_marginStart="16dp"
@@ -115,6 +113,9 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/image_camera"
                 app:layout_constraintTop_toTopOf="@+id/image_camera" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

@@ -8,6 +8,7 @@
         <variable
             name="viewModel"
             type="com.meazza.instagram.ui.post.PostsViewModel" />
+
     </data>
 
     <FrameLayout
@@ -24,5 +25,7 @@
             app:setAdapter="@{viewModel.adapter}"
             app:spanCount="3"
             tools:listitem="@layout/layout_post" />
+
     </FrameLayout>
+
 </layout>

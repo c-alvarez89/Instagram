@@ -8,6 +8,7 @@
         <variable
             name="user"
             type="com.meazza.instagram.data.model.User" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -72,4 +73,5 @@
             app:srcCompat="@drawable/ic_camera" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

@@ -138,5 +138,7 @@
             android:textColor="@color/gray_icon"
             android:textSize="12sp"
             tools:text="@string/time_ago" />
+
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

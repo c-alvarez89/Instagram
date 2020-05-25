@@ -10,7 +10,6 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DefaultItemAnimator
@@ -20,7 +19,7 @@ import coil.api.load
 import com.meazza.instagram.R
 import com.meazza.instagram.common.listener.OnFilterClickListener
 import com.meazza.instagram.data.model.EditedImage
-import com.meazza.instagram.util.setToolbar
+import com.meazza.instagram.util.setToolbarWithBackArrow
 import com.zomato.photofilters.FilterPack
 import com.zomato.photofilters.utils.ThumbnailItem
 import com.zomato.photofilters.utils.ThumbnailsManager
@@ -44,11 +43,11 @@ class EditImageFragment : Fragment(R.layout.fragment_edit_image),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setHasOptionsMenu(true)
-        setToolbar(activity as AppCompatActivity, tb_filter, "")
         getBitmap()
         setFilters()
         setRecyclerView()
+        setHasOptionsMenu(true)
+        setToolbarWithBackArrow(activity, tb_filter, "")
     }
 
     private fun getBitmap() {

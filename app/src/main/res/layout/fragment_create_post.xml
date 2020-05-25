@@ -8,6 +8,7 @@
         <variable
             name="viewModel"
             type="com.meazza.instagram.ui.add_post.create_post.CreatePostViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,7 +19,7 @@
 
         <include
             android:id="@+id/tb_new_post"
-            layout="@layout/toolbar_basic"
+            layout="@layout/toolbar_default"
             android:layout_width="0dp"
             android:layout_height="48dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -69,4 +70,5 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

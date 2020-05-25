@@ -1,4 +1,4 @@
-package com.meazza.instagram.ui.profile.follower.follower_list
+package com.meazza.instagram.ui.follower.list
 
 import androidx.lifecycle.ViewModel
 

@@ -8,6 +8,7 @@
         <variable
             name="viewModel"
             type="com.meazza.instagram.ui.auth.sign_up.SignUpViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -94,7 +95,7 @@
             android:background="@drawable/background_button_blue"
             android:onClick="@{()-> viewModel.signUp()}"
             android:text="@string/continue_string"
-            android:theme="@style/ButtonBlueStyle"
+            android:theme="@style/ButtonBlueBackground"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/et_password_sign_up"
             app:layout_constraintHorizontal_bias="0.5"
@@ -116,7 +117,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/already_have_an_account"
-            android:theme="@style/BottomTextGray"
+            android:theme="@style/TextGray"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/tv_goto_log_in"
             app:layout_constraintHorizontal_bias="0.5"
@@ -130,7 +131,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="3dp"
             android:text="@string/log_in"
-            android:theme="@style/BottomTextBlue"
+            android:theme="@style/TextBlue"
             app:layout_constraintBottom_toBottomOf="@+id/text_already"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -138,4 +139,5 @@
             app:layout_constraintTop_toTopOf="@+id/text_already" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

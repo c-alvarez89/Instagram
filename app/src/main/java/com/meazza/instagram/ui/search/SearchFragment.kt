@@ -14,8 +14,7 @@ import com.meazza.instagram.ui.search.adapter.SearchAdapter
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.android.ext.android.inject
 
-class SearchFragment : Fragment(R.layout.fragment_search),
-    OnUserClickListener {
+class SearchFragment : Fragment(R.layout.fragment_search), OnUserClickListener {
 
     private val searchViewModel by inject<SearchViewModel>()
 

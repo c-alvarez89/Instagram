@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".ui.profile.follower.FollowersContainer">
+    tools:context=".ui.follower.FollowersContainer">
 
     <include
         android:id="@+id/tb_follower"
-        layout="@layout/toolbar_basic"
+        layout="@layout/toolbar_default"
         android:layout_width="0dp"
         android:layout_height="48dp"
         app:layout_constraintEnd_toEndOf="parent"

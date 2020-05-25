@@ -8,6 +8,7 @@
         <variable
             name="user"
             type="com.meazza.instagram.data.model.User" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -61,4 +62,5 @@
             tools:text="@string/fake_name" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

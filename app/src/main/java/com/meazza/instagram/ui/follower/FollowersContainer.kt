@@ -1,16 +1,14 @@
-package com.meazza.instagram.ui.profile.follower
+package com.meazza.instagram.ui.follower
 
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayoutMediator
 import com.meazza.instagram.R
 import com.meazza.instagram.common.adapter.InstagramViewPagerAdapter
-import com.meazza.instagram.ui.profile.follower.follower_list.FollowerFragment
-import com.meazza.instagram.ui.profile.follower.follower_list.FollowingFragment
-import com.meazza.instagram.util.setToolbar
+import com.meazza.instagram.ui.follower.list.FollowerListFragment
+import com.meazza.instagram.ui.follower.list.FollowingListFragment
+import com.meazza.instagram.util.setToolbarWithBackArrow
 import kotlinx.android.synthetic.main.container_followers.*
 
 class FollowersContainer : Fragment(R.layout.container_followers) {
@@ -21,12 +19,13 @@ class FollowersContainer : Fragment(R.layout.container_followers) {
         val user = arguments?.let { FollowersContainerArgs.fromBundle(it).user }
 
         setTabLayout()
-        setToolbar(activity as AppCompatActivity, tb_follower as Toolbar, user?.username!!)
+        setToolbarWithBackArrow(activity, tb_follower, user?.username!!)
     }
 
     private fun setTabLayout() {
 
-        pager_followers.adapter = InstagramViewPagerAdapter(this, FollowerFragment(), FollowingFragment())
+        pager_followers.adapter =
+            InstagramViewPagerAdapter(this, FollowerListFragment(), FollowingListFragment())
 
         TabLayoutMediator(
             tab_layout_follower,
@@ -39,5 +38,4 @@ class FollowersContainer : Fragment(R.layout.container_followers) {
             }
         ).attach()
     }
-
 }

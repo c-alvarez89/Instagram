@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.profile.follower.follower_list.FollowerFragment">
+    tools:context=".ui.follower.list.FollowerListFragment">
 
     <TextView
         android:layout_width="match_parent"

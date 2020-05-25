@@ -6,20 +6,31 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowLightStatusBar">true</item>
-        <item name="android:buttonStyle">@style/ButtonBlueStyle</item>
+        <item name="android:buttonStyle">@style/ButtonBlueBackground</item>
         <item name="android:actionMenuTextColor">@color/blue</item>
         <item name="android:actionMenuTextAppearance">@style/MenuTextAppearance</item>
     </style>
 
-    <style name="EditTextStyle" parent="AppTheme">
-        <item name="fontFamily">@font/roboto_regular</item>
-        <item name="android:textColor">@color/colorAccent</item>
-        <item name="android:textSize">14sp</item>
-        <item name="android:padding">14dp</item>
-        <item name="android:textColorHint">@color/gray_dark</item>
+
+    <!--Menu-->
+    <style name="MenuTextAppearance" parent="@android:style/TextAppearance.Widget.IconMenu.Item">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
     </style>
 
-    <style name="ButtonBlueStyle" parent="@style/Widget.AppCompat.Button">
+
+    <!--Button-->
+    <style name="ButtonTextFontRegular" parent="AppTheme">
+        <item name="fontFamily">@font/roboto_regular</item>
+    </style>
+
+    <style name="ButtonTextFontMedium" parent="TextAppearance.MaterialComponents.Button">
+        <item name="fontFamily">@font/roboto_medium</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+    </style>
+
+    <style name="ButtonBlueBackground" parent="@style/Widget.AppCompat.Button">
         <item name="fontFamily">@font/roboto_bold</item>
         <item name="textAllCaps">false</item>
         <item name="android:textSize">14sp</item>
@@ -27,45 +38,45 @@
         <item name="android:stateListAnimator">@null</item>
     </style>
 
-    <style name="Divider">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">1dp</item>
-        <item name="android:background">@color/gray</item>
+
+    <!--Toolbar-->
+    <style name="ToolbarWhite">
+        <item name="android:background">@color/white</item>
     </style>
 
-    <style name="BottomTextGray" parent="AppTheme">
+    <style name="ToolbarTextTitle">
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+
+    <!--Text-->
+    <style name="TextBlack" parent="AppTheme">
+        <item name="fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextGray" parent="AppTheme">
         <item name="fontFamily">@font/roboto_regular</item>
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/gray_dark</item>
     </style>
 
-    <style name="BottomTextBlack" parent="AppTheme">
-        <item name="fontFamily">@font/roboto_medium</item>
-        <item name="android:textSize">14sp</item>
-    </style>
-
-    <style name="ButtonTextGray" parent="AppTheme">
-        <item name="fontFamily">@font/roboto_regular</item>
-    </style>
-
-    <style name="BottomTextBlue" parent="AppTheme">
+    <style name="TextBlue" parent="AppTheme">
         <item name="fontFamily">@font/roboto_bold</item>
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/blue_dark</item>
     </style>
 
-    <style name="ToolbarTheme">
-        <item name="android:background">@color/colorPrimary</item>
-    </style>
 
-    <style name="ToolbarWhite">
-        <item name="android:background">@color/white</item>
-    </style>
-
-    <style name="ToolbarTitle">
-        <item name="android:textSize">18sp</item>
-        <item name="android:fontFamily">@font/roboto_medium</item>
+    <!--Text Input - Edit Text-->
+    <style name="EditTextStyle" parent="AppTheme">
+        <item name="fontFamily">@font/roboto_regular</item>
         <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:padding">14dp</item>
+        <item name="android:textColorHint">@color/gray_dark</item>
     </style>
 
     <style name="TextInputStyle" parent="AppTheme">
@@ -79,15 +90,12 @@
         <item name="android:textColorHint">@color/gray_bubble</item>
     </style>
 
-    <style name="TextAppearance.Button" parent="TextAppearance.MaterialComponents.Button">
-        <item name="fontFamily">@font/roboto_medium</item>
-        <item name="android:fontFamily">@font/roboto_medium</item>
-    </style>
 
-    <style name="MenuTextAppearance" parent="@android:style/TextAppearance.Widget.IconMenu.Item">
-        <item name="android:textAllCaps">false</item>
-        <item name="android:textSize">18sp</item>
-        <item name="android:fontFamily">@font/roboto_medium</item>
+    <!--Divider-->
+    <style name="Divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/gray</item>
     </style>
 
 </resources>

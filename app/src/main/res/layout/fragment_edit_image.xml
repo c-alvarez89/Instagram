@@ -11,12 +11,12 @@
         android:id="@+id/tb_filter"
         android:layout_width="0dp"
         android:layout_height="48dp"
+        android:background="@color/colorPrimary"
         android:elevation="2dp"
-        android:theme="@style/ToolbarTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:titleTextAppearance="@style/ToolbarTitle">
+        app:titleTextAppearance="@style/ToolbarTextTitle">
 
         <ImageView
             android:id="@+id/image_constrast"
