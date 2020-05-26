@@ -87,7 +87,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tb_chat"
-            app:setAdapter="@{viewModel.adapter}" />
+            app:setAdapter="@{viewModel.adapter}"
+            tools:listitem="@layout/layout_message_received" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"

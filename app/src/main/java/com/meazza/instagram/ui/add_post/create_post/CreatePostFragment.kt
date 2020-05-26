@@ -17,7 +17,7 @@ import androidx.navigation.fragment.findNavController
 import coil.api.load
 import com.meazza.instagram.R
 import com.meazza.instagram.databinding.FragmentCreatePostBinding
-import com.meazza.instagram.util.setToolbarWithBackArrow
+import com.meazza.instagram.util.setToolbar
 import com.zomato.photofilters.FilterPack
 import com.zomato.photofilters.imageprocessors.Filter
 import kotlinx.android.synthetic.main.fragment_create_post.*
@@ -51,7 +51,7 @@ class CreatePostFragment : Fragment(R.layout.fragment_create_post) {
         getBitmap()
         setThumbnail()
         setHasOptionsMenu(true)
-        setToolbarWithBackArrow(activity, tb_new_post, getString(R.string.new_post))
+        setToolbar(activity, tb_new_post, getString(R.string.new_post))
     }
 
     private fun getBitmap() {

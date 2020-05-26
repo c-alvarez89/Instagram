@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.meazza.instagram.ui.profile.ProfileViewModel" />
+            type="com.meazza.instagram.ui.current_profile.CurrentProfileViewModel" />
 
     </data>
 
@@ -18,18 +18,17 @@
         tools:context=".ui.profile.ProfileFragment">
 
         <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/app_bar_profile"
+            android:id="@+id/app_bar_current_profile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
-            app:toolbarId="@+id/tb_own_profile">
+            app:toolbarId="@+id/tb_current_profile">
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
-                android:id="@+id/ctl_profile"
+                android:id="@+id/ctl_current_profile"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/colorPrimary"
-                app:expandedTitleGravity="top"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -39,7 +38,7 @@
                     android:fitsSystemWindows="true">
 
                     <ImageView
-                        android:id="@+id/iv_profile_photo"
+                        android:id="@+id/iv_photo_current_profile"
                         android:layout_width="88dp"
                         android:layout_height="88dp"
                         android:layout_marginStart="20dp"
@@ -59,20 +58,20 @@
                         android:baselineAligned="false"
                         android:orientation="horizontal"
                         android:weightSum="9"
-                        app:layout_constraintBottom_toBottomOf="@+id/iv_profile_photo"
+                        app:layout_constraintBottom_toBottomOf="@+id/iv_photo_current_profile"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/iv_profile_photo"
-                        app:layout_constraintTop_toTopOf="@+id/iv_profile_photo">
+                        app:layout_constraintStart_toEndOf="@+id/iv_photo_current_profile"
+                        app:layout_constraintTop_toTopOf="@+id/iv_photo_current_profile">
 
                         <LinearLayout
-                            android:id="@+id/ll_posts_profile"
+                            android:id="@+id/ll_posts_current_profile"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="3"
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/tv_posts_quantity_profile"
+                                android:id="@+id/tv_posts_quantity_current_profile"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
@@ -91,17 +90,18 @@
                                 android:text="@string/posts"
                                 android:textColor="@color/colorAccent"
                                 android:textSize="14sp" />
+
                         </LinearLayout>
 
                         <LinearLayout
-                            android:id="@+id/ll_followers_profile"
+                            android:id="@+id/ll_followers_current_profile"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="3"
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/tv_followers_quantity"
+                                android:id="@+id/tv_followers_quantity_current_profile"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
@@ -120,17 +120,18 @@
                                 android:text="@string/followers"
                                 android:textColor="@color/colorAccent"
                                 android:textSize="14sp" />
+
                         </LinearLayout>
 
                         <LinearLayout
-                            android:id="@+id/ll_following_profile"
+                            android:id="@+id/ll_following_current_profile"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="3"
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/tv_following_quantity_profile"
+                                android:id="@+id/tv_following_quantity_current_profile"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
@@ -149,22 +150,23 @@
                                 android:text="@string/following"
                                 android:textColor="@color/colorAccent"
                                 android:textSize="14sp" />
+
                         </LinearLayout>
 
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/ll_profile_info"
+                        android:id="@+id/ll_info_current_profile"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:orientation="vertical"
                         app:layout_constraintEnd_toEndOf="@+id/linearLayout"
-                        app:layout_constraintStart_toStartOf="@+id/iv_profile_photo"
-                        app:layout_constraintTop_toBottomOf="@+id/iv_profile_photo">
+                        app:layout_constraintStart_toStartOf="@+id/iv_photo_current_profile"
+                        app:layout_constraintTop_toBottomOf="@+id/iv_photo_current_profile">
 
                         <TextView
-                            android:id="@+id/tv_profile_name"
+                            android:id="@+id/tv_name_current_profile"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto_medium"
@@ -174,7 +176,7 @@
                             tools:text="@string/fake_name" />
 
                         <TextView
-                            android:id="@+id/tv_bio_profile"
+                            android:id="@+id/tv_bio_current_profile"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto_regular"
@@ -187,7 +189,7 @@
                             tools:text="@string/lorem_ipsum" />
 
                         <TextView
-                            android:id="@+id/tv_profile_website"
+                            android:id="@+id/tv_website_current_profile"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
@@ -200,73 +202,34 @@
 
                     </LinearLayout>
 
-                    <LinearLayout
-                        android:id="@+id/ll_buttons"
+                    <Button
+                        android:id="@+id/btn_edit_profile"
+                        style="@style/TextBlack"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="30dp"
                         android:layout_marginTop="24dp"
                         android:layout_marginBottom="20dp"
-                        android:orientation="horizontal"
+                        android:background="@drawable/selector_button_profile"
+                        android:text="@string/edit_profile"
+                        android:textColor="@color/colorAccent"
+                        android:theme="@style/TextBlack"
                         android:visibility="visible"
-                        android:weightSum="2"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="@+id/ll_profile_info"
-                        app:layout_constraintStart_toStartOf="@+id/ll_profile_info"
-                        app:layout_constraintTop_toBottomOf="@+id/ll_profile_info">
-
-                        <Button
-                            android:id="@+id/btn_follow"
-                            style="?android:attr/borderlessButtonStyle"
-                            android:layout_width="0dp"
-                            android:layout_height="30dp"
-                            android:layout_marginEnd="4dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/background_button_blue"
-                            android:onClick="@{() -> viewModel.saveFollow()}"
-                            android:text="@string/follow"
-                            android:theme="@style/ButtonBlueBackground"
-                            android:visibility="visible"
-                            app:showFollowButton="@{viewModel.isCurrentUserFollowing}" />
-
-                        <Button
-                            android:id="@+id/btn_following"
-                            style="?android:attr/borderlessButtonStyle"
-                            android:layout_width="0dp"
-                            android:layout_height="30dp"
-                            android:layout_marginEnd="4dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/selector_button_profile"
-                            android:onClick="@{() -> viewModel.stopFollowing()}"
-                            android:text="@string/following"
-                            android:textColor="@color/colorAccent"
-                            android:theme="@style/TextBlack"
-                            android:visibility="gone"
-                            app:showFollowButton="@{!viewModel.isCurrentUserFollowing}" />
-
-                        <Button
-                            android:id="@+id/btn_send_message"
-                            style="@style/TextBlack"
-                            android:layout_width="0dp"
-                            android:layout_height="30dp"
-                            android:layout_marginStart="4dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/selector_button_profile"
-                            android:text="@string/direct_message"
-                            android:textColor="@color/colorAccent"
-                            android:theme="@style/TextBlack" />
-                    </LinearLayout>
+                        app:layout_constraintEnd_toEndOf="@+id/ll_info_current_profile"
+                        app:layout_constraintStart_toStartOf="@+id/ll_info_current_profile"
+                        app:layout_constraintTop_toBottomOf="@+id/ll_info_current_profile" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/tb_profile"
+                    android:id="@+id/tb_current_profile"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:background="@color/colorPrimary"
                     app:layout_collapseMode="pin">
 
                     <TextView
-                        android:id="@+id/tv_profile_username"
+                        android:id="@+id/tv_username_current_profile"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_medium"
@@ -282,7 +245,7 @@
             </com.google.android.material.appbar.CollapsingToolbarLayout>
 
             <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tab_layout_profile"
+                android:id="@+id/tab_layout_current_profile"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:background="@color/colorPrimary"
@@ -293,7 +256,7 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/pager_profile"
+            android:id="@+id/pager_current_profile"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />

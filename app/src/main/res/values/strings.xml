@@ -86,4 +86,5 @@
     <string name="time_ago">December 10</string>
     <string name="caption">username Caption</string>
     <string name="zero_likes">0 Likes</string>
+    <string name="current_profile">Current Profile</string>
 </resources>

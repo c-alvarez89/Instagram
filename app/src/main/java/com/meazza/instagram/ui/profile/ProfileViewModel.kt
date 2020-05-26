@@ -5,14 +5,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import com.meazza.instagram.data.model.User
-import com.meazza.instagram.data.network.CurrentUserDB
 import com.meazza.instagram.data.network.FollowActionDB
 import kotlinx.coroutines.launch
 
-class ProfileViewModel(
-    private val followActionDb: FollowActionDB,
-    private val currentUserDb: CurrentUserDB
-) : ViewModel() {
+class ProfileViewModel(private val followActionDb: FollowActionDB) : ViewModel() {
 
     val instagrammer = MutableLiveData<User>()
     val id = MutableLiveData<String>()
@@ -24,13 +20,7 @@ class ProfileViewModel(
     val postsNumber = MutableLiveData<String>()
     val followersNumber = MutableLiveData<String>()
     val followingNumber = MutableLiveData<String>()
-
-    val isCurrentUser = MutableLiveData<Boolean>()
     val isCurrentUserFollowing = MutableLiveData<Boolean>()
-
-    fun getCurrentUser() = liveData {
-        emit(currentUserDb.getUser())
-    }
 
     fun checkIfCurrentUserIsFollowing(instagrammerUid: String) = liveData {
         emit(followActionDb.checkIfCurrentUserIsFollowing(instagrammerUid))

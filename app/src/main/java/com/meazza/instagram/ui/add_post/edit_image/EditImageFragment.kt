@@ -19,7 +19,7 @@ import coil.api.load
 import com.meazza.instagram.R
 import com.meazza.instagram.common.listener.OnFilterClickListener
 import com.meazza.instagram.data.model.EditedImage
-import com.meazza.instagram.util.setToolbarWithBackArrow
+import com.meazza.instagram.util.setToolbar
 import com.zomato.photofilters.FilterPack
 import com.zomato.photofilters.utils.ThumbnailItem
 import com.zomato.photofilters.utils.ThumbnailsManager
@@ -47,7 +47,7 @@ class EditImageFragment : Fragment(R.layout.fragment_edit_image),
         setFilters()
         setRecyclerView()
         setHasOptionsMenu(true)
-        setToolbarWithBackArrow(activity, tb_filter, "")
+        setToolbar(activity, tb_filter, "")
     }
 
     private fun getBitmap() {

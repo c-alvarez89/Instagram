@@ -1,4 +1,4 @@
-package com.meazza.instagram.ui.profile.edit_profile
+package com.meazza.instagram.ui.current_profile.edit_profile
 
 import android.net.Uri
 import androidx.lifecycle.MutableLiveData
@@ -23,14 +23,6 @@ class EditProfileViewModel(private val userInstance: CurrentUserDB) : ViewModel(
     var posts = MutableLiveData<String>()
     var followers = MutableLiveData<String>()
     var following = MutableLiveData<String>()
-
-    init {
-        if (photoUrl.value.isNullOrEmpty()) photoUrl.value = ""
-        if (name.value.isNullOrEmpty()) name.value = ""
-        if (username.value.isNullOrEmpty()) username.value = ""
-        if (bio.value.isNullOrEmpty()) bio.value = ""
-        if (website.value.isNullOrEmpty()) website.value = ""
-    }
 
     fun changeUserPhoto() {
         onClickListener?.onClickFromViewModel()

@@ -10,7 +10,7 @@ import androidx.lifecycle.Observer
 import com.meazza.instagram.R
 import com.meazza.instagram.data.model.User
 import com.meazza.instagram.databinding.FragmentChatBinding
-import com.meazza.instagram.util.setToolbarWithBackArrow
+import com.meazza.instagram.util.setToolbar
 import kotlinx.android.synthetic.main.fragment_chat.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.android.ext.android.inject
@@ -53,7 +53,7 @@ class ChatFragment : Fragment(R.layout.fragment_chat) {
         }
 
         setHasOptionsMenu(true)
-        setToolbarWithBackArrow(activity, tb_chat, "")
+        setToolbar(activity, tb_chat, "")
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

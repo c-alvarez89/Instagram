@@ -62,7 +62,7 @@ object FollowActionDB {
     private fun updateFollower(uid: String) {
         followRef.document(uid).collection(FOLLOWER).get()
             .addOnSuccessListener {
-                usersRef.document(uid).update(FOLLOWER_NUMBER, it.size())
+                usersRef.document(uid).update(FOLLOWERS_NUMBER, it.size())
             }
     }
 

@@ -6,15 +6,22 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.meazza.instagram.R
-import com.meazza.instagram.util.setToolbarWithLeftIcon
+import com.meazza.instagram.di.preferences
+import com.meazza.instagram.util.setToolbar
 import kotlinx.android.synthetic.main.fragment_feed.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import org.koin.android.ext.android.inject
 
+@ExperimentalCoroutinesApi
 class FeedFragment : Fragment(R.layout.fragment_feed) {
+
+    private val feedViewModel by inject<FeedViewModel>()
 
     private val mAuth = FirebaseAuth.getInstance()
 
@@ -22,8 +29,9 @@ class FeedFragment : Fragment(R.layout.fragment_feed) {
         super.onViewCreated(view, savedInstanceState)
 
         checkCurrentUser(view)
+        setCurrentUserInfo()
         setHasOptionsMenu(true)
-        setToolbarWithLeftIcon(activity, tb_feed, "", R.drawable.ic_camera)
+        setToolbar(activity, tb_feed, "", R.drawable.ic_camera)
     }
 
     private fun checkCurrentUser(view: View) {
@@ -33,6 +41,19 @@ class FeedFragment : Fragment(R.layout.fragment_feed) {
                 NavOptions.Builder().setPopUpTo(R.id.nav_main, true).build()
             )
         }
+    }
+
+    private fun setCurrentUserInfo() {
+        feedViewModel.getCurrentUser().observe(viewLifecycleOwner, Observer {
+            preferences.name = it?.name
+            preferences.username = it?.username
+            preferences.photoUrl = it?.photoUrl
+            preferences.bio = it?.bio
+            preferences.website = it?.website
+            preferences.postsNumber = it?.postNumber!!
+            preferences.followersNumber = it.followersNumber
+            preferences.followingNumber = it.followingNumber
+        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

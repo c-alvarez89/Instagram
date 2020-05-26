@@ -1,4 +1,4 @@
-package com.meazza.instagram.ui.follower
+package com.meazza.instagram.ui.follower_list
 
 import android.os.Bundle
 import android.view.View
@@ -6,9 +6,9 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayoutMediator
 import com.meazza.instagram.R
 import com.meazza.instagram.common.adapter.InstagramViewPagerAdapter
-import com.meazza.instagram.ui.follower.list.FollowerListFragment
-import com.meazza.instagram.ui.follower.list.FollowingListFragment
-import com.meazza.instagram.util.setToolbarWithBackArrow
+import com.meazza.instagram.ui.follower_list.list.FollowerListFragment
+import com.meazza.instagram.ui.follower_list.list.FollowingListFragment
+import com.meazza.instagram.util.setToolbar
 import kotlinx.android.synthetic.main.container_followers.*
 
 class FollowersContainer : Fragment(R.layout.container_followers) {
@@ -16,10 +16,10 @@ class FollowersContainer : Fragment(R.layout.container_followers) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val user = arguments?.let { FollowersContainerArgs.fromBundle(it).user }
+        val userId = arguments?.let { FollowersContainerArgs.fromBundle(it).userId }
 
         setTabLayout()
-        setToolbarWithBackArrow(activity, tb_follower, user?.username!!)
+        setToolbar(activity, tb_follower, userId!!)
     }
 
     private fun setTabLayout() {

@@ -1,4 +1,4 @@
-package com.meazza.instagram.ui.profile.edit_profile
+package com.meazza.instagram.ui.current_profile.edit_profile
 
 import android.app.Activity
 import android.app.Activity.RESULT_OK
@@ -21,14 +21,13 @@ import com.meazza.instagram.common.permission.PermissionRequest
 import com.meazza.instagram.common.permission.PermissionState
 import com.meazza.instagram.databinding.FragmentEditProfileBinding
 import com.meazza.instagram.util.TRY_AGAIN
-import com.meazza.instagram.util.setToolbarWithLeftIcon
+import com.meazza.instagram.util.setToolbar
 import kotlinx.android.synthetic.main.fragment_edit_profile.*
 import org.jetbrains.anko.support.v4.longToast
 import org.koin.android.ext.android.inject
 
 
-class EditProfileFragment : Fragment(R.layout.fragment_edit_profile),
-    OnViewClickListener,
+class EditProfileFragment : Fragment(R.layout.fragment_edit_profile), OnViewClickListener,
     StatusCallback {
 
     companion object {
@@ -51,13 +50,9 @@ class EditProfileFragment : Fragment(R.layout.fragment_edit_profile),
         }
 
         editProfileViewModel.onClickListener = this
+
         setHasOptionsMenu(true)
-        setToolbarWithLeftIcon(
-            activity,
-            tb_edit_profile,
-            getString(R.string.edit_profile),
-            R.drawable.ic_close
-        )
+        setToolbar(activity, tb_edit_profile, getString(R.string.edit_profile), R.drawable.ic_close)
     }
 
     private fun pickImageFromGallery() {

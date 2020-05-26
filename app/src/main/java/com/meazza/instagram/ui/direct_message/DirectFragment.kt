@@ -14,7 +14,7 @@ import com.meazza.instagram.common.listener.OnUserClickListener
 import com.meazza.instagram.data.model.User
 import com.meazza.instagram.databinding.FragmentDirectBinding
 import com.meazza.instagram.ui.direct_message.adapter.DirectAdapter
-import com.meazza.instagram.util.setToolbarWithBackArrow
+import com.meazza.instagram.util.setToolbar
 import kotlinx.android.synthetic.main.fragment_direct.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.android.ext.android.inject
@@ -41,7 +41,7 @@ class DirectFragment : Fragment(R.layout.fragment_direct), OnUserClickListener {
         }
 
         setHasOptionsMenu(true)
-        setToolbarWithBackArrow(activity, tb_direct, getString(R.string.direct))
+        setToolbar(activity, tb_direct, getString(R.string.direct))
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

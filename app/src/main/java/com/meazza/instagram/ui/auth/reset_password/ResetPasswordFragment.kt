@@ -11,7 +11,7 @@ import com.meazza.instagram.databinding.FragmentResetPasswordBinding
 import com.meazza.instagram.util.EMPTY_FIELDS
 import com.meazza.instagram.util.INVALID_EMAIL
 import com.meazza.instagram.util.USER_NOT_FOUND
-import com.meazza.instagram.util.setToolbarWithBackArrow
+import com.meazza.instagram.util.setToolbar
 import kotlinx.android.synthetic.main.fragment_reset_password.*
 import org.jetbrains.anko.support.v4.longToast
 import org.koin.android.ext.android.inject
@@ -29,7 +29,7 @@ class ResetPasswordFragment : Fragment(R.layout.fragment_reset_password), Status
         }
 
         resetViewModel.statusCallback = this
-        setToolbarWithBackArrow(activity, tb_reset_password, getString(R.string.login_help))
+        setToolbar(activity, tb_reset_password, getString(R.string.login_help))
     }
 
     override fun onSuccess() {

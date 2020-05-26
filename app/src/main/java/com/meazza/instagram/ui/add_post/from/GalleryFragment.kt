@@ -10,7 +10,7 @@ import androidx.navigation.fragment.findNavController
 import coil.api.load
 import com.meazza.instagram.R
 import com.meazza.instagram.ui.add_post.AddPostContainerDirections
-import com.meazza.instagram.ui.profile.edit_profile.EditProfileFragment
+import com.meazza.instagram.ui.current_profile.edit_profile.EditProfileFragment
 import kotlinx.android.synthetic.main.fragment_gallery.*
 
 class GalleryFragment : Fragment(R.layout.fragment_gallery) {

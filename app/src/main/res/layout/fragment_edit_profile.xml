@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.meazza.instagram.ui.profile.edit_profile.EditProfileViewModel" />
+            type="com.meazza.instagram.ui.current_profile.edit_profile.EditProfileViewModel" />
 
     </data>
 
@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
-        tools:context=".ui.profile.edit_profile.EditProfileFragment">
+        tools:context=".ui.current_profile.edit_profile.EditProfileFragment">
 
         <include
             android:id="@+id/tb_edit_profile"

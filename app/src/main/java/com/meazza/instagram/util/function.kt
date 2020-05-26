@@ -19,7 +19,15 @@ fun isValidPassword(password: String): Boolean {
     return pattern.matcher(password).matches()
 }
 
-fun setToolbarWithBackArrow(activity: FragmentActivity?, toolbar: View, toolbarTitle: String) {
+fun setToolbar(activity: FragmentActivity?, toolbar: View) {
+    val mActivity = activity as AppCompatActivity
+    mActivity.apply {
+        setSupportActionBar(toolbar as Toolbar)
+        title = ""
+    }
+}
+
+fun setToolbar(activity: FragmentActivity?, toolbar: View, toolbarTitle: String) {
     val mActivity = activity as AppCompatActivity
     mActivity.apply {
         setSupportActionBar(toolbar as Toolbar)
@@ -31,7 +39,7 @@ fun setToolbarWithBackArrow(activity: FragmentActivity?, toolbar: View, toolbarT
     }
 }
 
-fun setToolbarWithLeftIcon(
+fun setToolbar(
     activity: FragmentActivity?,
     toolbar: View,
     toolbarTitle: String,

@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment
 import com.meazza.instagram.R
 import com.meazza.instagram.data.model.Post
 import com.meazza.instagram.databinding.FragmentPostDetailBinding
-import com.meazza.instagram.util.setToolbarWithBackArrow
+import com.meazza.instagram.util.setToolbar
 import kotlinx.android.synthetic.main.fragment_post_detail.*
 import org.koin.android.ext.android.inject
 
@@ -32,7 +32,7 @@ class PostDetailFragment : Fragment(R.layout.fragment_post_detail) {
         }
 
         setPostInfo()
-        setToolbarWithBackArrow(activity, tb_post_detail, getString(R.string.posts))
+        setToolbar(activity, tb_post_detail, getString(R.string.posts))
     }
 
     private fun setPostInfo() {

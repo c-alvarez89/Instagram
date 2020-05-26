@@ -16,15 +16,6 @@ fun showFollowButton(button: Button, isFollowing: Boolean) {
     }
 }
 
-@BindingAdapter("showEditProfileButton")
-fun showEditProfileButton(view: View, isCurrentUser: Boolean) {
-    if (isCurrentUser) {
-        view.visibility = View.VISIBLE
-    } else {
-        view.visibility = View.GONE
-    }
-}
-
 @BindingAdapter("setQueryTextListener")
 fun setOnQueryTextListener(searchView: SearchView, listener: SearchView.OnQueryTextListener) {
     searchView.setOnQueryTextListener(listener)
