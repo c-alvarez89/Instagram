@@ -24,7 +24,7 @@ class HostActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.navigation_feed -> bottom_nav.visibility = View.VISIBLE
-                R.id.navigation_search -> bottom_nav.visibility = View.VISIBLE
+                R.id.navigation_explore -> bottom_nav.visibility = View.VISIBLE
                 R.id.navigation_notification -> bottom_nav.visibility = View.VISIBLE
                 R.id.navigation_current_profile -> bottom_nav.visibility = View.VISIBLE
                 else -> bottom_nav.visibility = View.GONE

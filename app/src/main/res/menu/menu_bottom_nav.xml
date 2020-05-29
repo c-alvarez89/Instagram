@@ -6,9 +6,9 @@
         android:icon="@drawable/selector_feed"
         android:title="@string/feed" />
     <item
-        android:id="@+id/navigation_search"
+        android:id="@+id/navigation_explore"
         android:icon="@drawable/selector_search"
-        android:title="@string/search" />
+        android:title="@string/explore" />
     <item
         android:id="@+id/navigation_add_post"
         android:icon="@drawable/selector_add_post"

@@ -46,4 +46,8 @@ object PostActionDB {
 
         return posts
     }
+
+    fun getPostsQuery() = postRef.document(currentUserId!!).collection(currentUserId!!)
+
+
 }

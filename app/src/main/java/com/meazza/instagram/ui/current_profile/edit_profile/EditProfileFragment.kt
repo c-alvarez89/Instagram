@@ -23,10 +23,12 @@ import com.meazza.instagram.databinding.FragmentEditProfileBinding
 import com.meazza.instagram.util.TRY_AGAIN
 import com.meazza.instagram.util.setToolbar
 import kotlinx.android.synthetic.main.fragment_edit_profile.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.jetbrains.anko.support.v4.longToast
 import org.koin.android.ext.android.inject
 
 
+@ExperimentalCoroutinesApi
 class EditProfileFragment : Fragment(R.layout.fragment_edit_profile), OnViewClickListener,
     StatusCallback {
 

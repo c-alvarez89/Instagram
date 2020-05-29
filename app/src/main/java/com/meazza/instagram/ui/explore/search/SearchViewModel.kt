@@ -1,4 +1,4 @@
-package com.meazza.instagram.ui.search
+package com.meazza.instagram.ui.explore.search
 
 import android.widget.SearchView
 import androidx.lifecycle.MutableLiveData
@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import com.meazza.instagram.data.model.User
 import com.meazza.instagram.data.network.RequestData
-import com.meazza.instagram.ui.search.adapter.SearchAdapter
+import com.meazza.instagram.ui.explore.adapter.SearchAdapter
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 

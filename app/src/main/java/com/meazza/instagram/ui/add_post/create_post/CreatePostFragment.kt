@@ -21,9 +21,11 @@ import com.meazza.instagram.util.setToolbar
 import com.zomato.photofilters.FilterPack
 import com.zomato.photofilters.imageprocessors.Filter
 import kotlinx.android.synthetic.main.fragment_create_post.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.android.ext.android.inject
 import java.io.ByteArrayOutputStream
 
+@ExperimentalCoroutinesApi
 @Suppress("NAME_SHADOWING", "DEPRECATION")
 class CreatePostFragment : Fragment(R.layout.fragment_create_post) {
 
@@ -46,8 +48,6 @@ class CreatePostFragment : Fragment(R.layout.fragment_create_post) {
             viewModel = createPostViewModel
         }
 
-        createPostViewModel.getCurrentUser()
-
         getBitmap()
         setThumbnail()
         setHasOptionsMenu(true)
@@ -55,9 +55,11 @@ class CreatePostFragment : Fragment(R.layout.fragment_create_post) {
     }
 
     private fun getBitmap() {
+
         val imagePost = arguments?.let { CreatePostFragmentArgs.fromBundle(it).editedImage }
         val imageUri = Uri.parse(imagePost?.image)
         filterName = imagePost?.filter
+
         try {
             imageUri?.let {
                 if (Build.VERSION.SDK_INT < 28) {

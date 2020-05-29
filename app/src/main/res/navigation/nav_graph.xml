@@ -26,13 +26,13 @@
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_search"
-        android:name="com.meazza.instagram.ui.search.SearchFragment"
-        android:label="fragment_search"
-        tools:layout="@layout/fragment_search">
+        android:id="@+id/navigation_explore"
+        android:name="com.meazza.instagram.ui.explore.ExploreFragment"
+        android:label="fragment_explore"
+        tools:layout="@layout/fragment_explore" >
         <action
-            android:id="@+id/goto_profile"
-            app:destination="@id/destination_profile" />
+            android:id="@+id/action_navigation_explore_to_destination_search"
+            app:destination="@id/destination_search" />
     </fragment>
 
     <fragment
@@ -145,6 +145,16 @@
         <argument
             android:name="user"
             app:argType="com.meazza.instagram.data.model.User" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/destination_search"
+        android:name="com.meazza.instagram.ui.explore.search.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/goto_profile"
+            app:destination="@id/destination_profile" />
     </fragment>
 
     <fragment

@@ -7,9 +7,12 @@ import androidx.lifecycle.viewModelScope
 import com.meazza.instagram.common.callback.StatusCallback
 import com.meazza.instagram.common.listener.OnViewClickListener
 import com.meazza.instagram.data.network.CurrentUserDB
+import com.meazza.instagram.di.prefs
 import com.meazza.instagram.util.TRY_AGAIN
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
 
+@ExperimentalCoroutinesApi
 class EditProfileViewModel(private val userInstance: CurrentUserDB) : ViewModel() {
 
     var onClickListener: OnViewClickListener? = null
@@ -47,6 +50,12 @@ class EditProfileViewModel(private val userInstance: CurrentUserDB) : ViewModel(
     }
 
     fun saveChanges() {
+
+        prefs.name = name.value
+        prefs.username = username.value
+        prefs.bio = bio.value
+        prefs.website = website.value
+
         viewModelScope.launch {
             try {
                 userInstance.updateUser(

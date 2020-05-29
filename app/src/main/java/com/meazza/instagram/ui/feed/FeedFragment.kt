@@ -12,7 +12,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.meazza.instagram.R
-import com.meazza.instagram.di.preferences
+import com.meazza.instagram.di.prefs
 import com.meazza.instagram.util.setToolbar
 import kotlinx.android.synthetic.main.fragment_feed.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -45,14 +45,15 @@ class FeedFragment : Fragment(R.layout.fragment_feed) {
 
     private fun setCurrentUserInfo() {
         feedViewModel.getCurrentUser().observe(viewLifecycleOwner, Observer {
-            preferences.name = it?.name
-            preferences.username = it?.username
-            preferences.photoUrl = it?.photoUrl
-            preferences.bio = it?.bio
-            preferences.website = it?.website
-            preferences.postsNumber = it?.postNumber!!
-            preferences.followersNumber = it.followersNumber
-            preferences.followingNumber = it.followingNumber
+            prefs.currentUid = it?.id
+            prefs.name = it?.name
+            prefs.username = it?.username
+            prefs.photoUrl = it?.photoUrl
+            prefs.bio = it?.bio
+            prefs.website = it?.website
+            prefs.postsNumber = it?.postNumber!!
+            prefs.followersNumber = it.followersNumber
+            prefs.followingNumber = it.followingNumber
         })
     }
 

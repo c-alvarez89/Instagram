@@ -1,4 +1,4 @@
-package com.meazza.instagram.ui.search.adapter
+package com.meazza.instagram.ui.explore.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

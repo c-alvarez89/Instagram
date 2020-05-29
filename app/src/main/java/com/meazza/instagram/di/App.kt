@@ -10,13 +10,13 @@ import org.koin.core.context.startKoin
 class App : Application() {
 
     companion object {
-        var prefs: Preferences? = null
+        var preferences: Preferences? = null
     }
 
     override fun onCreate() {
         super.onCreate()
 
-        prefs = Preferences(applicationContext)
+        preferences = Preferences(applicationContext)
 
         startKoin {
             androidContext(this@App)
@@ -25,9 +25,9 @@ class App : Application() {
                     authModule,
                     userModule,
                     feedModule,
-                    searchModule,
                     profileModule,
                     postModule,
+                    searchModule,
                     directMessageModule
                 )
             )
@@ -36,4 +36,4 @@ class App : Application() {
 }
 
 @ExperimentalCoroutinesApi
-val preferences by lazy { App.prefs!! }
+val prefs by lazy { App.preferences!! }

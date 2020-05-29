@@ -5,7 +5,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.meazza.instagram.data.model.User
+import com.meazza.instagram.di.prefs
 import com.meazza.instagram.util.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.tasks.await
 
 object CurrentUserDB {
@@ -36,11 +38,17 @@ object CurrentUserDB {
         ).await()
     }
 
+    suspend fun updatePostsNumber(postsNumber: Int) {
+        usersRef.document(currentUserUid).update(POST_NUMBER, postsNumber).await()
+    }
+
+    @ExperimentalCoroutinesApi
     suspend fun uploadPhoto(imageUri: Uri) {
         storage.child("$PROFILE_PHOTO_REF/$currentUserUid.jpeg").putFile(imageUri)
             .addOnSuccessListener {
                 it.storage.downloadUrl.addOnSuccessListener { downloadUri ->
                     val photoUrl = downloadUri.toString()
+                    prefs.photoUrl = photoUrl
                     updatePhoto(photoUrl)
                 }
             }.await()

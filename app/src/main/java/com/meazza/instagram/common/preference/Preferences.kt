@@ -11,6 +11,10 @@ class Preferences(context: Context) {
 
     private val prefs = context.getSharedPreferences(FILE_NAME, Context.MODE_PRIVATE)
 
+    var currentUid: String?
+        get() = prefs.getString(UID, "")
+        set(value) = prefs.edit().putString(UID, value).apply()
+
     var name: String?
         get() = prefs.getString(NAME, "")
         set(value) = prefs.edit().putString(NAME, value).apply()

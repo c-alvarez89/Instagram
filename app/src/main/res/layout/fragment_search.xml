@@ -7,15 +7,16 @@
 
         <variable
             name="viewModel"
-            type="com.meazza.instagram.ui.search.SearchViewModel" />
+            type="com.meazza.instagram.ui.explore.search.SearchViewModel" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+
         android:background="@color/white"
-        tools:context=".ui.search.SearchFragment">
+        tools:context=".ui.explore.search.SearchFragment">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/tb_search"
@@ -23,8 +24,7 @@
             android:layout_height="48dp"
             android:background="@color/colorPrimary"
             android:elevation="2dp"
-            android:minHeight="?attr/actionBarSize"
-            app:contentInsetStart="12dp"
+            app:contentInsetStart="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -36,11 +36,13 @@
                 android:layout_height="match_parent"
                 android:iconifiedByDefault="false"
                 android:paddingStart="-16dp"
+                android:focusableInTouchMode="true"
+                android:descendantFocusability="beforeDescendants"
                 android:paddingEnd="0dp"
                 android:queryBackground="@android:color/transparent"
                 android:queryHint="@string/search"
                 android:searchHintIcon="@null"
-                android:searchIcon="@drawable/ic_search"
+                android:searchIcon="@null"
                 android:textColorHint="@color/blue"
                 app:setQueryTextListener="@{viewModel.queryTextListener()}"
                 tools:layout_editor_absoluteX="16dp" />

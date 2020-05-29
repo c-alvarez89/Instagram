@@ -14,7 +14,7 @@ import com.meazza.instagram.R
 import com.meazza.instagram.common.adapter.InstagramViewPagerAdapter
 import com.meazza.instagram.data.network.AuthService
 import com.meazza.instagram.databinding.FragmentCurrentProfileBinding
-import com.meazza.instagram.di.preferences
+import com.meazza.instagram.di.prefs
 import com.meazza.instagram.ui.post.PostsFragment
 import com.meazza.instagram.ui.post.tagged.TaggedPostsFragment
 import com.meazza.instagram.ui.profile.ProfileFragmentDirections
@@ -45,14 +45,14 @@ class CurrentProfileFragment : Fragment(R.layout.fragment_current_profile) {
 
     private fun setUiInfo() {
         currentProfileViewModel.run {
-            name.value = preferences.name
-            username.value = preferences.username
-            photoUrl.value = preferences.photoUrl
-            bio.value = preferences.bio
-            website.value = preferences.website
-            postsNumber.value = preferences.postsNumber.toString()
-            followersNumber.value = preferences.followersNumber.toString()
-            followingNumber.value = preferences.followingNumber.toString()
+            name.value = prefs.name
+            username.value = prefs.username
+            photoUrl.value = prefs.photoUrl
+            bio.value = prefs.bio
+            website.value = prefs.website
+            postsNumber.value = prefs.postsNumber.toString()
+            followersNumber.value = prefs.followersNumber.toString()
+            followingNumber.value = prefs.followingNumber.toString()
         }
     }
 

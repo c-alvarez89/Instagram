@@ -1,16 +1,15 @@
-package com.meazza.instagram.ui.post
+package com.meazza.instagram.ui.explore
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.paging.PagedList
 import com.firebase.ui.firestore.paging.FirestorePagingOptions
-import com.meazza.instagram.common.decoration.GridSpacingItemDecoration
 import com.meazza.instagram.data.model.Post
 import com.meazza.instagram.data.network.PostActionDB
 import com.meazza.instagram.ui.explore.adapter.ExploreAdapter
 
-class PostsViewModel(private val postsDb: PostActionDB) : ViewModel() {
+class ExploreViewModel(private val postsDb: PostActionDB) : ViewModel() {
 
     val adapter = MutableLiveData<ExploreAdapter>()
 
@@ -34,6 +33,4 @@ class PostsViewModel(private val postsDb: PostActionDB) : ViewModel() {
     fun setAdapter() = adapter.value?.run {
         notifyDataSetChanged()
     }
-
-    fun addItemDecoration() = GridSpacingItemDecoration(3, 6, false)
 }
