@@ -1,5 +1,7 @@
 package com.meazza.instagram.util
 
+import com.bumptech.glide.request.transition.DrawableCrossFadeFactory
+
 /** Errors Code Constants */
 const val EMPTY_FIELDS = 101
 const val INVALID_EMAIL = 102
@@ -33,3 +35,6 @@ const val POSTS_NUMBER = "postsNumber"
 const val FOLLOWERS_NUMBER = "followersNumber"
 const val FOLLOWING_NUMBER = "followingNumber"
 const val POST_IMAGE_URL = "postImageUrl"
+
+/** Common Variables*/
+val factory: DrawableCrossFadeFactory = DrawableCrossFadeFactory.Builder().setCrossFadeEnabled(true).build()

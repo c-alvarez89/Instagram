@@ -15,7 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <com.meazza.instagram.common.decoration.SquareImageView
+        <com.meazza.instagram.common.customization.SquareImageView
             android:id="@+id/iv_post"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

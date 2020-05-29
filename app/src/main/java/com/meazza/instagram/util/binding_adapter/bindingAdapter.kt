@@ -5,7 +5,7 @@ import android.widget.Button
 import android.widget.SearchView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.meazza.instagram.common.decoration.GridSpacingItemDecoration
+import com.meazza.instagram.common.customization.GridSpacingItemDecoration
 
 @BindingAdapter("showFollowButton")
 fun showFollowButton(button: Button, isFollowing: Boolean) {

@@ -12,8 +12,6 @@ import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import coil.api.load
-import coil.transform.CircleCropTransformation
 import com.meazza.instagram.R
 import com.meazza.instagram.common.callback.StatusCallback
 import com.meazza.instagram.common.listener.OnViewClickListener
@@ -21,6 +19,7 @@ import com.meazza.instagram.common.permission.PermissionRequest
 import com.meazza.instagram.common.permission.PermissionState
 import com.meazza.instagram.databinding.FragmentEditProfileBinding
 import com.meazza.instagram.util.TRY_AGAIN
+import com.meazza.instagram.util.circleImage
 import com.meazza.instagram.util.setToolbar
 import kotlinx.android.synthetic.main.fragment_edit_profile.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -73,10 +72,7 @@ class EditProfileFragment : Fragment(R.layout.fragment_edit_profile), OnViewClic
                 GALLERY_REQUEST_CODE -> {
                     val imageUri = data?.data
                     imageUri?.let { editProfileViewModel.uploadImage(it) }
-                    iv_change_user_photo.load(imageUri) {
-                        crossfade(true)
-                        transformations(CircleCropTransformation())
-                    }
+                    iv_change_user_photo.circleImage(imageUri)
                 }
             }
         }

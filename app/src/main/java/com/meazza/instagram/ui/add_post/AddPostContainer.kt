@@ -12,7 +12,9 @@ import com.meazza.instagram.common.permission.PermissionState
 import com.meazza.instagram.ui.add_post.from.GalleryFragment
 import com.meazza.instagram.ui.add_post.from.PhotoFragment
 import kotlinx.android.synthetic.main.container_add_post.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
+@ExperimentalCoroutinesApi
 class AddPostContainer : Fragment(R.layout.container_add_post) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

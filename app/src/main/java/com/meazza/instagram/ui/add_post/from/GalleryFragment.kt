@@ -7,12 +7,14 @@ import android.provider.MediaStore
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import coil.api.load
 import com.meazza.instagram.R
 import com.meazza.instagram.ui.add_post.AddPostContainerDirections
 import com.meazza.instagram.ui.current_profile.edit_profile.EditProfileFragment
+import com.meazza.instagram.util.load
 import kotlinx.android.synthetic.main.fragment_gallery.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
+@ExperimentalCoroutinesApi
 class GalleryFragment : Fragment(R.layout.fragment_gallery) {
 
     private var imageSelected: String? = null

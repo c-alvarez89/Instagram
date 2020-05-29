@@ -1,4 +1,4 @@
-package com.meazza.instagram.common.decoration
+package com.meazza.instagram.common.customization
 
 import android.graphics.Rect
 import android.view.View

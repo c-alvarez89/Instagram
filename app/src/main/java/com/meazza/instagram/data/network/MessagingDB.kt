@@ -56,7 +56,7 @@ object MessagingDB {
             awaitClose { subscription.remove() }
         }
 
-    suspend fun getConversations(): Flow<MutableList<User>> = callbackFlow {
+    suspend fun getConversations(): MutableList<User> {
 
         val userList = mutableListOf<User>()
         val query = conversationRef.document(currentUserUid)
@@ -68,6 +68,7 @@ object MessagingDB {
             user?.let { userList.add(it) }
         }
 
-        offer(userList)
+        return userList
+//        offer(userList)
     }
 }

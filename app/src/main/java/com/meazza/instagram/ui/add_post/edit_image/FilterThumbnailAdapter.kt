@@ -4,9 +4,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import coil.api.load
 import com.meazza.instagram.R
 import com.meazza.instagram.common.listener.OnFilterClickListener
+import com.meazza.instagram.util.load
 import com.zomato.photofilters.utils.ThumbnailItem
 import kotlinx.android.synthetic.main.layout_filter.view.*
 

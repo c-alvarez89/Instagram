@@ -1,4 +1,4 @@
-package com.meazza.instagram.common.decoration
+package com.meazza.instagram.common.customization
 
 import android.content.Context
 import android.graphics.PointF
@@ -59,7 +59,7 @@ class SpannedGridLayoutManager : RecyclerView.LayoutManager {
         parseAspectRatio(typedArray.getString(R.styleable.SpannedGridLayoutManager_aspectRatio))
 
         // use this!
-        val orientation = typedArray.getInt(
+        typedArray.getInt(
             R.styleable.SpannedGridLayoutManager_android_orientation,
             RecyclerView.VERTICAL
         )

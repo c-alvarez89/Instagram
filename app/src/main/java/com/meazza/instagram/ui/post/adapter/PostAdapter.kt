@@ -4,41 +4,37 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.firebase.ui.firestore.paging.FirestorePagingAdapter
+import com.firebase.ui.firestore.paging.FirestorePagingOptions
 import com.meazza.instagram.R
 import com.meazza.instagram.common.listener.OnPostClickListener
 import com.meazza.instagram.data.model.Post
 import com.meazza.instagram.databinding.LayoutPostBinding
 
-class PostAdapter(private val listener: OnPostClickListener) :
-    RecyclerView.Adapter<PostAdapter.HolderPost>() {
+class PostAdapter(
+    options: FirestorePagingOptions<Post>,
+    private val listener: OnPostClickListener
+) :
+    FirestorePagingAdapter<Post, PostAdapter.ExploreViewHolder>(options) {
 
-    private var postList = mutableListOf<Post>()
-
-    fun setList(posts: MutableList<Post>) {
-        postList = posts
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HolderPost =
-        HolderPost(
-            DataBindingUtil.inflate(
-                LayoutInflater.from(parent.context),
-                R.layout.layout_post,
-                parent,
-                false
-            )
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ExploreViewHolder(
+        DataBindingUtil.inflate(
+            LayoutInflater.from(parent.context),
+            R.layout.layout_post,
+            parent,
+            false
         )
+    )
 
-    override fun onBindViewHolder(holder: HolderPost, position: Int) {
+    override fun onBindViewHolder(holder: ExploreViewHolder, position: Int, model: Post) {
         holder.itemBinding.run {
-            post = postList[position]
+            post = model
             root.setOnClickListener {
-                listener.onClickPost(postList[position])
+                listener.onClickPost(model)
             }
         }
     }
 
-    override fun getItemCount(): Int = if (postList.size > 0) postList.size else 0
-
-    inner class HolderPost(val itemBinding: LayoutPostBinding) :
+    inner class ExploreViewHolder(val itemBinding: LayoutPostBinding) :
         RecyclerView.ViewHolder(itemBinding.root)
 }

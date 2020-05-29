@@ -14,9 +14,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
-import coil.api.load
 import com.meazza.instagram.R
 import com.meazza.instagram.databinding.FragmentCreatePostBinding
+import com.meazza.instagram.util.load
 import com.meazza.instagram.util.setToolbar
 import com.zomato.photofilters.FilterPack
 import com.zomato.photofilters.imageprocessors.Filter

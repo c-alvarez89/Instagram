@@ -1,38 +1,18 @@
 package com.meazza.instagram.ui.post
 
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.paging.PagedList
-import com.firebase.ui.firestore.paging.FirestorePagingOptions
-import com.meazza.instagram.common.decoration.GridSpacingItemDecoration
-import com.meazza.instagram.data.model.Post
+import androidx.lifecycle.liveData
+import com.meazza.instagram.common.customization.GridSpacingItemDecoration
 import com.meazza.instagram.data.network.PostActionDB
-import com.meazza.instagram.ui.explore.adapter.ExploreAdapter
+import com.meazza.instagram.ui.post.adapter.PostAdapter
 
 class PostsViewModel(private val postsDb: PostActionDB) : ViewModel() {
 
-    val adapter = MutableLiveData<ExploreAdapter>()
+    val adapter = MutableLiveData<PostAdapter>()
 
-    fun configRecyclerView(owner: LifecycleOwner) {
-
-        val query = postsDb.getPostsQuery()
-
-        val config = PagedList.Config.Builder()
-            .setInitialLoadSizeHint(9)
-            .setPageSize(6)
-            .build()
-
-        val options = FirestorePagingOptions.Builder<Post>()
-            .setLifecycleOwner(owner)
-            .setQuery(query, config, Post::class.java)
-            .build()
-
-        adapter.value = ExploreAdapter(options)
-    }
-
-    fun setAdapter() = adapter.value?.run {
-        notifyDataSetChanged()
+    fun getPostQuery() = liveData {
+        emit(postsDb.getPostsQuery())
     }
 
     fun addItemDecoration() = GridSpacingItemDecoration(3, 6, false)

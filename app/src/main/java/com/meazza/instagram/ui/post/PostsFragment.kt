@@ -4,11 +4,15 @@ import android.os.Bundle
 import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.paging.PagedList
+import com.firebase.ui.firestore.paging.FirestorePagingOptions
 import com.meazza.instagram.R
 import com.meazza.instagram.common.listener.OnPostClickListener
 import com.meazza.instagram.data.model.Post
 import com.meazza.instagram.databinding.FragmentPostsBinding
+import com.meazza.instagram.ui.post.adapter.PostAdapter
 import com.meazza.instagram.ui.profile.ProfileFragmentDirections
 import org.koin.android.ext.android.inject
 
@@ -25,7 +29,31 @@ class PostsFragment : Fragment(R.layout.fragment_posts), OnPostClickListener {
             viewModel = postsViewModel
         }
 
-        postsViewModel.configRecyclerView(viewLifecycleOwner)
+        setRecyclerViewAdapter()
+    }
+
+    private fun setRecyclerViewAdapter() {
+
+        postsViewModel.run {
+            getPostQuery().observe(viewLifecycleOwner, Observer {
+                val query = it
+
+                val config = PagedList.Config.Builder()
+                    .setInitialLoadSizeHint(9)
+                    .setPageSize(6)
+                    .build()
+
+                val options = FirestorePagingOptions.Builder<Post>()
+                    .setLifecycleOwner(viewLifecycleOwner)
+                    .setQuery(query, config, Post::class.java)
+                    .build()
+
+                adapter.value?.run {
+                    PostAdapter(options, this@PostsFragment)
+                    notifyDataSetChanged()
+                }
+            })
+        }
     }
 
     override fun onClickPost(post: Post) {

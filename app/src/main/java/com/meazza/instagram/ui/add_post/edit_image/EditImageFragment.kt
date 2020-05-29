@@ -15,10 +15,10 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import coil.api.load
 import com.meazza.instagram.R
 import com.meazza.instagram.common.listener.OnFilterClickListener
 import com.meazza.instagram.data.model.EditedImage
+import com.meazza.instagram.util.load
 import com.meazza.instagram.util.setToolbar
 import com.zomato.photofilters.FilterPack
 import com.zomato.photofilters.utils.ThumbnailItem
