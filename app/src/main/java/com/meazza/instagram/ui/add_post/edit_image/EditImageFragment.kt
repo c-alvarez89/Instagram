@@ -5,11 +5,9 @@ import android.graphics.ImageDecoder
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import android.provider.MediaStore
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
-import android.view.View
+import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DefaultItemAnimator
@@ -27,14 +25,26 @@ import kotlinx.android.synthetic.main.fragment_edit_image.*
 
 
 @Suppress("DEPRECATION", "NAME_SHADOWING")
-class EditImageFragment : Fragment(R.layout.fragment_edit_image),
-    OnFilterClickListener {
+class EditImageFragment : Fragment(R.layout.fragment_edit_image), OnFilterClickListener {
 
     private val filterList = ArrayList<ThumbnailItem>()
     private var imageString: String? = null
     private var filterName: String? = null
     private var originalImage: Bitmap? = null
     private var newImage: Bitmap? = null
+
+    private val hideHandler = Handler()
+
+    private val hidePart2Runnable = Runnable {
+        activity?.window?.decorView?.systemUiVisibility = View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY or
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
+                View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION or
+                View.SYSTEM_UI_FLAG_FULLSCREEN or
+                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or
+                View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+    }
+
+    private val hideRunnable = Runnable { hideHandler.postDelayed(hidePart2Runnable, 0) }
 
     init {
         System.loadLibrary("NativeImageProcessor")
@@ -48,6 +58,26 @@ class EditImageFragment : Fragment(R.layout.fragment_edit_image),
         setRecyclerView()
         setHasOptionsMenu(true)
         setToolbar(activity, tb_filter, "")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+        hideHandler.removeCallbacks(hideRunnable)
+        hideHandler.postDelayed(hideRunnable, 0)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        activity?.window?.run {
+            clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+            decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        activity?.window?.clearFlags(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR)
     }
 
     private fun getBitmap() {

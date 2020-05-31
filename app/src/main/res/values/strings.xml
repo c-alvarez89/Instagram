@@ -90,4 +90,6 @@
     <string name="zero_likes">0 Likes</string>
     <string name="current_profile">Current Profile</string>
     <string name="explore">Explore</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>

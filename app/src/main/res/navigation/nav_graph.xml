@@ -68,7 +68,7 @@
         android:id="@+id/destination_camera"
         android:name="com.meazza.instagram.ui.camera.CameraFragment"
         android:label="fragment_camera"
-        tools:layout="@layout/fragment_camera"/>
+        tools:layout="@layout/fragment_camera" />
 
     <fragment
         android:id="@+id/destination_direct"
@@ -191,7 +191,7 @@
         android:id="@+id/fragment_posts"
         android:name="com.meazza.instagram.ui.post.PostsFragment"
         android:label="PostsFragment"
-        tools:layout="@layout/fragment_posts"/>
+        tools:layout="@layout/fragment_posts" />
 
     <action
         android:id="@+id/action_global_profile"
@@ -200,7 +200,8 @@
     <action
         android:id="@+id/action_global_post_detail"
         app:destination="@id/destination_post_detail" />
-    <navigation android:id="@+id/nav_auth"
+    <navigation
+        android:id="@+id/nav_auth"
         app:startDestination="@id/destination_welcome">
         <fragment
             android:id="@+id/destination_sign_up"

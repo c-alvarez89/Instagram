@@ -10,4 +10,5 @@
     <color name="white">#FFFFFF</color>
     <color name="blue">#0195F7</color>
     <color name="blue_dark">#023665</color>
+    <color name="black_overlay">#66000000</color>
 </resources>
