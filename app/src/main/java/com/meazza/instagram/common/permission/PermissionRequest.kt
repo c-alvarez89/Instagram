@@ -18,7 +18,7 @@ class PermissionRequest(private val activity: Activity) {
 
         var result: PermissionState? = null
 
-        Dexter.withActivity(activity)
+        Dexter.withContext(activity)
             .withPermissions(readExternalStorage, camera)
             .withListener(object : MultiplePermissionsListener {
 

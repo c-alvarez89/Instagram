@@ -35,7 +35,7 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up), StatusCallback {
 
     private fun setUiAction() {
         tv_goto_log_in.setOnClickListener {
-            findNavController().navigate(R.id.goto_log_in)
+            findNavController().navigate(R.id.action_login)
         }
     }
 
@@ -46,7 +46,7 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up), StatusCallback {
     }
 
     override fun onSuccess() {
-        findNavController().navigate(R.id.goto_feed)
+        findNavController().navigate(R.id.action_feed)
     }
 
     override fun onFailure(messageCode: Int) {

@@ -11,8 +11,8 @@ class PostsViewModel(private val postsDb: PostActionDB) : ViewModel() {
 
     val adapter = MutableLiveData<PostAdapter>()
 
-    fun getPostQuery() = liveData {
-        emit(postsDb.getPostsQuery())
+    fun getPostQuery(id: String) = liveData {
+        emit(postsDb.getPostsQuery(id))
     }
 
     fun addItemDecoration() = GridSpacingItemDecoration(3, 6, false)

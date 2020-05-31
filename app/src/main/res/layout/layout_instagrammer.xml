@@ -8,7 +8,6 @@
         <variable
             name="user"
             type="com.meazza.instagram.data.model.User" />
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,7 +15,7 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/iv_user_direct"
+            android:id="@+id/iv_user_instagrammer"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginStart="16dp"
@@ -37,7 +36,7 @@
             app:layout_constraintGuide_percent="0.5" />
 
         <TextView
-            android:id="@+id/tv_name_direct"
+            android:id="@+id/tv_username_instagrammer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -45,33 +44,49 @@
             android:text="@{user.name}"
             android:textColor="@color/colorAccent"
             app:layout_constraintBottom_toTopOf="@+id/guideline2"
-            app:layout_constraintStart_toEndOf="@+id/iv_user_direct"
-            tools:text="@string/fake_name" />
+            app:layout_constraintStart_toEndOf="@+id/iv_user_instagrammer"
+            tools:text="@string/fake_username" />
 
         <TextView
-            android:id="@+id/tv_last_message"
+            android:id="@+id/tv_name_instagrammer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_regular"
             android:textColor="@color/gray_dark"
-            app:layout_constraintEnd_toEndOf="@+id/tv_name_direct"
+            app:layout_constraintEnd_toEndOf="@+id/tv_username_instagrammer"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/tv_name_direct"
+            app:layout_constraintStart_toStartOf="@+id/tv_username_instagrammer"
             app:layout_constraintTop_toTopOf="@+id/guideline2"
-            tools:text="@string/last_message" />
+            tools:text="@string/fake_name" />
 
-        <ImageView
-            android:id="@+id/iv_camera"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+        <Button
+            android:id="@+id/btn_follow_instagrammer"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
             android:layout_marginEnd="16dp"
-            android:contentDescription="@string/camera"
-            android:tint="@color/gray_dark"
+            android:background="@drawable/background_button_blue"
+            android:text="@string/follow"
+            android:theme="@style/ButtonBlueBackground"
+            android:visibility="visible"
             app:layout_constraintBottom_toTopOf="@+id/guideline2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline2"
-            app:srcCompat="@drawable/ic_camera" />
+            app:layout_constraintTop_toTopOf="@+id/guideline2" />
+
+        <Button
+            android:id="@+id/btn_following_instagrammer"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/selector_button_profile"
+            android:text="@string/following"
+            android:textColor="@color/colorAccent"
+            android:theme="@style/TextBlack"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/guideline2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </layout>

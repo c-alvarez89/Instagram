@@ -8,6 +8,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withC
 import com.google.firebase.firestore.DocumentReference
 import com.meazza.instagram.R
 import com.meazza.instagram.data.model.User
+import com.meazza.instagram.util.circleImage
 import com.meazza.instagram.util.factory
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -16,15 +17,7 @@ import kotlinx.coroutines.tasks.await
 
 @BindingAdapter("setRoundImage")
 fun setRoundImage(imageView: ImageView, url: String?) {
-
-    Glide.with(imageView.context)
-        .load(url)
-        .transition(withCrossFade(factory))
-        .circleCrop()
-        .error(R.drawable.ic_user_photo)
-        .diskCacheStrategy(DiskCacheStrategy.ALL)
-        .into(imageView)
-        .waitForLayout()
+    imageView.circleImage(url)
 }
 
 @BindingAdapter("setSquareImage")
@@ -35,7 +28,7 @@ fun setSquareImage(imageView: ImageView, url: String?) {
         .transition(withCrossFade(factory))
         .centerCrop()
         .override(800, 800)
-        .error(R.color.gray)
+        .error(R.color.gray_icon)
         .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
         .into(imageView)
         .waitForLayout()
@@ -50,11 +43,6 @@ fun setUserPhotoChat(imageView: ImageView, reference: DocumentReference?) {
         val user = document?.toObject(User::class.java)
         val url = user?.photoUrl.toString()
 
-        Glide.with(imageView.context)
-            .load(url)
-            .circleCrop()
-            .error(R.drawable.ic_user_photo)
-            .diskCacheStrategy(DiskCacheStrategy.ALL)
-            .into(imageView)
+        imageView.circleImage(url)
     }
 }

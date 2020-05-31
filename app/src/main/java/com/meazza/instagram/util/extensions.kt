@@ -8,6 +8,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.meazza.instagram.R
 import java.util.*
@@ -36,7 +37,18 @@ fun ImageView.circleImage(uri: Uri?) {
         .load(uri)
         .transition(DrawableTransitionOptions.withCrossFade(factory))
         .circleCrop()
-        .error(R.color.gray)
+        .error(R.drawable.ic_user_photo)
+        .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+        .into(this)
+}
+
+fun ImageView.circleImage(url: String?) {
+    Glide.with(this.context)
+        .load(url)
+        .transition(DrawableTransitionOptions.withCrossFade(factory))
+        .circleCrop()
+        .error(R.drawable.ic_user_photo)
+        .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
         .into(this)
 }
 
@@ -45,7 +57,7 @@ fun ImageView.load(uri: Uri?) {
         .load(uri)
         .transition(DrawableTransitionOptions.withCrossFade(factory))
         .centerCrop()
-        .error(R.color.gray)
+        .error(R.color.gray_icon)
         .into(this)
 }
 
@@ -54,6 +66,6 @@ fun ImageView.load(bitmap: Bitmap?) {
         .load(bitmap)
         .transition(DrawableTransitionOptions.withCrossFade(factory))
         .centerCrop()
-        .error(R.color.gray)
+        .error(R.color.gray_icon)
         .into(this)
 }

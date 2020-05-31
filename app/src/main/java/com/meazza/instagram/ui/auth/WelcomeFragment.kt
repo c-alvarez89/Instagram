@@ -16,10 +16,10 @@ class WelcomeFragment : Fragment(R.layout.fragment_welcome) {
 
     private fun setUiAction() {
         btn_create_new_account.setOnClickListener {
-            findNavController().navigate(R.id.goto_sign_up)
+            findNavController().navigate(R.id.action_sign_up)
         }
         tv_log_in.setOnClickListener {
-            findNavController().navigate(R.id.goto_log_in)
+            findNavController().navigate(R.id.action_login)
         }
     }
 }

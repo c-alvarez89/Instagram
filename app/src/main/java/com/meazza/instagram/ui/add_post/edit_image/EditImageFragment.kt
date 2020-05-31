@@ -123,7 +123,7 @@ class EditImageFragment : Fragment(R.layout.fragment_edit_image),
 
     private fun gotoCreatePost() {
         val imagePost = EditedImage(imageString, filterName)
-        val action = EditImageFragmentDirections.gotoNewPost(imagePost)
+        val action = EditImageFragmentDirections.actionCreatePost(imagePost)
         findNavController().navigate(action)
     }
 

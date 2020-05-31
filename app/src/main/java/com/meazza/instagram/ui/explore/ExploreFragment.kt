@@ -13,11 +13,13 @@ import com.meazza.instagram.common.customization.SpannedGridLayoutManager
 import com.meazza.instagram.common.listener.OnPostClickListener
 import com.meazza.instagram.data.model.Post
 import com.meazza.instagram.databinding.FragmentExploreBinding
+import com.meazza.instagram.di.prefs
 import com.meazza.instagram.ui.post.adapter.PostAdapter
-import com.meazza.instagram.ui.profile.ProfileFragmentDirections
 import kotlinx.android.synthetic.main.fragment_explore.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.android.ext.android.inject
 
+@ExperimentalCoroutinesApi
 class ExploreFragment : Fragment(R.layout.fragment_explore), OnPostClickListener {
 
     private val exploreViewModel by inject<ExploreViewModel>()
@@ -37,8 +39,10 @@ class ExploreFragment : Fragment(R.layout.fragment_explore), OnPostClickListener
 
     private fun setRecyclerViewAdapter() {
 
+        val id = prefs.currentUid
+
         exploreViewModel.run {
-            getPostQuery().observe(viewLifecycleOwner, Observer {
+            getPostQuery(id!!).observe(viewLifecycleOwner, Observer {
                 val query = it
 
                 val config = PagedList.Config.Builder()
@@ -51,10 +55,7 @@ class ExploreFragment : Fragment(R.layout.fragment_explore), OnPostClickListener
                     .setQuery(query, config, Post::class.java)
                     .build()
 
-                adapter.value?.run {
-                    PostAdapter(options, this@ExploreFragment)
-                    notifyDataSetChanged()
-                }
+                adapter.value = PostAdapter(options, this@ExploreFragment)
             })
         }
     }
@@ -83,7 +84,7 @@ class ExploreFragment : Fragment(R.layout.fragment_explore), OnPostClickListener
     }
 
     override fun onClickPost(post: Post) {
-        val action = ProfileFragmentDirections.gotoPostDetail(post)
+        val action = ExploreFragmentDirections.actionGlobalPostDetail(post)
         findNavController().navigate(action)
     }
 }

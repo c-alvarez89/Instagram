@@ -12,11 +12,13 @@ import com.meazza.instagram.R
 import com.meazza.instagram.common.listener.OnPostClickListener
 import com.meazza.instagram.data.model.Post
 import com.meazza.instagram.databinding.FragmentPostsBinding
+import com.meazza.instagram.di.prefs
 import com.meazza.instagram.ui.post.adapter.PostAdapter
-import com.meazza.instagram.ui.profile.ProfileFragmentDirections
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.android.ext.android.inject
 
 
+@ExperimentalCoroutinesApi
 class PostsFragment : Fragment(R.layout.fragment_posts), OnPostClickListener {
 
     private val postsViewModel by inject<PostsViewModel>()
@@ -34,9 +36,10 @@ class PostsFragment : Fragment(R.layout.fragment_posts), OnPostClickListener {
 
     private fun setRecyclerViewAdapter() {
 
+        val id = prefs.instagrammerId
+
         postsViewModel.run {
-            getPostQuery().observe(viewLifecycleOwner, Observer {
-                val query = it
+            getPostQuery(id!!).observe(viewLifecycleOwner, Observer { query ->
 
                 val config = PagedList.Config.Builder()
                     .setInitialLoadSizeHint(9)
@@ -48,16 +51,13 @@ class PostsFragment : Fragment(R.layout.fragment_posts), OnPostClickListener {
                     .setQuery(query, config, Post::class.java)
                     .build()
 
-                adapter.value?.run {
-                    PostAdapter(options, this@PostsFragment)
-                    notifyDataSetChanged()
-                }
+                adapter.value = PostAdapter(options, this@PostsFragment)
             })
         }
     }
 
     override fun onClickPost(post: Post) {
-        val action = ProfileFragmentDirections.gotoPostDetail(post)
+        val action = PostsFragmentDirections.actionGlobalPostDetail(post)
         findNavController().navigate(action)
     }
 }

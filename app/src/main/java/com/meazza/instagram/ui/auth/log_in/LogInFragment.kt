@@ -32,11 +32,11 @@ class LogInFragment : Fragment(R.layout.fragment_log_in), StatusCallback {
 
     private fun setUiAction() {
         tv_reset_password.setOnClickListener {
-            findNavController().navigate(R.id.goto_reset_password)
+            findNavController().navigate(R.id.next_action)
         }
 
         tv_goto_sign_up.setOnClickListener {
-            findNavController().navigate(R.id.goto_sign_up)
+            findNavController().navigate(R.id.action_sign_up)
         }
     }
 
@@ -47,7 +47,7 @@ class LogInFragment : Fragment(R.layout.fragment_log_in), StatusCallback {
     }
 
     override fun onSuccess() {
-        findNavController().navigate(R.id.goto_feed)
+        findNavController().navigate(R.id.action_feed)
     }
 
     override fun onFailure(messageCode: Int) {

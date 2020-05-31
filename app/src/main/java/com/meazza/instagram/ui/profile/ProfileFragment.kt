@@ -11,6 +11,7 @@ import com.meazza.instagram.R
 import com.meazza.instagram.common.adapter.InstagramViewPagerAdapter
 import com.meazza.instagram.data.model.User
 import com.meazza.instagram.databinding.FragmentProfileBinding
+import com.meazza.instagram.di.prefs
 import com.meazza.instagram.ui.post.PostsFragment
 import com.meazza.instagram.ui.post.tagged.TaggedPostsFragment
 import com.meazza.instagram.util.setToolbar
@@ -27,7 +28,11 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let { user = ProfileFragmentArgs.fromBundle(it).user }
+        arguments?.let {
+            user = ProfileFragmentArgs.fromBundle(it).user
+            prefs.instagrammerId = user.id
+        }
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -83,7 +88,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     private fun setUiAction() {
 
         btn_send_message.setOnClickListener {
-            val direction = ProfileFragmentDirections.gotoChat(user)
+            val direction = ProfileFragmentDirections.actionChat(user)
             findNavController().navigate(direction)
         }
 
@@ -97,7 +102,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     }
 
     private fun gotoFollowers() {
-        val direction = ProfileFragmentDirections.gotoFollowers(user.id!!)
+        val direction = ProfileFragmentDirections.actionFollowers(user)
         findNavController().navigate(direction)
     }
 }

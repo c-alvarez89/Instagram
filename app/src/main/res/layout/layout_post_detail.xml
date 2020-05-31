@@ -1,144 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/white">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
-        android:id="@+id/iv_user_photo_post"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:contentDescription="@string/user_photo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_user_photo" />
+    <data>
 
-    <TextView
-        android:id="@+id/tv_username_post"
-        android:layout_width="wrap_content"
+        <variable
+            name="post"
+            type="com.meazza.instagram.data.model.Post" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:textColor="@color/colorAccent"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_user_photo_post"
-        app:layout_constraintStart_toEndOf="@+id/iv_user_photo_post"
-        app:layout_constraintTop_toTopOf="@+id/iv_user_photo_post"
-        tools:text="@string/fake_username" />
+        android:background="@color/white">
 
-    <ImageView
-        android:id="@+id/iv_menu_post"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:contentDescription="@string/menu"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_username_post"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_username_post"
-        app:srcCompat="@drawable/ic_three_points" />
+        <ImageView
+            android:id="@+id/iv_user_photo_post"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/user_photo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:setRoundImage="@{post.userPhotoUrl}"
+            app:srcCompat="@drawable/ic_user_photo" />
 
-    <com.meazza.instagram.common.customization.SquareImageView
-        android:id="@+id/iv_post_detail"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:contentDescription="@string/image_post"
-        android:scaleType="centerCrop"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_user_photo_post"
-        tools:srcCompat="@tools:sample/avatars[9]" />
-
-    <ImageView
-        android:id="@+id/iv_like"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:contentDescription="@string/like"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_post_detail"
-        app:srcCompat="@drawable/ic_heart" />
-
-    <ImageView
-        android:id="@+id/iv_comment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:contentDescription="@string/comments"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_like"
-        app:layout_constraintStart_toEndOf="@+id/iv_like"
-        app:layout_constraintTop_toTopOf="@+id/iv_like"
-        app:srcCompat="@drawable/ic_comments" />
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="24dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_like">
-
-        <LinearLayout
+        <TextView
+            android:id="@+id/tv_username_post"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@{post.username}"
+            android:textColor="@color/colorAccent"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_user_photo_post"
+            app:layout_constraintStart_toEndOf="@+id/iv_user_photo_post"
+            app:layout_constraintTop_toTopOf="@+id/iv_user_photo_post"
+            tools:text="@string/fake_username" />
+
+        <com.meazza.instagram.common.customization.SquareImageView
+            android:id="@+id/iv_post_detail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/image_post"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_user_photo_post"
+            app:setSquareImage="@{post.postImageUrl}"
+            tools:src="@tools:sample/backgrounds/scenic[1]" />
+
+        <ImageView
+            android:id="@+id/iv_like"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:contentDescription="@string/like"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_post_detail"
+            app:srcCompat="@drawable/ic_heart" />
+
+        <ImageView
+            android:id="@+id/iv_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:contentDescription="@string/comments"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_like"
+            app:layout_constraintStart_toEndOf="@+id/iv_like"
+            app:layout_constraintTop_toTopOf="@+id/iv_like"
+            app:srcCompat="@drawable/ic_comments" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="16dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_like">
 
             <TextView
                 android:id="@+id/tv_likes_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_medium"
+                android:fontFamily="@font/roboto_bold"
                 android:textColor="@color/colorAccent"
-                android:textSize="16sp"
-                tools:text="@string/zero" />
+                android:textSize="14sp"
+                app:setTextLikes="@{post.likesNumber}"
+                tools:text="@string/zero_likes" />
 
             <TextView
-                android:id="@+id/tv_likes"
+                android:id="@+id/tv_caption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:textColor="@color/colorAccent"
+                android:textSize="14sp"
+                app:setCaption="@{post.caption}"
+                app:setUsername="@{post.username}"
+                tools:text="@string/caption" />
+
+            <TextView
+                android:id="@+id/tv_all_comments"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:fontFamily="@font/roboto_medium"
-                android:textColor="@color/colorAccent"
-                android:textSize="16sp"
-                tools:text="@string/like" />
+                android:layout_marginTop="2dp"
+                android:textColor="@color/gray_icon"
+                android:textSize="14sp"
+                app:setTextComments="@{post.commentsNumber}"
+                tools:text="@string/view_comment" />
+
+            <TextView
+                android:id="@+id/tv_time_ago"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:textColor="@color/gray_icon"
+                android:textSize="10sp"
+                app:setFormatDate="@{post.publicationDate}"
+                tools:ignore="SmallSp"
+                tools:text="@string/time_ago" />
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_caption"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:textColor="@color/colorAccent"
-            android:textSize="16sp"
-            tools:text="@string/caption" />
-
-        <TextView
-            android:id="@+id/tv_all_comments"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:textColor="@color/gray_icon"
-            android:textSize="16sp"
-            tools:text="@string/view_all_comments" />
-
-        <TextView
-            android:id="@+id/tv_time_ago"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:textColor="@color/gray_icon"
-            android:textSize="12sp"
-            tools:text="@string/time_ago" />
-
-    </LinearLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

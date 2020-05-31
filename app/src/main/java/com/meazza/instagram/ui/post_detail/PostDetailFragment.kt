@@ -1,4 +1,4 @@
-package com.meazza.instagram.ui.post.detail
+package com.meazza.instagram.ui.post_detail
 
 import android.os.Bundle
 import android.view.View

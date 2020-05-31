@@ -64,22 +64,14 @@
 
     </androidx.appcompat.widget.Toolbar>
 
-    <TextureView
-        android:id="@+id/texture_photo"
+    <com.meazza.instagram.common.customization.SquarePreviewView
+        android:id="@+id/view_finder"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:contentDescription="@string/new_post"
-        app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tb_photo" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.69" />
 
     <ImageView
         android:id="@+id/iv_capture"
@@ -90,7 +82,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/texture_photo" />
+        app:layout_constraintTop_toBottomOf="@+id/view_finder" />
 
     <ImageView
         android:id="@+id/iv_flash"
@@ -100,7 +92,7 @@
         android:layout_marginBottom="8dp"
         android:contentDescription="@string/flash"
         android:src="@drawable/ic_flash"
-        app:layout_constraintBottom_toBottomOf="@+id/texture_photo"
+        app:layout_constraintBottom_toBottomOf="@+id/view_finder"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
@@ -111,7 +103,7 @@
         android:layout_marginBottom="8dp"
         android:contentDescription="@string/front_facing_camera"
         android:src="@drawable/ic_reverse"
-        app:layout_constraintBottom_toBottomOf="@+id/texture_photo"
+        app:layout_constraintBottom_toBottomOf="@+id/view_finder"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

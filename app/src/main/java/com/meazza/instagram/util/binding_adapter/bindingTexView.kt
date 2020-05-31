@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.core.text.bold
 import androidx.databinding.BindingAdapter
 import com.meazza.instagram.R
+import com.meazza.instagram.util.PATTERN_DATE
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -55,7 +56,6 @@ fun setTextComments(textView: TextView, comments: Int) {
 
 @BindingAdapter("setFormatDate")
 fun setFormatDate(textView: TextView, timeAgo: Date) {
-    val pattern = "MMMM d"
-    val dateFormat = SimpleDateFormat(pattern, Locale.ENGLISH)
+    val dateFormat = SimpleDateFormat(PATTERN_DATE, Locale.ENGLISH)
     textView.text = dateFormat.format(timeAgo)
 }

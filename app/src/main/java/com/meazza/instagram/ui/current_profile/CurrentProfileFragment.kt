@@ -17,7 +17,6 @@ import com.meazza.instagram.databinding.FragmentCurrentProfileBinding
 import com.meazza.instagram.di.prefs
 import com.meazza.instagram.ui.post.PostsFragment
 import com.meazza.instagram.ui.post.tagged.TaggedPostsFragment
-import com.meazza.instagram.ui.profile.ProfileFragmentDirections
 import com.meazza.instagram.util.setToolbar
 import kotlinx.android.synthetic.main.fragment_current_profile.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -27,6 +26,11 @@ import org.koin.android.ext.android.inject
 class CurrentProfileFragment : Fragment(R.layout.fragment_current_profile) {
 
     private val currentProfileViewModel by inject<CurrentProfileViewModel>()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        prefs.instagrammerId = prefs.currentUid
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -87,8 +91,8 @@ class CurrentProfileFragment : Fragment(R.layout.fragment_current_profile) {
     }
 
     private fun gotoFollowers() {
-        val direction = ProfileFragmentDirections.gotoFollowers("")
-        findNavController().navigate(direction)
+       /* val direction = ProfileFragmentDirections.gotoFollowers("")
+        findNavController().navigate(direction)*/
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

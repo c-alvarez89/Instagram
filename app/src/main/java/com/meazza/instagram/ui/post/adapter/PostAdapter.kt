@@ -14,10 +14,9 @@ import com.meazza.instagram.databinding.LayoutPostBinding
 class PostAdapter(
     options: FirestorePagingOptions<Post>,
     private val listener: OnPostClickListener
-) :
-    FirestorePagingAdapter<Post, PostAdapter.ExploreViewHolder>(options) {
+) : FirestorePagingAdapter<Post, PostAdapter.PostHolder>(options) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ExploreViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = PostHolder(
         DataBindingUtil.inflate(
             LayoutInflater.from(parent.context),
             R.layout.layout_post,
@@ -26,7 +25,7 @@ class PostAdapter(
         )
     )
 
-    override fun onBindViewHolder(holder: ExploreViewHolder, position: Int, model: Post) {
+    override fun onBindViewHolder(holder: PostHolder, position: Int, model: Post) {
         holder.itemBinding.run {
             post = model
             root.setOnClickListener {
@@ -35,6 +34,6 @@ class PostAdapter(
         }
     }
 
-    inner class ExploreViewHolder(val itemBinding: LayoutPostBinding) :
+    inner class PostHolder(val itemBinding: LayoutPostBinding) :
         RecyclerView.ViewHolder(itemBinding.root)
 }

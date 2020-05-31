@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.meazza.instagram.ui.post.detail.PostDetailViewModel" />
+            type="com.meazza.instagram.ui.post_detail.PostDetailViewModel" />
 
     </data>
 
@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
-        tools:context=".ui.post.detail.PostDetailFragment">
+        tools:context=".ui.post_detail.PostDetailFragment">
 
         <include
             android:id="@+id/tb_post_detail"

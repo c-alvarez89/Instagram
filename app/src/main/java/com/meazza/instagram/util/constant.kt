@@ -36,5 +36,10 @@ const val FOLLOWERS_NUMBER = "followersNumber"
 const val FOLLOWING_NUMBER = "followingNumber"
 const val POST_IMAGE_URL = "postImageUrl"
 
+/** Common Constants*/
+const val FILENAME_FORMAT = "yyyy-MM-dd-HH-mm-ss-SSS"
+const val PATTERN_DATE = "MMMM d"
+
+
 /** Common Variables*/
 val factory: DrawableCrossFadeFactory = DrawableCrossFadeFactory.Builder().setCrossFadeEnabled(true).build()

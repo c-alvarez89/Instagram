@@ -1,4 +1,4 @@
-package com.meazza.instagram.ui.post.detail
+package com.meazza.instagram.ui.post_detail
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

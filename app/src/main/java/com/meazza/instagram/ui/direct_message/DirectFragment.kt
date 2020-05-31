@@ -48,7 +48,7 @@ class DirectFragment : Fragment(R.layout.fragment_direct), OnUserClickListener {
     }
 
     override fun onItemClickListener(user: User) {
-        val action = DirectFragmentDirections.gotoChat(user)
+        val action = DirectFragmentDirections.actionChat(user)
         findNavController().navigate(action)
     }
 }

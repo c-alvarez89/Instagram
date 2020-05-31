@@ -45,6 +45,8 @@
     <string name="posts">Posts</string>
     <string name="followers">Followers</string>
     <string name="following">Following</string>
+    <string name="followers_number">%s Followers</string>
+    <string name="following_number">%s Following</string>
     <string name="zero">0</string>
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis p</string>
     <string name="fake_website">https://www.fakewebside.com/</string>

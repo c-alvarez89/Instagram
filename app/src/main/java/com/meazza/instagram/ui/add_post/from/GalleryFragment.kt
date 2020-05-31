@@ -35,7 +35,7 @@ class GalleryFragment : Fragment(R.layout.fragment_gallery) {
         }
         tv_next_gallery.setOnClickListener {
             imageSelected?.let {
-                val action = AddPostContainerDirections.gotoFilter(it)
+                val action = AddPostContainerDirections.actionEditImage(it)
                 findNavController().navigate(action)
             }
         }

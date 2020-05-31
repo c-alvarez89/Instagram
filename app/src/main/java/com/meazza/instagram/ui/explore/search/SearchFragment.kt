@@ -45,7 +45,7 @@ class SearchFragment : Fragment(R.layout.fragment_search), OnUserClickListener {
     }
 
     override fun onItemClickListener(user: User) {
-        val action = SearchFragmentDirections.gotoProfile(user)
+        val action = SearchFragmentDirections.actionGlobalProfile(user)
         findNavController().navigate(action)
     }
 

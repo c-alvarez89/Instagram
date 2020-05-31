@@ -7,7 +7,7 @@
 
     <action
         android:id="@+id/action_global_welcome"
-        app:destination="@id/destination_welcome"
+        app:destination="@id/nav_auth"
         app:launchSingleTop="false"
         app:popUpTo="@+id/nav_graph"
         app:popUpToInclusive="true" />
@@ -18,20 +18,20 @@
         android:label="fragment_feed"
         tools:layout="@layout/fragment_feed">
         <action
-            android:id="@+id/goto_camera"
-            app:destination="@id/destination_camera" />
+            android:id="@+id/action_likes"
+            app:destination="@id/destination_likes" />
         <action
-            android:id="@+id/goto_messages"
-            app:destination="@id/destination_direct" />
+            android:id="@+id/action_comments"
+            app:destination="@id/destination_comments" />
     </fragment>
 
     <fragment
         android:id="@+id/navigation_explore"
         android:name="com.meazza.instagram.ui.explore.ExploreFragment"
         android:label="fragment_explore"
-        tools:layout="@layout/fragment_explore" >
+        tools:layout="@layout/fragment_explore">
         <action
-            android:id="@+id/action_navigation_explore_to_destination_search"
+            android:id="@+id/next_action"
             app:destination="@id/destination_search" />
     </fragment>
 
@@ -39,9 +39,9 @@
         android:id="@+id/navigation_add_post"
         android:name="com.meazza.instagram.ui.add_post.AddPostContainer"
         android:label="fragment_add_post"
-        tools:layout="@layout/container_add_post">
+        tools:layout="@layout/fragment_gallery">
         <action
-            android:id="@+id/goto_filter"
+            android:id="@+id/action_edit_image"
             app:destination="@id/destination_edit_image" />
     </fragment>
 
@@ -49,11 +49,7 @@
         android:id="@+id/navigation_notification"
         android:name="com.meazza.instagram.ui.notification.NotificationFragment"
         android:label="fragment_notification"
-        tools:layout="@layout/fragment_notification">
-        <action
-            android:id="@+id/goto_profile"
-            app:destination="@id/destination_profile" />
-    </fragment>
+        tools:layout="@layout/fragment_notification" />
 
     <fragment
         android:id="@+id/navigation_current_profile"
@@ -61,71 +57,18 @@
         android:label="CurrentProfileFragment"
         tools:layout="@layout/fragment_current_profile">
         <action
-            android:id="@+id/action_navigation_current_profile_to_destination_edit_profile"
+            android:id="@+id/next_action"
             app:destination="@id/destination_edit_profile" />
         <action
-            android:id="@+id/action_navigation_current_profile_to_destination_post_detail"
-            app:destination="@id/destination_post_detail" />
-        <action
-            android:id="@+id/action_navigation_current_profile_to_destination_followers_list"
+            android:id="@+id/action_followers"
             app:destination="@id/destination_followers_list" />
     </fragment>
-
-    <fragment
-        android:id="@+id/destination_welcome"
-        android:name="com.meazza.instagram.ui.auth.WelcomeFragment"
-        android:label="fragment_welcome"
-        tools:layout="@layout/fragment_welcome">
-        <action
-            android:id="@+id/goto_sign_up"
-            app:destination="@id/destination_sign_up" />
-        <action
-            android:id="@+id/goto_log_in"
-            app:destination="@id/destination_login" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/destination_sign_up"
-        android:name="com.meazza.instagram.ui.auth.sign_up.SignUpFragment"
-        android:label="fragment_sign_in"
-        tools:layout="@layout/fragment_sign_up">
-        <action
-            android:id="@+id/goto_feed"
-            app:destination="@id/navigation_feed"
-            app:popUpTo="@id/nav_main"
-            app:popUpToInclusive="true" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/destination_login"
-        android:name="com.meazza.instagram.ui.auth.log_in.LogInFragment"
-        android:label="fragment_log_in"
-        tools:layout="@layout/fragment_log_in">
-        <action
-            android:id="@+id/goto_reset_password"
-            app:destination="@id/destination_reset_password" />
-        <action
-            android:id="@+id/goto_feed"
-            app:destination="@id/navigation_feed"
-            app:popUpTo="@id/nav_main"
-            app:popUpToInclusive="true" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/destination_reset_password"
-        android:name="com.meazza.instagram.ui.auth.reset_password.ResetPasswordFragment"
-        android:label="fragment_reset_password"
-        tools:layout="@layout/fragment_reset_password" />
 
     <fragment
         android:id="@+id/destination_camera"
         android:name="com.meazza.instagram.ui.camera.CameraFragment"
         android:label="fragment_camera"
-        tools:layout="@layout/fragment_camera">
-        <action
-            android:id="@+id/action_destination_camera_to_destination_filter"
-            app:destination="@id/destination_edit_image" />
-    </fragment>
+        tools:layout="@layout/fragment_camera"/>
 
     <fragment
         android:id="@+id/destination_direct"
@@ -133,7 +76,7 @@
         android:label="fragment_messages"
         tools:layout="@layout/fragment_direct">
         <action
-            android:id="@+id/goto_chat"
+            android:id="@+id/action_chat"
             app:destination="@id/destination_chat" />
     </fragment>
 
@@ -151,11 +94,7 @@
         android:id="@+id/destination_search"
         android:name="com.meazza.instagram.ui.explore.search.SearchFragment"
         android:label="fragment_search"
-        tools:layout="@layout/fragment_search">
-        <action
-            android:id="@+id/goto_profile"
-            app:destination="@id/destination_profile" />
-    </fragment>
+        tools:layout="@layout/fragment_search" />
 
     <fragment
         android:id="@+id/destination_edit_profile"
@@ -172,13 +111,10 @@
             android:name="user"
             app:argType="com.meazza.instagram.data.model.User" />
         <action
-            android:id="@+id/goto_post_detail"
-            app:destination="@id/destination_post_detail" />
-        <action
-            android:id="@+id/goto_chat"
+            android:id="@+id/action_chat"
             app:destination="@id/destination_chat" />
         <action
-            android:id="@+id/goto_followers"
+            android:id="@+id/action_followers"
             app:destination="@id/destination_followers_list" />
     </fragment>
 
@@ -191,7 +127,7 @@
             android:name="imageUri"
             app:argType="string" />
         <action
-            android:id="@+id/goto_new_post"
+            android:id="@+id/action_create_post"
             app:destination="@id/destination_create_post" />
     </fragment>
 
@@ -207,23 +143,107 @@
 
     <fragment
         android:id="@+id/destination_post_detail"
-        android:name="com.meazza.instagram.ui.post.detail.PostDetailFragment"
+        android:name="com.meazza.instagram.ui.post_detail.PostDetailFragment"
         android:label="fragment_post_detail"
         tools:layout="@layout/fragment_post_detail">
+        <argument
+            android:name="post"
+            app:argType="com.meazza.instagram.data.model.Post" />
+        <action
+            android:id="@+id/action_comments"
+            app:destination="@id/destination_comments" />
+        <action
+            android:id="@+id/action_likes"
+            app:destination="@id/destination_likes" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/destination_followers_list"
+        android:name="com.meazza.instagram.ui.profile.follower_list.FollowersContainer"
+        android:label="container_followers"
+        tools:layout="@layout/fragment_following_list">
+        <argument
+            android:name="user"
+            app:argType="com.meazza.instagram.data.model.User" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/destination_comments"
+        android:name="com.meazza.instagram.ui.post_detail.comment.CommentsFragment"
+        android:label="fragment_comments"
+        tools:layout="@layout/fragment_comments">
         <argument
             android:name="post"
             app:argType="com.meazza.instagram.data.model.Post" />
     </fragment>
 
     <fragment
-        android:id="@+id/destination_followers_list"
-        android:name="com.meazza.instagram.ui.follower_list.FollowersContainer"
-        android:label="container_followers"
-        tools:layout="@layout/container_followers">
+        android:id="@+id/destination_likes"
+        android:name="com.meazza.instagram.ui.post_detail.likes.LikesFragment"
+        android:label="fragment_likes"
+        tools:layout="@layout/fragment_likes">
         <argument
-            android:name="userId"
-            app:argType="string"
-            app:nullable="true" />
+            android:name="post"
+            app:argType="com.meazza.instagram.data.model.Post" />
     </fragment>
+
+    <fragment
+        android:id="@+id/fragment_posts"
+        android:name="com.meazza.instagram.ui.post.PostsFragment"
+        android:label="PostsFragment"
+        tools:layout="@layout/fragment_posts"/>
+
+    <action
+        android:id="@+id/action_global_profile"
+        app:destination="@id/destination_profile" />
+
+    <action
+        android:id="@+id/action_global_post_detail"
+        app:destination="@id/destination_post_detail" />
+    <navigation android:id="@+id/nav_auth"
+        app:startDestination="@id/destination_welcome">
+        <fragment
+            android:id="@+id/destination_sign_up"
+            android:name="com.meazza.instagram.ui.auth.sign_up.SignUpFragment"
+            android:label="fragment_sign_in"
+            tools:layout="@layout/fragment_sign_up">
+            <action
+                android:id="@+id/action_feed"
+                app:destination="@id/navigation_feed"
+                app:popUpTo="@id/nav_main"
+                app:popUpToInclusive="true" />
+        </fragment>
+        <fragment
+            android:id="@+id/destination_reset_password"
+            android:name="com.meazza.instagram.ui.auth.reset_password.ResetPasswordFragment"
+            android:label="fragment_reset_password"
+            tools:layout="@layout/fragment_reset_password" />
+        <fragment
+            android:id="@+id/destination_login"
+            android:name="com.meazza.instagram.ui.auth.log_in.LogInFragment"
+            android:label="fragment_log_in"
+            tools:layout="@layout/fragment_log_in">
+            <action
+                android:id="@+id/next_action"
+                app:destination="@id/destination_reset_password" />
+            <action
+                android:id="@+id/action_feed"
+                app:destination="@id/navigation_feed"
+                app:popUpTo="@id/nav_main"
+                app:popUpToInclusive="true" />
+        </fragment>
+        <fragment
+            android:id="@+id/destination_welcome"
+            android:name="com.meazza.instagram.ui.auth.WelcomeFragment"
+            android:label="fragment_welcome"
+            tools:layout="@layout/fragment_welcome">
+            <action
+                android:id="@+id/action_sign_up"
+                app:destination="@id/destination_sign_up" />
+            <action
+                android:id="@+id/action_login"
+                app:destination="@id/destination_login" />
+        </fragment>
+    </navigation>
 
 </navigation>

@@ -13,8 +13,9 @@ import com.meazza.instagram.ui.explore.ExploreViewModel
 import com.meazza.instagram.ui.explore.search.SearchViewModel
 import com.meazza.instagram.ui.feed.FeedViewModel
 import com.meazza.instagram.ui.post.PostsViewModel
-import com.meazza.instagram.ui.post.detail.PostDetailViewModel
+import com.meazza.instagram.ui.post_detail.PostDetailViewModel
 import com.meazza.instagram.ui.profile.ProfileViewModel
+import com.meazza.instagram.ui.profile.follower_list.FollowersViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -32,14 +33,11 @@ val userModule = module {
     viewModel { EditProfileViewModel(get()) }
 }
 
-val feedModule = module {
-    viewModel { FeedViewModel(get()) }
-}
-
 val profileModule = module {
     single { FollowActionDB }
     viewModel { ProfileViewModel(get()) }
     viewModel { CurrentProfileViewModel() }
+    viewModel { FollowersViewModel() }
 }
 
 val postModule = module {
@@ -47,6 +45,10 @@ val postModule = module {
     viewModel { PostsViewModel(get()) }
     viewModel { PostDetailViewModel() }
     viewModel { CreatePostViewModel(get(), get()) }
+}
+
+val feedModule = module {
+    viewModel { FeedViewModel(get(), get()) }
 }
 
 val searchModule = module {

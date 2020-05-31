@@ -69,6 +69,11 @@
         <item name="android:textColor">@color/blue_dark</item>
     </style>
 
+    <style name="TabLayoutText" parent="TextAppearance.AppCompat.Button">
+        <item name="textAllCaps">false</item>
+        <item name="fontFamily">@font/roboto_bold</item>
+    </style>
+
 
     <!--Text Input - Edit Text-->
     <style name="EditTextStyle" parent="AppTheme">
