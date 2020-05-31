@@ -10,10 +10,11 @@ import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.meazza.instagram.R
+import com.meazza.instagram.ui.add_post.AddPostContainerDirections
 import com.meazza.instagram.util.FILENAME_FORMAT
 import kotlinx.android.synthetic.main.fragment_photo.*
-import org.jetbrains.anko.support.v4.toast
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
@@ -28,6 +29,10 @@ class PhotoFragment : Fragment(R.layout.fragment_photo) {
         super.onViewCreated(view, savedInstanceState)
 
         startCamera()
+        setUiAction()
+    }
+
+    private fun setUiAction() {
         iv_capture.setOnClickListener { takePhoto() }
     }
 
@@ -89,7 +94,8 @@ class PhotoFragment : Fragment(R.layout.fragment_photo) {
 
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
                     val savedUri = Uri.fromFile(photoFile)
-                    toast("$savedUri")
+                    val action = AddPostContainerDirections.actionEditImage(savedUri.toString())
+                    findNavController().navigate(action)
                 }
 
                 override fun onError(exc: ImageCaptureException) {
