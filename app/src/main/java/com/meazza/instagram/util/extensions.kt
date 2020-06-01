@@ -52,6 +52,27 @@ fun ImageView.circleImage(url: String?) {
         .into(this)
 }
 
+fun ImageView.squareResize(url: String?, size: Int) {
+    Glide.with(this.context)
+        .load(url)
+        .transition(DrawableTransitionOptions.withCrossFade(factory))
+        .centerCrop()
+        .override(size, size)
+        .error(R.color.gray_icon)
+        .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+        .into(this)
+        .waitForLayout()
+}
+
+fun ImageView.load(url: String?) {
+    Glide.with(this.context)
+        .load(url)
+        .transition(DrawableTransitionOptions.withCrossFade(factory))
+        .centerCrop()
+        .error(R.color.gray_icon)
+        .into(this)
+}
+
 fun ImageView.load(uri: Uri?) {
     Glide.with(this.context)
         .load(uri)

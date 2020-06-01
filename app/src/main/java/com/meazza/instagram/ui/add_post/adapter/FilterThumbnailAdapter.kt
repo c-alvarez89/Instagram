@@ -1,4 +1,4 @@
-package com.meazza.instagram.ui.add_post.edit_image
+package com.meazza.instagram.ui.add_post.adapter
 
 import android.view.LayoutInflater
 import android.view.View

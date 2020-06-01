@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.meazza.instagram.R
 import com.meazza.instagram.common.listener.OnFilterClickListener
 import com.meazza.instagram.data.model.EditedImage
+import com.meazza.instagram.ui.add_post.adapter.FilterThumbnailAdapter
 import com.meazza.instagram.util.load
 import com.meazza.instagram.util.setToolbar
 import com.zomato.photofilters.FilterPack
@@ -138,7 +139,8 @@ class EditImageFragment : Fragment(R.layout.fragment_edit_image), OnFilterClickL
 
     private fun setRecyclerView() = rv_filters.run {
 
-        val mAdapter = FilterThumbnailAdapter(this@EditImageFragment)
+        val mAdapter =
+            FilterThumbnailAdapter(this@EditImageFragment)
 
         mAdapter.apply {
             setListData(filterList)

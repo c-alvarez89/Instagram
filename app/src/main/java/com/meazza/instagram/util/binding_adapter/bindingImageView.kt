@@ -2,14 +2,10 @@ package com.meazza.instagram.util.binding_adapter
 
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade
 import com.google.firebase.firestore.DocumentReference
-import com.meazza.instagram.R
 import com.meazza.instagram.data.model.User
 import com.meazza.instagram.util.circleImage
-import com.meazza.instagram.util.factory
+import com.meazza.instagram.util.squareResize
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -22,16 +18,7 @@ fun setRoundImage(imageView: ImageView, url: String?) {
 
 @BindingAdapter("setSquareImage")
 fun setSquareImage(imageView: ImageView, url: String?) {
-
-    Glide.with(imageView.context)
-        .load(url)
-        .transition(withCrossFade(factory))
-        .centerCrop()
-        .override(800, 800)
-        .error(R.color.gray_icon)
-        .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
-        .into(imageView)
-        .waitForLayout()
+    imageView.squareResize(url, 800)
 }
 
 @BindingAdapter("setUserPhotoChat")

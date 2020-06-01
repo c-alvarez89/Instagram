@@ -40,6 +40,9 @@ const val POST_IMAGE_URL = "postImageUrl"
 const val FILENAME_FORMAT = "yyyy-MM-dd-HH-mm-ss-SSS"
 const val PATTERN_DATE = "MMMM d"
 
-
 /** Common Variables*/
-val factory: DrawableCrossFadeFactory = DrawableCrossFadeFactory.Builder().setCrossFadeEnabled(true).build()
+val factory: DrawableCrossFadeFactory = DrawableCrossFadeFactory.Builder()
+    .setCrossFadeEnabled(true).build()
+
+
+
