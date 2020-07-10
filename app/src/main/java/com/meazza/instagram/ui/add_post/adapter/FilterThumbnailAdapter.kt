@@ -31,7 +31,7 @@ class FilterThumbnailAdapter(private val listener: OnFilterClickListener) :
 
     override fun getItemCount(): Int = if (filterList.size > 0) filterList.size else 0
 
-    class HolderThumbnail(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class HolderThumbnail(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bindView(item: ThumbnailItem, listener: OnFilterClickListener) = itemView.run {
             tv_filter_name.text = item.filterName
             iv_preview_filter.load(item.image)

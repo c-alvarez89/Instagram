@@ -76,16 +76,32 @@
             app:setSquareImage="@{viewModel.postImageUrl}"
             tools:src="@tools:sample/backgrounds/scenic[15]" />
 
-        <ImageView
-            android:id="@+id/iv_like"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+        <LinearLayout
+            android:id="@+id/ll_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:contentDescription="@string/like"
+            android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_post_detail"
-            app:srcCompat="@drawable/ic_heart" />
+            app:layout_constraintTop_toBottomOf="@+id/iv_post_detail">
+
+            <ImageView
+                android:id="@+id/iv_like"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:contentDescription="@string/like"
+                android:visibility="visible"
+                app:srcCompat="@drawable/ic_heart" />
+
+            <ImageView
+                android:id="@+id/iv_like_full"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:visibility="gone"
+                android:contentDescription="@string/like"
+                app:srcCompat="@drawable/ic_heart_red" />
+        </LinearLayout>
 
         <ImageView
             android:id="@+id/iv_comment"
@@ -93,9 +109,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:contentDescription="@string/comments"
-            app:layout_constraintBottom_toBottomOf="@+id/iv_like"
-            app:layout_constraintStart_toEndOf="@+id/iv_like"
-            app:layout_constraintTop_toTopOf="@+id/iv_like"
+            app:layout_constraintBottom_toBottomOf="@+id/ll_like"
+            app:layout_constraintStart_toEndOf="@+id/ll_like"
+            app:layout_constraintTop_toTopOf="@+id/ll_like"
             app:srcCompat="@drawable/ic_comments" />
 
         <LinearLayout
@@ -107,7 +123,7 @@
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_like">
+            app:layout_constraintTop_toBottomOf="@+id/ll_like">
 
             <TextView
                 android:id="@+id/tv_likes_number"

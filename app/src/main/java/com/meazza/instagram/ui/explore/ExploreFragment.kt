@@ -13,8 +13,8 @@ import com.meazza.instagram.common.customization.SpannedGridLayoutManager
 import com.meazza.instagram.common.listener.OnPostClickListener
 import com.meazza.instagram.data.model.Post
 import com.meazza.instagram.databinding.FragmentExploreBinding
-import com.meazza.instagram.di.prefs
 import com.meazza.instagram.ui.post.adapter.PostAdapter
+import com.meazza.instagram.util.prefs
 import kotlinx.android.synthetic.main.fragment_explore.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.android.ext.android.inject

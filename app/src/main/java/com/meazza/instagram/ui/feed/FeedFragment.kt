@@ -17,8 +17,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.meazza.instagram.R
 import com.meazza.instagram.data.model.Post
 import com.meazza.instagram.databinding.FragmentFeedBinding
-import com.meazza.instagram.di.prefs
 import com.meazza.instagram.ui.post_detail.adapter.PostDetailAdapter
+import com.meazza.instagram.util.prefs
 import com.meazza.instagram.util.setToolbar
 import kotlinx.android.synthetic.main.fragment_feed.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi

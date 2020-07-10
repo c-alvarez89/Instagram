@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.meazza.instagram.ui.profile.follower_list.adapter.FollowerListAdapter
 
-class FollowersViewModel : ViewModel() {
+class  FollowersViewModel : ViewModel() {
 
     val adapter = MutableLiveData<FollowerListAdapter>()
 }

@@ -7,8 +7,8 @@ import androidx.lifecycle.viewModelScope
 import com.meazza.instagram.common.callback.StatusCallback
 import com.meazza.instagram.common.listener.OnViewClickListener
 import com.meazza.instagram.data.network.CurrentUserDB
-import com.meazza.instagram.di.prefs
 import com.meazza.instagram.util.TRY_AGAIN
+import com.meazza.instagram.util.prefs
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
 

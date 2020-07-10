@@ -11,9 +11,9 @@ import com.meazza.instagram.R
 import com.meazza.instagram.common.adapter.InstagramViewPagerAdapter
 import com.meazza.instagram.data.model.User
 import com.meazza.instagram.databinding.FragmentProfileBinding
-import com.meazza.instagram.di.prefs
 import com.meazza.instagram.ui.post.PostsFragment
 import com.meazza.instagram.ui.post.tagged.TaggedPostsFragment
+import com.meazza.instagram.util.prefs
 import com.meazza.instagram.util.setToolbar
 import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi

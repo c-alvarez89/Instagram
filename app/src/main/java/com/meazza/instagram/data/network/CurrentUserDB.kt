@@ -5,10 +5,10 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.meazza.instagram.data.model.User
-import com.meazza.instagram.di.prefs
 import com.meazza.instagram.util.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.tasks.await
+
 
 object CurrentUserDB {
 

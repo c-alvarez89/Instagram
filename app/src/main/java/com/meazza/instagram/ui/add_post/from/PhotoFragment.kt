@@ -37,8 +37,7 @@ class PhotoFragment : Fragment(R.layout.fragment_photo) {
     }
 
     private fun startCamera() {
-        val cameraProviderFuture =
-            ProcessCameraProvider.getInstance(requireContext())
+        val cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext())
 
         cameraProviderFuture.addListener(Runnable {
 

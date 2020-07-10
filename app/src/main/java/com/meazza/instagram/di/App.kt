@@ -10,7 +10,7 @@ import org.koin.core.context.startKoin
 class App : Application() {
 
     companion object {
-        var preferences: Preferences? = null
+        lateinit var preferences: Preferences
     }
 
     override fun onCreate() {
@@ -34,6 +34,3 @@ class App : Application() {
         }
     }
 }
-
-@ExperimentalCoroutinesApi
-val prefs by lazy { App.preferences!! }

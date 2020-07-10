@@ -1,4 +1,4 @@
-package com.meazza.instagram.ui.add_post.from
+package com.meazza.instagram.common.listener
 
 interface OnImageClickListener {
     fun onClick(url: String)

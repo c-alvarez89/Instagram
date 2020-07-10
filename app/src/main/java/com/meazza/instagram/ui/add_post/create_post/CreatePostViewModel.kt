@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.meazza.instagram.data.model.Post
 import com.meazza.instagram.data.network.CurrentUserDB
 import com.meazza.instagram.data.network.PostActionDB
-import com.meazza.instagram.di.prefs
+import com.meazza.instagram.util.prefs
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
 

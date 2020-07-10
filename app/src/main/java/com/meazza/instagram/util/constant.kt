@@ -1,6 +1,8 @@
 package com.meazza.instagram.util
 
 import com.bumptech.glide.request.transition.DrawableCrossFadeFactory
+import com.meazza.instagram.di.App
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 /** Errors Code Constants */
 const val EMPTY_FIELDS = 101
@@ -43,6 +45,9 @@ const val PATTERN_DATE = "MMMM d"
 /** Common Variables*/
 val factory: DrawableCrossFadeFactory = DrawableCrossFadeFactory.Builder()
     .setCrossFadeEnabled(true).build()
+
+@ExperimentalCoroutinesApi
+val prefs by lazy { App.preferences }
 
 
 
